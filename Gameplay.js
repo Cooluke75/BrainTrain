@@ -1,10 +1,15 @@
 /**
  * Created by ROGER on 2016-05-09.
  */
-var width = 16;
-var height = 9;
 
-function myFunction() {
-    var object = "Train";
+function CreateArray(rows,columns) {
+    var array = [];
 
+    for(var i=0;i<rows;i++){
+        array[i]=[columns];
+    }
+
+    return array;
 }
+
+var Array2D = CreateArray(9,16);
