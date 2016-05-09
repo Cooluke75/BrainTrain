@@ -38,7 +38,7 @@ function Walk(Array2D,x,y,row) {
         }
         else if (Array2D[row][i] == true) {
             y += 1;
-            row +=1;
+            row += 1;
         }
     }
 }
