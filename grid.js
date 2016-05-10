@@ -26,7 +26,9 @@ function buildGrid() {
 
 	track = CreateArray(rows, cols);
 	fillArray(track, rows, cols);
-    Tier4_array(track, cols);
+    Tier2_array(track, cols);
+
+    randomCrossing(2,track);
 
 	// add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
