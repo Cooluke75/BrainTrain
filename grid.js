@@ -32,7 +32,12 @@ function buildGrid() {
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
 			if (track[i][j]) {
-				grid.append('<div class="tile track">' + track[i][j] + '</div>');
+				if (j == cols - 1) {
+					buttonId = 'id="destButton"'
+				} else {
+					buttonId = ''
+				}
+				grid.append('<div class="tile track" '+ buttonId + '>' + track[i][j] + '</div>');
 
 			} else {
 				grid.append('<div class="tile">' + track[i][j] + '</div>');
