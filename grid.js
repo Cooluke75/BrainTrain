@@ -6,9 +6,11 @@
 
 var rows = 9;
 var cols = 16;
+var grid;
 //var activeTracks = [][];
 
 $(document).ready(function(){
+	grid = $('#grid');
 	buildGrid();
 	resizeGrid();
 	
@@ -18,7 +20,7 @@ $(document).ready(function(){
 	var tile1 = $('.tile:first-of-type');
 	tile1.css('backgroundColor', '#009933');
 	tile1.css('position', 'relative');
-	$('#grid').click(function() {
+	grid.click(function() {
 		tile1.animate({left: '+=' + tile1.outerWidth() + 'px'});
 	});
 });
@@ -26,11 +28,11 @@ $(document).ready(function(){
 // Adds the tiles to the grid
 function buildGrid() {
 	// clear the grid
-	$('#grid').empty();
+	grid.empty();
 	
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
-			$("#grid").append('<div class="tile">'/* + i + ', ' + j */+ '</div>');			
+			grid.append('<div class="tile">' + '</div>');
 		}
 	}
 }
@@ -38,12 +40,12 @@ function buildGrid() {
 // Scales the grid to fit the screen
 function resizeGrid() {
 	// fit grid in window
-	$('#grid').width('80%');
-	$('#grid').height('80%');
+	grid.width('80%');
+	grid.height('80%');
 	
 	// get grid width and height in px
-	var gridWidth = $('#grid').width();
-	var gridHeight = $('#grid').height();
+	var gridWidth = grid.width();
+	var gridHeight = grid.height();
 	var tileWidth;
 	var tileHeight;
 	
@@ -61,8 +63,8 @@ function resizeGrid() {
 	$('.tile').outerWidth(tileWidth);
 	
 	// adjust grid width and height
-	$('#grid').width(tileWidth * cols);
-	$('#grid').height(tileHeight * rows);
+	grid.width(tileWidth * cols);
+	grid.height(tileHeight * rows);
 }
 
 // Generates the track
