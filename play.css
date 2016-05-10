@@ -71,3 +71,33 @@ html, body {
 #grid .tile {
 	font-size: 10px;
 }
+
+/*Added by Luke*/
+#destButton:hover {
+	background: yellow;
+}
+
+#destButton:active {
+	background: blue;
+}
+
+#destButton {
+	display: inline-block;
+	padding: 0;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
