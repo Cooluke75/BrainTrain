@@ -8,7 +8,7 @@ var rows;
 rows = 9;
 var cols = 16;
 var grid;
-//var activeTracks = [][];
+var track;
 
 $(document).ready(function(){
 	grid = $('#grid');
@@ -24,18 +24,9 @@ function buildGrid() {
 	// clear the grid
 	grid.empty();
 
-	var track = CreateArray(rows, cols);
-	for(var i = 0; i < rows; i++) {
-		for (var j = 0; j < cols; j++) {
-			track[i][j] = false;
-		}
-	}
-
-	// hard-coding horizontal lines
-	for (var i = 0; i < cols; i++) {
-		track[2][i] = true;
-		track[6][i] = true;
-	}
+	track = CreateArray(rows, cols);
+	fillArray(track, rows, cols);
+    Tier4_array(track, cols);
 
 	// add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
@@ -76,8 +67,8 @@ function resizeGrid() {
 	$('.tile').outerWidth(tileWidth);
 	
 	// adjust grid width and height
-	grid.width(tileWidth * cols);
-	grid.height(tileHeight * rows);
+	grid.width(tileWidth * cols + 1);
+	grid.height(tileHeight * rows + 1);
 }
 
 // Generates the track

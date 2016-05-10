@@ -50,7 +50,7 @@ html, body {
 	padding: 0;
 	text-align: center;
 	background-color: #eee;
-	border: 1px solid red;
+	border: 0px solid red;
 }
 
 /* Reset font-size for descendants of grid. */
