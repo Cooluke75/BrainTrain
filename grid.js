@@ -16,23 +16,35 @@ $(document).ready(function(){
 	
 	// resize grid when window is resized
 	$(window).resize(resizeGrid);
-	
-	var tile1 = $('.tile:first-of-type');
-	tile1.css('backgroundColor', '#009933');
-	tile1.css('position', 'relative');
-	grid.click(function() {
-		tile1.animate({left: '+=' + tile1.outerWidth() + 'px'});
-	});
 });
 
 // Adds the tiles to the grid
 function buildGrid() {
 	// clear the grid
 	grid.empty();
-	
+
+	var track = CreateArray(rows, cols);
+	for(var i = 0; i < rows; i++) {
+		for (var j = 0; j < cols; j++) {
+			track[i][j] = false;
+		}
+	}
+
+	// hard-coding horizontal lines
+	for (var i = 0; i < cols; i++) {
+		track[2][i] = true;
+		track[6][i] = true;
+	}
+
+	// add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
-			grid.append('<div class="tile">' + '</div>');
+			if (track[i][j]) {
+				grid.append('<div class="tile track">' + track[i][j] + '</div>');
+
+			} else {
+				grid.append('<div class="tile">' + track[i][j] + '</div>');
+			}
 		}
 	}
 }
