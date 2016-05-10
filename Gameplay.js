@@ -79,11 +79,13 @@ function Tier4_array(array,cols){
  * @returns {number}
  */
 function randomCrossing(level,array,rowTop,rowBot){
-    if(level>5){
+    if(level<=5){
         var random = math.floor(Math.random() * 2 + 1);
+    } else if(level>5) {
+        var random = math.floor(Math.random() * 2 + 2);
     }
     for (var i=0;i<random;i++){
-        generateCrossing(array,rows);
+        generateCrossing(array,rowTop,rowBot);
     }
 }
 
