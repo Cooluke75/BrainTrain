@@ -114,11 +114,11 @@ function Tier4_array(array,cols){
  * @returns {number}
  */
 function randomCrossing(tier,array){
-    if(tier==1){
+    if(tier==0){
         var random = Math.floor(Math.random() * 2 + 1);
-    } else if(tier==2) {
+    } else if(tier==1) {
         var random = Math.floor(Math.random() * 2 + 2);
-    } else if(tier==3){
+    } else if(tier==2){
         var random = Math.floor(Math.random() * 2 + 2);
     } else {
         var random = Math.floor(Math.random() * 3 + 2);
@@ -127,7 +127,7 @@ function randomCrossing(tier,array){
     for (var i=0;i<9;i++) {
         if(array[i][0]==true) {
             for (var j = 0; j < random; j++) {
-                generateCrossing(array, 5);
+                generateCrossing(array, i);
             }
         }
     }

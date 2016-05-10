@@ -25,8 +25,10 @@ function buildGrid() {
 
 	track = CreateArray(rows, cols);
 	fillArray(track, rows, cols);
-    buildHorizontalTracks(track, 3);
+    buildHorizontalTracks(track, 1);
 
+    randomCrossing(1,track);
+    
 	// add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
