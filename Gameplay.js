@@ -117,14 +117,14 @@ function randomCrossing(tier,array){
     if(tier==0){
         var random = Math.floor(Math.random() * 2 + 1);
     } else if(tier==1) {
-        var random = Math.floor(Math.random() * 2 + 2);
+        var random = Math.floor(Math.random() * 2 + 1);
     } else if(tier==2){
-        var random = Math.floor(Math.random() * 2 + 2);
+        var random = Math.floor(Math.random() * 2 + 1);
     } else {
-        var random = Math.floor(Math.random() * 3 + 2);
+        var random = Math.floor(Math.random() * 2 + 2);
     }
 
-    for (var i=0;i<9;i++) {
+    for (var i=0;i<8;i++) {
         if(array[i][0]==true) {
             for (var j = 0; j < random; j++) {
                 generateCrossing(array, i);
@@ -137,17 +137,16 @@ function randomCrossing(tier,array){
  * Generate vertical
  */
 function generateCrossing(array,rowTop){
-    var ran = Math.floor(Math.random()*13+1);
-    if (array[rowTop + 1][ran - 1] == false && array[rowTop + 1][ran + 1] == false) {
-        for (var i = rowTop + 1; array[i][ran] != true; i++) {
-            array[i][ran] = true;
+    var num=1;
+    while(num<2) {
+        var ran = Math.floor(Math.random() * 13 + 1);
+        if (rowTop == 0 || array[rowTop - 1][ran] == false) {
+            if (array[rowTop + 1][ran - 1] == false && array[rowTop + 1][ran + 1] == false) {
+                for (var i = rowTop + 1; array[i][ran] != true; i++) {
+                    array[i][ran] = true;
+                    num++;
+                }
+            }
         }
     }
 }
-
-var level = 1;
-/**
- * Tier1
- */
-Tier1_array(array_track,cols);
-randomCrossing(level,array_track,2,6);
