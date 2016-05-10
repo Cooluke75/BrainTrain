@@ -150,3 +150,84 @@ function generateCrossing(array,rowTop){
         }
     }
 }
+
+function placeTheTrain(trainNum){
+    var condition = "horizontal";
+    var nextX = 0;
+    var nextY = trainNum;
+
+    var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
+    tileTrain.css('backgroundColor', '#009933');
+    tileTrain.css('position', 'relative');
+    grid.click(function moveTheTrain() {
+        var speed= 100;
+        if(condition=="horizontal") {
+
+            //determine it is in the row 0, or row 8 or other
+            switch(nextY) {
+
+                case 0:
+                    while(track[nextY+1][nextX] === false && nextX < cols){
+                        tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'},speed);
+                        nextX++;
+                    }
+                    break;
+
+                case 8:
+                    while(track[nextY-1][nextX] === false && nextX < cols){
+                        tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'},speed);
+                        nextX++;
+                    }
+                    break;
+
+                default:
+                    while(track[nextY+1][nextX] === false && track[nextY-1][nextX] === false && nextX < cols){
+                        tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'},speed);
+                        nextX++;
+                    }
+                    break;
+
+            }
+            if(nextY !=8 && track[nextY+1][nextX]===true) {
+                condition = "downVertical";
+
+            }
+            if(nextY !=0 && track[nextY-1][nextX]===true) {
+                condition = "upVertical";
+
+            }
+            if(nextX != cols ){
+                moveTheTrain();
+            }
+
+        }
+
+        if(condition =="downVertical"){
+            while(nextY != 8 && track[nextY+1][nextX] == true && nextY < rows) {
+                tileTrain.animate({top: '+=' + tileTrain.outerWidth() + 'px'},speed);
+                nextY++;
+
+            }
+            tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'},speed);
+            nextX++;
+            condition = "horizontal";
+
+            moveTheTrain();
+        }
+
+        if(condition =="upVertical"){
+
+            while(nextY !=0 && track[nextY-1][nextX] == true && nextY > 0) {
+                tileTrain.animate({top: '-=' + tileTrain.outerWidth() + 'px'},speed);
+                nextY--;
+            }
+
+            tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'},speed);
+            nextX++;
+            condition = "horizontal";
+            moveTheTrain();
+        }
+
+
+    });
+}
