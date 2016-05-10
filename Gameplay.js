@@ -27,6 +27,41 @@ function fillArray(array,rows,cols){
 var array_track = CreateArray(rows,cols);
 fillArray(array_track,rows,cols);
 
+// Builds the horizontal tracks based on the difficulty tier
+function buildHorizontalTracks(array, difficultyTier) {
+    switch (difficultyTier) {
+        case 0:
+            for(var i = 0; i < cols; i++) {
+                array[2][i] = true;
+                array[6][i] = true;
+            }
+            break;
+        case 1:
+            for(var i = 0; i < cols; i++) {
+                array[0][i] = true;
+                array[4][i] = true;
+                array[8][i] = true;
+            }
+            break;
+        case 2:
+            for(var i = 0; i < cols; i++) {
+                array[1][i] = true;
+                array[3][i] = true;
+                array[5][i] = true;
+                array[7][i] = true;
+            }
+            break;
+        default:
+            for(var i = 0; i < cols; i++) {
+                array[0][i] = true;
+                array[2][i] = true;
+                array[4][i] = true;
+                array[6][i] = true;
+                array[8][i] = true;
+            }
+    }
+}
+
 /**
  * Populate the array for Tier 1.
  */

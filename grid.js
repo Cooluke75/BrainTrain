@@ -4,8 +4,7 @@
  authors:        Kabir Cahill, Kent Huang, Luke Lee, Eric Lin, Roger Zhang
  */
 
-var rows;
-rows = 9;
+var rows = 9;
 var cols = 16;
 var grid;
 var track;
@@ -26,7 +25,7 @@ function buildGrid() {
 
 	track = CreateArray(rows, cols);
 	fillArray(track, rows, cols);
-    Tier4_array(track, cols);
+    buildHorizontalTracks(track, 3);
 
 	// add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
