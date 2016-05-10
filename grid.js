@@ -1,10 +1,11 @@
-/*
-	grid.js
-	description: 	Builds the gameboard for BrainTrain game.
-	authors: 		Kabir Cahill, Kent Huang, Luke Lee, Eric Lin, Roger Zhang
-*/
+/**
+ grid.js
+ description:    Builds the gameboard for BrainTrain game.
+ authors:        Kabir Cahill, Kent Huang, Luke Lee, Eric Lin, Roger Zhang
+ */
 
-var rows = 9;
+var rows;
+rows = 9;
 var cols = 16;
 var grid;
 //var activeTracks = [][];
