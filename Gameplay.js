@@ -99,8 +99,9 @@ function generateCrossing(array,rowTop,rowBot){
     }
 }
 
+var level = 1;
 /**
  * Tier1
  */
 Tier1_array(array_track,cols);
-generateCrossing(array_track,2,6);
+randomCrossing(level,array_track,2,6);
