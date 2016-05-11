@@ -7,15 +7,31 @@
 var rows = 9;
 var cols = 16;
 var grid;
-var track;
+var track; // A 2D array representing the train track. True means the tile is part of the track.
+var level = 0;
+var difficultyTier = 3;
+var numberOfTrains = 1;
+var correctAnswers = [];
+var usersAnswers = [];
 
 $(document).ready(function(){
 	grid = $('#grid');
 	buildGrid();
 	resizeGrid();
-	
+
 	// resize grid when window is resized
 	$(window).resize(resizeGrid);
+
+    // the user has chosen a destination
+    $('.destButton').click(function () {
+        // get the row of the button
+
+        // store the button's row in an array of the user's answers
+
+        // if the row has already been stored, remove it from the array (i.e. user has deselected this button)
+
+        // when the length of the answers array == number of trains, validate each answer ( with a function)
+    });
 
     placeTheTrain(0);
     placeTheTrain(8);
@@ -29,23 +45,25 @@ function buildGrid() {
 
 	track = CreateArray(rows, cols);
 	fillArray(track, rows, cols);
-    buildHorizontalTracks(track, 3);
-    randomCrossing(3,track);
+    buildHorizontalTracks(track, difficultyTier);
+    randomCrossing(difficultyTier, track);
 
     // add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
-			if (track[i][j]) {
-				if (j == cols - 1) {
-					buttonId = 'id="destButton"'
-				} else {
-					buttonId = ''
-				}
-				grid.append('<div class="tile track" '+ buttonId + '>' + track[i][j] + '</div>');
+            var trackClass = '';
+            var buttonClass = '';
+            if (track[i][j]) {
+                trackClass = ' track';
 
-			} else {
-				grid.append('<div class="tile">' + track[i][j] + '</div>');
-			}
+                if (j == cols - 1) {
+                    buttonClass = ' destButton';
+                } else {
+                    buttonClass = '';
+                }
+            }
+
+            grid.append('<div class="tile'+ trackClass + buttonClass + '"></div>');
 		}
 	}
 }

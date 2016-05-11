@@ -28,83 +28,37 @@ var array_track = CreateArray(rows,cols);
 fillArray(array_track,rows,cols);
 
 // Builds the horizontal tracks based on the difficulty tier
-function buildHorizontalTracks(array, difficultyTier) {
+function buildHorizontalTracks(track, difficultyTier) {
     switch (difficultyTier) {
         case 0:
             for(var i = 0; i < cols; i++) {
-                array[2][i] = true;
-                array[6][i] = true;
+                track[2][i] = true;
+                track[6][i] = true;
             }
             break;
         case 1:
             for(var i = 0; i < cols; i++) {
-                array[0][i] = true;
-                array[4][i] = true;
-                array[8][i] = true;
+                track[0][i] = true;
+                track[4][i] = true;
+                track[8][i] = true;
             }
             break;
         case 2:
             for(var i = 0; i < cols; i++) {
-                array[1][i] = true;
-                array[3][i] = true;
-                array[5][i] = true;
-                array[7][i] = true;
+                track[1][i] = true;
+                track[3][i] = true;
+                track[5][i] = true;
+                track[7][i] = true;
             }
             break;
         default:
             for(var i = 0; i < cols; i++) {
-                array[0][i] = true;
-                array[2][i] = true;
-                array[4][i] = true;
-                array[6][i] = true;
-                array[8][i] = true;
+                track[0][i] = true;
+                track[2][i] = true;
+                track[4][i] = true;
+                track[6][i] = true;
+                track[8][i] = true;
             }
-    }
-}
-
-/**
- * Populate the array for Tier 1.
- */
-function Tier1_array(array,cols){
-    for(var i=0;i<cols;i++) {
-        array[2][i] = true;
-        array[6][i] = true;
-    }
-}
-
-/**
- * Populate the array for Tier 2.
- */
-function Tier2_array(array,cols){
-    for(var i=0;i<cols;i++) {
-        array[0][i] = true;
-        array[4][i] = true;
-        array[8][i] = true;
-    }
-}
-
-/**
- * Populate the array for Tier 3.
- */
-function Tier3_array(array,cols){
-    for(var i=0;i<cols;i++) {
-        array[1][i] = true;
-        array[3][i] = true;
-        array[5][i] = true;
-        array[7][i] = true;
-    }
-}
-
-/**
- * Populate the array for Tier 4.
- */
-function Tier4_array(array,cols){
-    for(var i=0;i<cols;i++) {
-        array[0][i] = true;
-        array[2][i] = true;
-        array[4][i] = true;
-        array[6][i] = true;
-        array[8][i] = true;
     }
 }
 
