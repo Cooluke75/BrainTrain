@@ -74,6 +74,13 @@ html, body {
 	font-size: 10px;
 }
 
+.tileTrainClass {
+    background-image: url('images/train.jpg');
+    background-size: 100%;
+    background-color: #009933;
+    position: relative;
+}
+
 /*-------------------- destination button --------------------*/
 .destButton:hover {
 	background: yellow;

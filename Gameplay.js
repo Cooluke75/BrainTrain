@@ -116,10 +116,8 @@ function placeTheTrain(trainNum){
     var nextY = trainNum;
 
     var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
-    tileTrain.css('backgroundImage', "url('images/train.jpg')");
-    tileTrain.css('backgroundSize', '100%');
-    tileTrain.css('backgroundColor', '#009933');
-    tileTrain.css('position', 'relative');
+    tileTrain.addClass('tileTrainClass');
+
     grid.click(function moveTheTrain() {
         var speed= 100;
         if(condition=="horizontal") {
