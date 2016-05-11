@@ -10,7 +10,7 @@ var grid;
 var track; // A 2D array representing the train track. True means the tile is part of the track.
 var level = 0;
 var difficultyTier = 3;
-var numberOfTrains = 1;
+var numberOfTrains = 2;
 var correctAnswers = [];
 var usersAnswers = [];
 
@@ -25,10 +25,20 @@ $(document).ready(function(){
     // the user has chosen a destination
     $('.destButton').click(function () {
         // get the row of the button
+        var row = parseInt($(this).attr('id').replace(/\D/g, ''));
 
-        // store the button's row in an array of the user's answers
+        var answerIndex = usersAnswers.findIndex(function (userAnswer) { return userAnswer == row; });
+        //console.log('answerIndex: ' + answerIndex);
 
         // if the row has already been stored, remove it from the array (i.e. user has deselected this button)
+        if(answerIndex != -1) {
+            $(this).css('backgroundColor', 'red');
+            usersAnswers.splice(answerIndex, 1);
+        } else {
+            // make the button 'selected' (i.e. change its color)
+            $(this).css('backgroundColor', 'yellow');
+            usersAnswers.push(row); // store the button's row in an array of the user's answers
+        }
 
         // when the length of the answers array == number of trains, validate each answer ( with a function)
     });
@@ -53,17 +63,18 @@ function buildGrid() {
 		for(j = 0; j < cols; j++) {
             var trackClass = '';
             var buttonClass = '';
+            var buttonId = '';
             if (track[i][j]) {
                 trackClass = ' track';
 
                 if (j == cols - 1) {
                     buttonClass = ' destButton';
+                    buttonId = ' id="button' + i + '"';
                 } else {
                     buttonClass = '';
                 }
             }
-
-            grid.append('<div class="tile'+ trackClass + buttonClass + '"></div>');
+            grid.append('<div class="tile'+ trackClass + buttonClass + '"' + buttonId +'></div>');
 		}
 	}
 }
