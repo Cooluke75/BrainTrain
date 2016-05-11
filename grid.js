@@ -11,6 +11,7 @@ var track; // A 2D array representing the train track. True means the tile is pa
 var level = 0;
 var difficultyTier = 3;
 var numberOfTrains = 2;
+var startingPoints = [];
 var correctAnswers = [];
 var usersAnswers = [];
 
@@ -45,8 +46,15 @@ $(document).ready(function(){
         // when the length of the answers array == number of trains, validate each answer ( with a function)
     });
 
-    placeTheTrain(0);
-    placeTheTrain(8);
+    startingPoints = randomTrains(difficultyTier,numberOfTrains);
+    for(i = 0; i < startingPoints.length; i++) {
+        placeTheTrain(startingPoints[i]);
+    }
+    grid.click(function(){
+        for(i = 0; i < startingPoints.length; i++) {
+            moveTheTrain(startingPoints[i]);
+        }
+    });
 
 });
 
