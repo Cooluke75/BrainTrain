@@ -27,17 +27,14 @@ $(document).ready(function(){
         // get the row of the button
         var row = parseInt($(this).attr('id').replace(/\D/g, ''));
 
-        var answerIndex = usersAnswers.findIndex(function (userAnswer) { return userAnswer == row; });
-        //console.log('answerIndex: ' + answerIndex);
+        // get the index of the row in userAnswers
+         var answerIndex = usersAnswers.findIndex(function (userAnswer) { return userAnswer == row; });
 
-        // if the row has already been stored, remove it from the array (i.e. user has deselected this button)
-        if(answerIndex != -1) {
-            $(this).css('backgroundColor', 'red');
-            usersAnswers.splice(answerIndex, 1);
-        } else {
+        // if the row has not already been stored, add it to the array
+        if(answerIndex == -1) {
             // make the button 'selected' (i.e. change its color)
             $(this).css('backgroundColor', 'yellow');
-            usersAnswers.push(row); // store the button's row in an array of the user's answers
+            usersAnswers.push(row); // store the button's row in the array of user's answers
         }
 
         // when the length of the answers array == number of trains, validate each answer ( with a function)
