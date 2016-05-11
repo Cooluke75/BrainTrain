@@ -37,6 +37,11 @@ $(document).ready(function(){
             usersAnswers.push(row); // store the button's row in the array of user's answers
         }
 
+        var soundEffect = new Audio();
+        soundEffect.src = "Correct.mp3";
+        soundEffect.play();
+
+
         // when the length of the answers array == number of trains, validate each answer ( with a function)
     });
 
