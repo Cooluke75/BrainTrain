@@ -66,13 +66,15 @@ html, body {
 
 .track {
 	background-color: red;
+    background-image: url('images/track_horizontal.png');
+    background-size: 100%;
 }
 
 #grid .tile {
 	font-size: 10px;
 }
 
-/*Added by Luke*/
+/*-------------------- destination button --------------------*/
 .destButton:hover {
 	background: yellow;
 }

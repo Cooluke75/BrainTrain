@@ -116,6 +116,8 @@ function placeTheTrain(trainNum){
     var nextY = trainNum;
 
     var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
+    tileTrain.css('backgroundImage', "url('images/LukeLee.jpg')");
+    tileTrain.css('backgroundSize', '100%');
     tileTrain.css('backgroundColor', '#009933');
     tileTrain.css('position', 'relative');
     grid.click(function moveTheTrain() {
