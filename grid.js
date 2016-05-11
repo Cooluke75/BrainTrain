@@ -16,6 +16,10 @@ $(document).ready(function(){
 	
 	// resize grid when window is resized
 	$(window).resize(resizeGrid);
+
+    placeTheTrain(0);
+    placeTheTrain(8);
+
 });
 
 // Adds the tiles to the grid
@@ -25,11 +29,10 @@ function buildGrid() {
 
 	track = CreateArray(rows, cols);
 	fillArray(track, rows, cols);
-    buildHorizontalTracks(track, 5);
+    buildHorizontalTracks(track, 3);
+    randomCrossing(3,track);
 
-    randomCrossing(1,track);
-
-	// add track or empty tile to grid
+    // add track or empty tile to grid
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
 			if (track[i][j]) {
