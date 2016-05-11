@@ -192,3 +192,8 @@ function placeTheTrain(trainNum){
 
     });
 }
+
+function soundEffect(){
+        document.getElementById().innerHTML =
+            "<embed src='"+soundfile+"' hidden='true' autostart='true' loop='false' />";
+}
