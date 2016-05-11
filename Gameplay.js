@@ -190,3 +190,47 @@ function placeTheTrain(trainNum){
 
     });
 }
+
+/**
+ * Put in the Tier difficulty and how many train you want, it will return an array contains random row numbers.
+ * @param TierNum
+ * @param howManyTrains
+ * @returns An array
+ */
+function randomTrains(TierNum, howManyTrains) {
+    var arr;
+    switch (TierNum) {
+        case 0:
+            arr =  getFromNumebr(howManyTrains,2,6);
+            return arr;
+        case 1:
+            arr = getFromNumebr(howManyTrains,0,4,8);
+            return arr;
+        case 2:
+            arr = getFromNumebr(howManyTrains,1,3,5,7);
+            return arr;
+        default:
+            arr = getFromNumebr(howManyTrains,0,2,4,6,8);
+            return arr;
+    }
+}
+
+/**
+ * Generating an array with specified size, contains integers choosen from the numbers that you put in。
+ * @param a The first argument is size of the array.
+ * @param The rest of the arguments are the integers to be picked
+ * @returns An array
+ */
+function getFromNumebr(a,b,c,d,e,f) {
+    var range = [];
+    for(i = 1; i < arguments.length; i++) {
+        range[i - 1] = arguments[i];
+    }
+
+    var numberOfExcludedNum = range.length  - a;
+    for(i = 0; i < numberOfExcludedNum; i++) {
+        var randomToExclude = Math.floor(Math.random() * (range.length));
+        range.splice(randomToExclude, 1);
+    }
+    return range;
+}
