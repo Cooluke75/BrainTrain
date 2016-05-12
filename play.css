@@ -61,13 +61,19 @@ html, body {
 .tile {
 	display: inline-block;
 	margin: 0;
-	box-shadow: 1px 1px 1px blue;
+	/*box-shadow: 1px 1px 1px blue;*/
 }
 
 .track {
-	background-color: red;
+	/*background-color: red;*/
     background-image: url('images/track_horizontal.png');
     background-size: 100%;
+}
+
+.track.vert-track {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
 }
 
 #grid .tile {
@@ -79,9 +85,14 @@ html, body {
     background-size: 100%;
     background-color: #009933;
     position: relative;
+    z-index: 100;
 }
 
 /*-------------------- destination button --------------------*/
+.destButton {
+    background-color: red;
+}
+
 .destButton:hover {
 	background: yellow;
 }
