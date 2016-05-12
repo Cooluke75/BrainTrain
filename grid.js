@@ -88,8 +88,10 @@ $(document).ready(function(){
                 if(usersAnswers.isEqual(correctAnswers)) {
                     levelComplete = true;
                     console.log('You win! Score: ' + totalScore);
+                    alert(totalScore);
                 } else {
                     console.log('You lose. Score: ' + totalScore);
+                    alert(totalScore);
                 }
             }
         }
