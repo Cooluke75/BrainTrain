@@ -81,9 +81,8 @@ html, body {
 }
 
 .tileTrainClass {
-    background-image: url('images/train.jpg');
+    background-image: url('images/train.png');
     background-size: 100%;
-    background-color: #009933;
     position: relative;
     z-index: 100;
 }
