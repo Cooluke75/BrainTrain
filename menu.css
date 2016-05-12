@@ -1,0 +1,83 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+/*-------------------- main container --------------------*/
+#container {
+	background-color: #aaa;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width:100%;
+}
+
+#header {
+	height: 20%;
+	margin-bottom: 1em;
+	padding: 0;
+	text-align: center;
+	position:relative;
+}
+
+#headerTitle {
+
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 30%;
+	margin:auto;
+	text-align: center;
+	font-size: 4em;
+
+}
+
+#panel {
+
+	padding: 0;
+	width:100%;
+	height:60%;
+	position:relative;
+
+
+}
+
+#buttons {
+
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 70%;
+    height: 70%;
+	margin:auto;
+	text-align: center;
+
+}
+
+#buttons button.btn {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom:1em;
+	width:50%;
+	height: 25%;
+	font-size: 1.3em;
+}
+
+/*-------------------- credits page --------------------*/
+.credits {
+    margin: auto;
+    width: 700px;
+    text-align: center;
+}
+
+.creditsDiv {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    width: 10%;
+}

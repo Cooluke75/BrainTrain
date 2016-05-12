@@ -266,9 +266,8 @@ function getFromNumebr(a,b,c,d,e,f) {
 
 /**
  * Return the answer array, if you put in the entry array.
- * @param a The first argument is size of the array.
- * @param The rest of the arguments are the integers to be picked
- * @returns An array
+ * @param trainNum The first argument is starting points array.
+ * @returns An answer array
  */
 function giveTheAnswerArr(trainNum){
     var answerArr = [];
