@@ -110,3 +110,17 @@ html, body {
 	/*border: 1px solid transparent;*/
 	border-radius: 4px;
 }
+
+/*-------------------- credits page --------------------*/
+.credits {
+    margin: auto;
+    width: 700px;
+    text-align: center;
+}
+
+.creditsDiv {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    width: 10%;
+}

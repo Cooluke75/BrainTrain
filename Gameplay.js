@@ -115,6 +115,27 @@ function placeTheTrain(trainNum){
     var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
     tileTrain.addClass('tileTrainClass');
 
+    /* easter egg function */
+    $(function() {
+        $('.modal-title').click(function() {
+            tileTrain.css("background-image", "url(images/train.jpg)");
+        });
+        $('#kabirC').click(function() {
+            tileTrain.css("background-image", "url(images/KabirCahill.jpg)");
+        });
+        $('#kentH').click(function() {
+            tileTrain.css("background-image", "url(images/KentHuang.jpg)");
+        });
+        $('#lukeL').click(function() {
+            tileTrain.css("background-image", "url(images/LukeLee.jpg)");
+        });
+        $('#ericL').click(function() {
+            tileTrain.css("background-image", "url(images/EricLin.jpg)");
+        });
+        $('#rogerZ').click(function() {
+            tileTrain.css("background-image", "url(images/RogerZhang.jpg)");
+        });
+    });
 }
 
 function moveTheTrain(trainNum){
