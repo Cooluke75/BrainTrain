@@ -11,8 +11,8 @@ var track; // A 2D array representing the train track. True means the tile is pa
 var level = 0;
 var totalScore = 0;
 var levelComplete = false;
-var difficultyTier = 3;
-var numberOfTrains = 2;
+var difficultyTier = 0;
+var numberOfTrains = 1;
 var startingPoints = [];
 var correctAnswers = [];
 var usersAnswers = [];
@@ -88,8 +88,10 @@ $(document).ready(function(){
                 if(usersAnswers.isEqual(correctAnswers)) {
                     levelComplete = true;
                     console.log('You win! Score: ' + totalScore);
+                    alert(totalScore);
                 } else {
                     console.log('You lose. Score: ' + totalScore);
+                    alert(totalScore);
                 }
             }
         }
@@ -121,11 +123,21 @@ function buildGrid() {
 	for(i = 0; i < rows; i++) {
 		for(j = 0; j < cols; j++) {
             var trackClass = '';
+            var vertTrackClass = '';
             var buttonClass = '';
             var buttonId = '';
+
             if (track[i][j]) {
                 trackClass = ' track';
 
+                // the tile is a vertical track
+                if (track[i][j + 1] == false) {
+                    vertTrackClass = ' vert-track';
+                } else {
+                    vertTrackClass = '';
+                }
+
+                // the tile is a button to choose a train's destination
                 if (j == cols - 1) {
                     buttonClass = ' destButton';
                     buttonId = ' id="button' + i + '"';
@@ -133,7 +145,7 @@ function buildGrid() {
                     buttonClass = '';
                 }
             }
-            grid.append('<div class="tile'+ trackClass + buttonClass + '"' + buttonId +'></div>');
+            grid.append('<div class="tile'+ trackClass + vertTrackClass + buttonClass + '"' + buttonId +'></div>');
 		}
 	}
 }
