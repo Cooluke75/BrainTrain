@@ -111,14 +111,21 @@ function generateCrossing(array,rowTop){
 }
 
 function placeTheTrain(trainNum){
+
+    var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
+    tileTrain.addClass('tileTrainClass');
+
+}
+
+function moveTheTrain(trainNum){
     var condition = "horizontal";
     var nextX = 0;
     var nextY = trainNum;
 
     var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
-    tileTrain.addClass('tileTrainClass');
+    move();
 
-    grid.click(function moveTheTrain() {
+    function move() {
         var speed= 100;
         if(condition=="horizontal") {
 
@@ -156,7 +163,7 @@ function placeTheTrain(trainNum){
 
             }
             if(nextX != cols ){
-                moveTheTrain();
+                move();
             }
 
         }
@@ -171,7 +178,7 @@ function placeTheTrain(trainNum){
             nextX++;
             condition = "horizontal";
 
-            moveTheTrain();
+            move();
         }
 
         if(condition =="upVertical"){
@@ -184,12 +191,13 @@ function placeTheTrain(trainNum){
             tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'},speed);
             nextX++;
             condition = "horizontal";
-            moveTheTrain();
+            move();
         }
 
 
-    });
+    };
 }
+
 
 /**
  * Put in the Tier difficulty and how many train you want, it will return an array contains random row numbers.
@@ -233,4 +241,91 @@ function getFromNumebr(a,b,c,d,e,f) {
         range.splice(randomToExclude, 1);
     }
     return range;
+}
+
+/**
+ * Return the answer array, if you put in the entry array.
+ * @param a The first argument is size of the array.
+ * @param The rest of the arguments are the integers to be picked
+ * @returns An array
+ */
+function giveTheAnswerArr(trainNum){
+    var answerArr = [];
+
+    for(i = 0; i < trainNum.length; i++) {
+        var condition = "horizontal";
+        var nextX = 0;
+        var nextY = trainNum[i];
+        move();
+        function move() {
+            var speed= 100;
+            if(condition=="horizontal") {
+
+                //determine it is in the row 0, or row 8 or other
+                switch(nextY) {
+
+                    case 0:
+                        while(track[nextY+1][nextX] === false && nextX < cols){
+                            nextX++;
+                        }
+                        break;
+
+                    case 8:
+                        while(track[nextY-1][nextX] === false && nextX < cols){
+                            nextX++;
+                        }
+                        break;
+
+                    default:
+                        while(track[nextY+1][nextX] === false && track[nextY-1][nextX] === false && nextX < cols){
+                            nextX++;
+                        }
+                        break;
+
+                }
+                if(nextY !=8 && track[nextY+1][nextX]===true) {
+                    condition = "downVertical";
+
+                }
+                if(nextY !=0 && track[nextY-1][nextX]===true) {
+                    condition = "upVertical";
+
+                }
+                if(nextX != cols ){
+                    move();
+                }
+                if(nextX == cols){
+                    answerArr[i] = nextY;
+                }
+
+
+            }
+
+            if(condition =="downVertical"){
+                while(nextY != 8 && track[nextY+1][nextX] == true && nextY < rows) {
+                    nextY++;
+
+                }
+                nextX++;
+                condition = "horizontal";
+
+                move();
+            }
+
+            if(condition =="upVertical"){
+
+                while(nextY !=0 && track[nextY-1][nextX] == true && nextY > 0) {
+                    nextY--;
+                }
+                nextX++;
+                condition = "horizontal";
+                move();
+            }
+
+
+        };
+    }
+
+    return answerArr;
+
 }
