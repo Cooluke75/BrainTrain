@@ -141,6 +141,7 @@ function levelProgress(levelComplete) {
     });
 }
 
+// clears the score when user click menu
 function clearScore() {
         localStorage.removeItem("globalScore");
         globalScore = 0;
