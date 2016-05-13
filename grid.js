@@ -20,10 +20,6 @@ var usersAnswers = [];
 // Get global variable
 var globalScore = getStoredValue("globalScore");
 totalScore = globalScore + totalScore;
-if (parseInt(totalScore) > parseInt(300)){
-    //clear storage
-    localStorage.clear();
-}
 
 $(document).ready(function(){
 	grid = $('#grid');
@@ -139,7 +135,12 @@ function levelProgress(levelComplete) {
             //window.location.assign('Unsuccessful.html');
         }
     });
+}
 
+function clearScore() {
+        localStorage.removeItem("globalScore");
+        globalScore = 0;
+        location.href='Menu.html';
 }
 
 // Adds the tiles to the grid
