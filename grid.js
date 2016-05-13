@@ -11,8 +11,8 @@ var track; // A 2D array representing the train track. True means the tile is pa
 var level = 0;
 var totalScore = 0;
 var levelComplete = false;
-var difficultyTier = 3;
-var numberOfTrains = 2;
+var difficultyTier = 0;
+var numberOfTrains = 1;
 var startingPoints = [];
 var correctAnswers = [];
 var usersAnswers = [];
@@ -129,11 +129,15 @@ Array.prototype.isEqual = function (otherArray) {
 function levelProgress(levelComplete) {
     $('.destButton').click(function() {
         if (levelComplete) {
-            $('#level-screen').css('display', 'block');
-            //window.location.assign('Successful.html');
+            //$('#level-screen-title').text('Level ' + (level + 1) + ': Complete!');
+            //$('#level-screen-buttons:first-child').text('Next Level');
+            //$('#level-screen').css('display', 'block');
+            window.location.assign('Successful.html');
         } else {
-            $('#level-screen').css('display', 'block');
-            //window.location.assign('Unsuccessful.html');
+            //$('#level-screen-title').text('Level ' + (level + 1) + ': Incomplete');
+            //$('#level-screen-buttons:first-child').text('Retry');
+            //$('#level-screen').css('display', 'block');
+            window.location.assign('Unsuccessful.html');
         }
     });
 }
@@ -184,7 +188,7 @@ function buildGrid() {
 		}
 	}
 }
-	
+
 // Scales the grid to fit the screen
 function resizeGrid() {
 	// fit grid in window
