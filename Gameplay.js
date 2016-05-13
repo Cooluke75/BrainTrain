@@ -84,7 +84,7 @@ function randomCrossing(tier,array){
 
     for (var i=0;i<num;i++) {
         if(array[i][0]==true) {
-            var ra = Math.floor(Math.random() * 2 + 3);
+            var ra = Math.floor(Math.random() * 1 + 3);
             for (var j = 0; j < ra; j++) {
                 generateCrossing(array, i);
             }
