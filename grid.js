@@ -95,6 +95,9 @@ $(document).ready(function(){
                 }
             }
         }
+
+        // Direct page to level complete or incomplete, need to click destinations again
+        levelProgress(levelComplete)
     });
 });
 
@@ -106,6 +109,17 @@ Array.prototype.isEqual = function (otherArray) {
 
     return this.every(function (value, i) {
         return value == otherArray[i];
+    });
+}
+
+// Direct page to level complete or incomplete, need to click destinations again
+function levelProgress(levelComplete) {
+    $('.destButton').click(function() {
+        if (levelComplete) {
+            window.location.assign('Successful.html');
+        } else {
+            window.location.assign('Unsuccessful.html');
+        }
     });
 }
 
