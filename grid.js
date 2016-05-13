@@ -19,14 +19,15 @@ var usersAnswers = [];
 
 // Get global variable
 var globalScore = getStoredValue("globalScore");
-totalScore = globalScore + totalScore;
+totalScore += globalScore;
 
 $(document).ready(function(){
 	grid = $('#grid');
 	buildGrid();
 	resizeGrid();
+    $('.score').text(totalScore);
 
-	// resize grid when window is resized
+    // resize grid when window is resized
 	$(window).resize(resizeGrid);
 
     // place the trains at their starting position
@@ -139,8 +140,7 @@ function levelProgress(levelComplete) {
 
 // clears the score when user click menu
 function clearScore() {
-        localStorage.removeItem("globalScore");
-        globalScore = 0;
+        storeValue('globalScore', 0);
         location.href='Menu.html';
 }
 
