@@ -32,6 +32,17 @@ html, body {
 	left: 0;
 }
 
+#scoreShow {
+	position: fixed;
+	top: 0;
+	right: 10%;
+	width: 10%;
+	height: 10%;
+	font-size:2vw;
+	border: 1px solid red;
+
+}
+
 #timer {
 	position: fixed;
 	top: 0;
