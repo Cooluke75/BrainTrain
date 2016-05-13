@@ -11,7 +11,7 @@ var track; // A 2D array representing the train track. True means the tile is pa
 var level = 0;
 var totalScore = 0;
 var levelComplete = false;
-var difficultyTier = 2;
+var difficultyTier = 3;
 var numberOfTrains = 2;
 var startingPoints = [];
 var correctAnswers = [];
@@ -43,39 +43,40 @@ $(document).ready(function(){
             var row = parseInt($(this).attr('id').replace(/\D/g, ''));
 
             // get the index of the row in userAnswers
-            var answerIndex = usersAnswers.findIndex(function (userAnswer) {
+            var userAnswerIndex = usersAnswers.findIndex(function (userAnswer) {
                 return userAnswer == row;
             });
 
             // if the row has not already been stored, add it to the array
-            if (answerIndex == -1) {
-                // make the button 'selected' (i.e. change its color)
-                //$(this).css('backgroundColor', 'yellow');
+            if (userAnswerIndex == -1) {
                 usersAnswers.push(row); // store the button's row in the array of user's answers
+
+                var soundEffect = new Audio();
+
+                // get the index of the row in correctAnswers
+                var correctAnswerIndex = correctAnswers.findIndex(function (correctAnswer) {
+                    return correctAnswer == row;
+                });
+
+                // if the row is a correct destination, add to the users score, otherwise subtract
+                if (correctAnswerIndex != -1) {
+                    // add 100 points from user's score
+                    totalScore += 100;
+                    soundEffect.src = "Correct.mp3";
+                    $(this).css('backgroundColor', '#00ff00');
+                } else {
+                    // deduct 50 points from user's score
+                    totalScore -= 50;
+                    soundEffect.src = "Wrong.mp3";
+                    $(this).css('backgroundColor', 'black');
+                }
+
+                // update the score displays
+                $('.score').text(totalScore);
+                soundEffect.play();
             }
 
-            var soundEffect = new Audio();
 
-            // get the index of the row in correctAnswers
-            answerIndex = correctAnswers.findIndex(function (correctAnswer) {
-                return correctAnswer == row;
-            });
-
-            // if the row is a correct destination, add to the users score, otherwise subtract
-            if (answerIndex != -1) {
-                // add 100 points from user's score
-                totalScore += 100;
-                soundEffect.src = "Correct.mp3";
-                $(this).css('backgroundColor', '#00ff00');
-            } else {
-                // deduct 50 points from user's score
-                totalScore -= 50;
-                soundEffect.src = "Wrong.mp3";
-                $(this).css('backgroundColor', 'black');
-            }
-
-            $('.score').text(totalScore);
-            soundEffect.play();
 
             if (usersAnswers.length == numberOfTrains) {
                 // move the trains
@@ -89,16 +90,14 @@ $(document).ready(function(){
                 if(usersAnswers.isEqual(correctAnswers)) {
                     levelComplete = true;
                     console.log('You win! Score: ' + totalScore);
-                    alert(totalScore);
                 } else {
                     console.log('You lose. Score: ' + totalScore);
-                    alert(totalScore);
                 }
+
+                // Direct page to level complete or incomplete, need to click destinations again
+                levelProgress(levelComplete);
             }
         }
-
-        // Direct page to level complete or incomplete, need to click destinations again
-        levelProgress(levelComplete);
     });
 });
 
