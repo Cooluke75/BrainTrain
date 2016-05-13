@@ -188,7 +188,7 @@ function buildGrid() {
 		}
 	}
 }
-	
+
 // Scales the grid to fit the screen
 function resizeGrid() {
 	// fit grid in window
