@@ -45,7 +45,7 @@ html, body {
 
 }
 
-#buttons {
+#level-screen-buttons {
 
 	position: absolute;
 	top: 0;
@@ -59,7 +59,7 @@ html, body {
 
 }
 
-#buttons button.btn {
+#level-screen-buttons button.btn {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom:1em;

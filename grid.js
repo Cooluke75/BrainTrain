@@ -97,7 +97,7 @@ $(document).ready(function(){
         }
 
         // Direct page to level complete or incomplete, need to click destinations again
-        levelProgress(levelComplete)
+        levelProgress(levelComplete);
     });
 });
 
@@ -116,11 +116,14 @@ Array.prototype.isEqual = function (otherArray) {
 function levelProgress(levelComplete) {
     $('.destButton').click(function() {
         if (levelComplete) {
-            window.location.assign('Successful.html');
+            $('#level-screen').css('display', 'block');
+            //window.location.assign('Successful.html');
         } else {
-            window.location.assign('Unsuccessful.html');
+            $('#level-screen').css('display', 'block');
+            //window.location.assign('Unsuccessful.html');
         }
     });
+
 }
 
 // Adds the tiles to the grid

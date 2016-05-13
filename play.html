@@ -5,8 +5,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="play.css" type="text/css">
+	<link rel="stylesheet" href="finish2.css" type="text/css">
 
-    <!-- bootstrap css and jQuery for popup -->
+
+	<!-- bootstrap css and jQuery for popup -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -35,6 +37,28 @@
             <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
         </div>
     </div>
+
+	<!-- the menu screen between levels -->
+	<div id="level-screen">
+		<div id="level-screen-container">
+			<div id="level-screen-header">
+				<p id ="level-screen-title">Level 1: Complete!</p>
+			</div>
+
+			<div id ="level-screen-panel" class="btn-group-vertical">
+
+				<div class="btn-group-vertical" id = "level-screen-buttons">
+					<button type="button" class="btn btn-default btn-lg" onclick="location.href='play.html'">Next Level</button>
+					<br>
+					<button type="button" class="btn btn-default btn-lg" onclick="location.href='Menu.html'">Main Menu</button>
+				</div>
+			</div>
+
+			<div id="score1">
+				<p id ="score2">Score: 100</p>
+			</div>
+		</div>
+	</div>
 
     <!-- Credits page modal -->
     <div id="myModal" class="modal fade" role="dialog">
