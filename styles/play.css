@@ -77,7 +77,7 @@ html, body {
 
 .track {
 	/*background-color: red;*/
-    background-image: url('images/track_horizontal.png');
+    background-image: url('../images/track_horizontal.png');
     background-size: 100%;
 }
 
@@ -92,7 +92,7 @@ html, body {
 }
 
 .tileTrainClass {
-    background-image: url('images/train.png');
+    background-image: url('../images/train.png');
     background-size: 100%;
     position: relative;
     z-index: 100;

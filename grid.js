@@ -67,7 +67,7 @@ $(document).ready(function(){
                 if (correctAnswerIndex != -1) {
                     // add 100 points from user's score
                     totalScore += 100;
-                    soundEffect.src = "Correct.mp3";
+                    soundEffect.src = "bgm/Correct.mp3";
                     $(this).css('backgroundColor', '#00ff00');
                 } else {
                     // deduct 50 points from user's score
@@ -77,7 +77,7 @@ $(document).ready(function(){
                     else {
                         totalScore = 0;
                     }
-                    soundEffect.src = "Wrong.mp3";
+                    soundEffect.src = "bgm/Wrong.mp3";
                     $(this).css('backgroundColor', 'red');
                 }
 
