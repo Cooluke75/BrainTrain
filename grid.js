@@ -68,7 +68,7 @@ $(document).ready(function(){
                     // deduct 50 points from user's score
                     totalScore -= 50;
                     soundEffect.src = "Wrong.mp3";
-                    $(this).css('backgroundColor', 'black');
+                    $(this).css('backgroundColor', 'red');
                 }
 
                 // update the score displays

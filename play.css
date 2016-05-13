@@ -89,7 +89,7 @@ html, body {
 
 /*-------------------- destination button --------------------*/
 .destButton {
-    background-color: red;
+    background-color: white;
 }
 
 .destButton:hover {
