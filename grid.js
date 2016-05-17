@@ -26,6 +26,14 @@ $(document).ready(function(){
 	buildGrid();
 	resizeGrid();
     $('.score').text(totalScore);
+    
+    //hiding everything in the begining but the menu
+    $("#myCarousel").hide();
+    $("#leaderboardpage").hide();
+    $("#settingContainer").hide();
+
+
+
 
     // resize grid when window is resized
 	$(window).resize(resizeGrid);

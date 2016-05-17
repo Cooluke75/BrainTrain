@@ -5,7 +5,7 @@ ul.nav {
     right: 0;
 }
 
-#container .nav-pills a {
+#leaderboardpage .nav-pills a {
     /*color: #ffffff;*/
     border: 1px solid #337ab7;
 }
@@ -29,20 +29,20 @@ ul.nav {
     font-weight: bold;
 }
 
-#container table {
+#leaderboardpage table {
     width: 100%;
     background-color: #ffffff;
 }
 
-#container tr {
+#leaderboardpage tr {
     border-bottom: 1px solid lightgrey;
 }
 
-#container th {
+#leaderboardpage th {
 }
 
 
-#container th, #container td {
+#leaderboardpage th, #leaderboardpage td {
     padding: 3px 5px;
 }
 
