@@ -1,0 +1,53 @@
+ul.nav {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#container .nav-pills a {
+    /*color: #ffffff;*/
+    border: 1px solid #337ab7;
+}
+
+.tab-content {
+    height: 80%;
+}
+
+#my-scores, #leaderboard {
+    overflow-y: scroll;
+    width: 80%;
+    max-height: 100%;
+    margin: auto;
+}
+#my-scores tr:first-of-type, #leaderboard tr:first-of-type {
+    color: #ffffff;
+    background-color: #337ab7;
+}
+
+#leaderboard table tr:nth-of-type(2) {
+    font-weight: bold;
+}
+
+#container table {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+#container tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+#container th {
+}
+
+
+#container th, #container td {
+    padding: 3px 5px;
+}
+
+.table {
+}
+
+.tab-content {
+}
