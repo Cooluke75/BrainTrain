@@ -91,6 +91,12 @@ $(document).ready(function(){
                 soundEffect.play();
             }
 
+            clickTheGridToskipTheAnimation();
+
+
+
+
+
 
 
             if (usersAnswers.length == numberOfTrains) {
@@ -115,6 +121,25 @@ $(document).ready(function(){
                 // Direct page to level complete or incomplete, need to click destinations again
                 levelProgress(levelComplete);
             }
+
+            //This is the function that will be called when the train is moving and  the user want to skip the animation
+            function clickTheGridToskipTheAnimation(){
+                var counter = 0;
+                $(grid).click(function(){
+
+                    if(usersAnswers.length == numberOfTrains){
+                        counter++;
+                    }
+                    if (counter > 1 && $('.tileTrainClass').is(":animated")){
+                        $('.tileTrainClass').finish();
+                        AfterTheAnimation();
+                    }
+                })
+
+            }
+
+            
+            
         }
     });
 });
