@@ -95,6 +95,7 @@ $(document).ready(function(){
                     moveTheTrain(startingPoints, AfterTheAnimation);
             }
 
+            //The code will be executed after the animation, which is a Function as a parameter that passed to the moveTheTrain function.
             function AfterTheAnimation() {
                 usersAnswers.sort();
                 correctAnswers.sort();
@@ -142,7 +143,7 @@ function levelProgress(levelComplete) {
             //$('#level-screen').css('display', 'block');
             window.location.assign('Unsuccessful.html');
         }
-    
+
  //   });
 }
 
