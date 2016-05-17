@@ -84,6 +84,9 @@ $(document).ready(function(){
                 //Store Global variable
                 storeValue('globalScore', totalScore);
 
+                // update the score displays
+                $('.score').text(totalScore);
+
 
                 soundEffect.play();
             }
@@ -107,8 +110,7 @@ $(document).ready(function(){
                     console.log('You lose. Score: ' + totalScore);
                 }
 
-                // update the score displays
-                $('.score').text(totalScore);
+
 
                 // Direct page to level complete or incomplete, need to click destinations again
                 levelProgress(levelComplete);
