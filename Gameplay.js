@@ -139,12 +139,14 @@ function placeTheTrain(trainNum){
 }
 
 function moveTheTrain(trainNum){
-    var condition = "horizontal";
-    var nextX = 0;
-    var nextY = trainNum;
+    for(i=0; i<trainNum.length;i++){
+        var condition = "horizontal";
+        var nextX = 0;
+        var nextY = trainNum[i];
 
-    var tileTrain = $('.tile:nth-of-type('+(trainNum*cols + 1)+')');
-    move();
+        var tileTrain = $('.tile:nth-of-type('+(trainNum[i]*cols + 1)+')');
+        move();
+    }
 
     function move() {
         var speed= 100;
