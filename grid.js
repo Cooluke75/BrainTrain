@@ -11,8 +11,8 @@ var track; // A 2D array representing the train track. True means the tile is pa
 var level = 0;
 var totalScore = 0;
 var levelComplete = false;
-var difficultyTier = 2;
-var numberOfTrains = 2;
+var difficultyTier = 0;
+var numberOfTrains = 1;
 var startingPoints = [];
 var correctAnswers = [];
 var usersAnswers = [];

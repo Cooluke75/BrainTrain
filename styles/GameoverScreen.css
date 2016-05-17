@@ -59,17 +59,13 @@ html, body {
     text-align: center;
 }
 
-.btn-group-vertical {
-
-}
-
 #buttons button.btn {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0.4em;
+    margin-top: 2%;
     width: 60%;
     height: 20%;
-    font-size: 1em;
+    font-size: 1.5em;
 }
 
 #finalscore {
