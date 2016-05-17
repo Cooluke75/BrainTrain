@@ -138,15 +138,35 @@ function placeTheTrain(trainNum){
     });
 }
 
-function moveTheTrain(trainNum){
+function moveTheTrain(trainNum, afterFunction){
+    var train = [];
+    //move all the trains
     for(i=0; i<trainNum.length;i++){
         var condition = "horizontal";
         var nextX = 0;
         var nextY = trainNum[i];
-
-        var tileTrain = $('.tile:nth-of-type('+(trainNum[i]*cols + 1)+')');
+        train[i] = $('.tile:nth-of-type('+(trainNum[i]*cols + 1)+')');
+        var tileTrain = train[i];
         move();
     }
+
+    //get the train with the longest animation queue
+    var longestTrain = train[0];
+    for(i = 1;i < train.length;i++){
+        if(longestTrain.queue().length < train[i].queue().length) {
+            longestTrain = train[i];
+        }
+    }
+
+    //put the afterFunction in the queue
+    longestTrain.queue(function(){
+        //execute the function after the animation
+       setTimeout(afterFunction,200);
+        $(this).dequeue();
+    })
+
+
+
 
     function move() {
         var speed= 100;

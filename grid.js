@@ -84,8 +84,7 @@ $(document).ready(function(){
                 //Store Global variable
                 storeValue('globalScore', totalScore);
 
-                // update the score displays
-                $('.score').text(totalScore);
+
                 soundEffect.play();
             }
 
@@ -93,9 +92,10 @@ $(document).ready(function(){
 
             if (usersAnswers.length == numberOfTrains) {
                 // move the trains
-                    moveTheTrain(startingPoints);
+                    moveTheTrain(startingPoints, AfterTheAnimation);
+            }
 
-
+            function AfterTheAnimation() {
                 usersAnswers.sort();
                 correctAnswers.sort();
 
@@ -105,6 +105,9 @@ $(document).ready(function(){
                 } else {
                     console.log('You lose. Score: ' + totalScore);
                 }
+
+                // update the score displays
+                $('.score').text(totalScore);
 
                 // Direct page to level complete or incomplete, need to click destinations again
                 levelProgress(levelComplete);
@@ -126,7 +129,8 @@ Array.prototype.isEqual = function (otherArray) {
 
 // Direct page to level complete or incomplete, need to click destinations again
 function levelProgress(levelComplete) {
-    $('.destButton').click(function() {
+   // $('.destButton').click(function() {
+
         if (levelComplete) {
             //$('#level-screen-title').text('Level ' + (level + 1) + ': Complete!');
             //$('#level-screen-buttons:first-child').text('Next Level');
@@ -138,7 +142,8 @@ function levelProgress(levelComplete) {
             //$('#level-screen').css('display', 'block');
             window.location.assign('Unsuccessful.html');
         }
-    });
+    
+ //   });
 }
 
 // clears the score when user click menu
