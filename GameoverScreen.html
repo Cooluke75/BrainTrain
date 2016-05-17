@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Successful</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/GameoverScreen.css" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <script src="Gameplay.js"></script>
+    <script src="grid.js"></script>
+</head>
+
+<body>
+<div id="container">
+
+    <div id="header">
+        <p id ="title">Times up!</p>
+    </div>
+
+    <div id ="panel" class="btn-group-vertical">
+
+        <div class="btn-group-vertical" id = "buttons">
+            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="location.href='play.html'">Play Again</button>
+            <br>
+            <button type="button" id="leaderboard"class="btn btn-default btn-lg" onclick="location.href='leaderboard.html'">Go to leaderboard</button>
+            <br>
+            <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="clearScore()">Main Menu</button>
+        </div>
+    </div>
+
+    <div id="finalscore">
+        <p id ="finalscore1">Your final score is: <span class="score">999</span></p>
+    </div>
+</div>
+</body>
+</html>
