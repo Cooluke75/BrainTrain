@@ -376,4 +376,5 @@ function giveTheAnswerArr(trainNum){
 function hideshow(id) {
     var idstr = "\"#"+id+"\"";
     $(id).show().siblings("div").hide();
+    
 }
