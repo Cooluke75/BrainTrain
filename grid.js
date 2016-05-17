@@ -231,6 +231,40 @@ function buildTrack(level) {
 
 }
 
+//Creates timer
+function startTimer(duration, display) {
+    var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+    function time() {
+        // Get the number of seconds that have elapsed since
+        // StartTimer() was called
+        diff = duration - (((Date.now() - start) / 1000) | 0);
+
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (diff <= 0) {
+            start = Date.now() + 1000;
+        }
+    };
+    // Stops from waiting a full second before the timer starts
+    time();
+    setInterval(time, 1000);
+}
+
+window.onload = function() {
+    var Minute = 60,
+        display = document.querySelector('#timer');
+    startTimer(Minute, display);
+};
+
 // Cookie to store score points
 function storeValue(key, value) {
     if (localStorage) {
