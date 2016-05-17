@@ -150,9 +150,19 @@ function levelProgress(levelComplete) {
 }
 
 // clears the score when user click menu
-function clearScore() {
+function clearScoreMenu() {
         storeValue('globalScore', 0);
         location.href='Menu.html';
+}
+
+function clearScorePlayAgain() {
+    storeValue('globalScore', 0);
+    location.href='play.html';
+}
+
+function clearScoreLeaderBoard() {
+    storeValue('globalScore', 0);
+    location.href='leaderboard.html';
 }
 
 // Adds the tiles to the grid
