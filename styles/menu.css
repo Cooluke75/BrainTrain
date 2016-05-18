@@ -80,3 +80,9 @@ html, body {
     right: 0px;
     width: 10%;
 }
+
+/*-------------------- tutorial page --------------------*/
+.backButton {
+	z-index: 10;
+	position: absolute;
+}
