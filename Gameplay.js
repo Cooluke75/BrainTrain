@@ -376,6 +376,5 @@ function giveTheAnswerArr(trainNum){
 function hideshow(idShow,idHide) {
     $(idHide).hide();
     $(idShow).show();
-
-    
 }
+

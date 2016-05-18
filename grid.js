@@ -8,11 +8,11 @@ var rows = 9;
 var cols = 16;
 var grid;
 var track; // A 2D array representing the train track. True means the tile is part of the track.
-var level = 0;
+var level = 1;
 var totalScore = 0;
 var levelComplete = false;
-var difficultyTier = 2;
-var numberOfTrains = 2;
+var difficultyTier = 0;
+var numberOfTrains = 1;
 var startingPoints = [];
 var correctAnswers = [];
 var usersAnswers = [];
@@ -27,6 +27,7 @@ function AfterTheAnimation() {
         levelComplete = true;
         console.log('You win! Score: ' + totalScore);
     } else {
+        levelComplete = false;
         console.log('You lose. Score: ' + totalScore);
     }
 
@@ -61,14 +62,14 @@ function gameLoad() {
     startingPoints = [];
     correctAnswers = [];
     usersAnswers = [];
+
     grid = $('#grid');
     buildGrid();
     resizeGrid();
     $('.score').text(totalScore);
+    $('.level').text(level);
     // resize grid when window is resized
     $(window).resize(resizeGrid);
-
-
 
     // place the trains at their starting position
     startingPoints = randomTrains(difficultyTier,numberOfTrains);
@@ -152,16 +153,11 @@ function gameLoad() {
 
         }
     });
-
-
-
 }
 
 $(document).ready(function(){
 
     gameLoad();
-
-
 
     //hiding everything in the begining but the menu
     $("#myCarousel").hide();
@@ -193,31 +189,24 @@ function levelProgress(levelComplete) {
         //$('#level-screen').css('display', 'block');
         //window.location.assign('Successful.html');
         hideshow('#level-screen', '#playContainer');
+        level++;
+        if (level%5==0) {
+            difficultyTier++;
+            if (difficultyTier==2){
+                numberOfTrains++;
+            }
+        }
+
+
     } else {
         //$('#level-screen-title').text('Level ' + (level + 1) + ': Incomplete');
         //$('#level-screen-buttons:first-child').text('Retry');
         //$('#level-screen').css('display', 'block');
         // window.location.assign('Unsuccessful.html');
-        hideshow('#level-screen', '#playContainer');
+        hideshow('#level-screen-fail', '#playContainer');
     }
 
     //   });
-}
-
-// clears the score when user click menu
-function clearScoreMenu() {
-    storeValue('globalScore', 0);
-    location.href='Menu.html';
-}
-
-function clearScorePlayAgain() {
-    storeValue('globalScore', 0);
-    location.href='play.html';
-}
-
-function clearScoreLeaderBoard() {
-    storeValue('globalScore', 0);
-    location.href='leaderboard.html';
 }
 
 // Adds the tiles to the grid
@@ -345,4 +334,9 @@ function getStoredValue(key) {
     } else {
         return $.cookies.get(key);
     }
+}
+
+function clearscore() {
+    totalScore=0;
+
 }
