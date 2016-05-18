@@ -12,7 +12,7 @@ html, body {
 	width:100%;
 }
 
-#header {
+#container #header {
 	height: 20%;
 	margin-bottom: 1em;
 	padding: 0;
@@ -20,7 +20,7 @@ html, body {
 	position:relative;
 }
 
-#headerTitle {
+#container #headerTitle {
 
 	position: absolute;
 	top: 0;
@@ -35,7 +35,7 @@ html, body {
 
 }
 
-#panel {
+#container #panel {
 
 	padding: 0;
 	width:100%;
@@ -45,7 +45,7 @@ html, body {
 
 }
 
-#buttons {
+#container #buttons {
 
 	position: absolute;
 	top: 0;
@@ -59,7 +59,7 @@ html, body {
 
 }
 
-#buttons button.btn {
+#container #buttons button.btn {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom:1em;
@@ -69,12 +69,12 @@ html, body {
 }
 
 /*-------------------- credits page --------------------*/
-.credits {
+#container .credits {
     margin: auto;
     text-align: center;
 }
 
-.creditsDiv {
+#container .creditsDiv {
     display: inline-block;
     position: absolute;
     right: 0px;

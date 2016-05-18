@@ -19,7 +19,7 @@ html, body {
 	text-align: center;
 }
 
-#playHeader  h1{
+#playContainer #playHeader  h1{
 	font-size: 1.5em;
 	display: inline-block;
 	padding: 0;
@@ -27,13 +27,13 @@ html, body {
 	margin: 10px auto;
 }
 
-#back-button {
+#playContainer #back-button {
 	position: fixed;
 	top: 0;
 	left: 0;
 }
 
-#scoreShow {
+#playContainer #scoreShow {
 	position: fixed;
 	top: 0;
 	right: 10%;
@@ -44,7 +44,7 @@ html, body {
 
 }
 
-#timer {
+#playContainer #timer {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -55,7 +55,7 @@ html, body {
 }
 
 /*-------------------- game board --------------------*/
-#grid {
+#playContainer #grid {
 	font-size: 0;
 	width: 80%;
 	height: 80%;
@@ -67,33 +67,33 @@ html, body {
 }
 
 /* Reset font-size for descendants of grid. */
-#grid * {
+#playContainer #grid * {
 	font-size: initial;
 }
 
-.tile {
+ #playContainer .tile {
 	display: inline-block;
 	margin: 0;
 	/*box-shadow: 1px 1px 1px blue;*/
 }
 
-.track {
+#playContainer .track {
 	/*background-color: red;*/
     background-image: url('../images/track_horizontal.png');
     background-size: 100%;
 }
 
-.track.vert-track {
+#playContainer .track.vert-track {
     -ms-transform: rotate(90deg); /* IE 9 */
     -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
     transform: rotate(90deg);
 }
 
-#grid .tile {
+#playContainer #grid .tile {
 	font-size: 10px;
 }
 
-.tileTrainClass {
+#playContainer .tileTrainClass {
     background-image: url('../images/train.png');
     background-size: 100%;
     position: relative;
@@ -101,19 +101,19 @@ html, body {
 }
 
 /*-------------------- destination button --------------------*/
-.destButton {
+#playContainer .destButton {
     background-color: white;
 }
 
-.destButton:hover {
+#playContainer .destButton:hover {
 	background: yellow;
 }
 
-.destButton:active {
+#playContainer .destButton:active {
 	background: blue;
 }
 
-.destButton {
+#playContainer .destButton {
 	display: inline-block;
 	padding: 0;
 	margin-bottom: 0;
@@ -135,12 +135,12 @@ html, body {
 }
 
 /*-------------------- credits page --------------------*/
-.credits {
+#playContainer .credits {
     margin: auto;
     text-align: center;
 }
 
-.creditsDiv {
+#playContainer .creditsDiv {
     display: inline-block;
     position: absolute;
     right: 0px;

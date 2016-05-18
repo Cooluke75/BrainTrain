@@ -120,19 +120,19 @@ function placeTheTrain(trainNum){
         $('.modal-title').click(function() {
             tileTrain.css("background-image", "url(images/train.jpg)");
         });
-        $('#kabirC').click(function() {
+        $('#kabirCplay').click(function() {
             tileTrain.css("background-image", "url(images/KabirCahill.jpg)");
         });
-        $('#kentH').click(function() {
+        $('#kentHplay').click(function() {
             tileTrain.css("background-image", "url(images/KentHuang.jpg)");
         });
-        $('#lukeL').click(function() {
+        $('#lukeLplay').click(function() {
             tileTrain.css("background-image", "url(images/LukeLee.jpg)");
         });
-        $('#ericL').click(function() {
+        $('#ericLplay').click(function() {
             tileTrain.css("background-image", "url(images/EricLin.jpg)");
         });
-        $('#rogerZ').click(function() {
+        $('#rogerZplay').click(function() {
             tileTrain.css("background-image", "url(images/RogerZhang.jpg)");
         });
     });
