@@ -20,6 +20,12 @@ html, body {
 	position:relative;
 }
 
+#settingBack-button {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 #settingHeaderTitle {
 
 	position: absolute;

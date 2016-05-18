@@ -3,23 +3,23 @@ html, body {
 	margin: 0;
 }
 
-/*-------------------- main container --------------------*/
-#container {
+/*-------------------- main playContainer --------------------*/
+#playContainer {
 	background-color: #cccccc;
 	margin: 0;
 	padding: 0;
 	height: 100%;
 }
 
-/*-------------------- main header --------------------*/
-#header {
+/*-------------------- main playHeader --------------------*/
+#playHeader {
 	height: 10%;
 	margin-bottom: 1em;
 	padding: 0;
 	text-align: center;
 }
 
-#header  h1{
+#playHeader  h1{
 	font-size: 1.5em;
 	display: inline-block;
 	padding: 0;

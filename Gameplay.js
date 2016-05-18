@@ -373,8 +373,9 @@ function giveTheAnswerArr(trainNum){
 }
 
 //hide show function for all webpage
-function hideshow(id) {
-    var idstr = "\"#"+id+"\"";
-    $(id).show().siblings("div").hide();
+function hideshow(idShow,idHide) {
+    $(idHide).hide();
+    $(idShow).show();
+
     
 }

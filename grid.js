@@ -28,8 +28,9 @@ $(document).ready(function(){
     $('.score').text(totalScore);
     
     //hiding everything in the begining but the menu
+    $("#playContainer").hide();
     $("#myCarousel").hide();
-    $("#leaderboardpage").hide();
+    $("#leaderboardContainer").hide();
     $("#settingContainer").hide();
 
 
@@ -171,12 +172,14 @@ function levelProgress(levelComplete) {
             //$('#level-screen-title').text('Level ' + (level + 1) + ': Complete!');
             //$('#level-screen-buttons:first-child').text('Next Level');
             //$('#level-screen').css('display', 'block');
-            window.location.assign('Successful.html');
+            //window.location.assign('Successful.html');
+            hideshow('#level-screen', '#playContainer');
         } else {
             //$('#level-screen-title').text('Level ' + (level + 1) + ': Incomplete');
             //$('#level-screen-buttons:first-child').text('Retry');
             //$('#level-screen').css('display', 'block');
-            window.location.assign('Unsuccessful.html');
+           // window.location.assign('Unsuccessful.html');
+            hideshow('#level-screen', '#playContainer');
         }
 
  //   });
