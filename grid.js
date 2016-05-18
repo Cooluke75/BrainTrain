@@ -11,45 +11,75 @@ var track; // A 2D array representing the train track. True means the tile is pa
 var level = 0;
 var totalScore = 0;
 var levelComplete = false;
-var difficultyTier = 0;
-var numberOfTrains = 1;
+var difficultyTier = 2;
+var numberOfTrains = 2;
 var startingPoints = [];
 var correctAnswers = [];
 var usersAnswers = [];
+var counter = 0;
 
-// Get global variable
-var globalScore = getStoredValue("globalScore");
-totalScore += globalScore;
+//The code will be executed after the animation, which is a Function as a parameter that passed to the moveTheTrain function.
+function AfterTheAnimation() {
+    usersAnswers.sort();
+    correctAnswers.sort();
 
-$(document).ready(function(){
-	grid = $('#grid');
-	buildGrid();
-	resizeGrid();
+    if(usersAnswers.isEqual(correctAnswers)) {
+        levelComplete = true;
+        console.log('You win! Score: ' + totalScore);
+    } else {
+        console.log('You lose. Score: ' + totalScore);
+    }
+
+
+
+    // Direct page to level complete or incomplete, need to click destinations again
+    levelProgress(levelComplete);
+}
+
+//This is the function that will be called when the train is moving and  the user want to skip the animation
+function clickTheGridToskipTheAnimation(){
+
+
+    $('#grid').click(function(){
+
+        if(usersAnswers.length == numberOfTrains){
+            counter ++;
+        }
+
+        if (counter == 1 && $('.tileTrainClass').is(":animated")){
+
+            $('.tileTrainClass').finish();
+            AfterTheAnimation();
+
+        }
+    })
+
+}
+
+function gameLoad() {
+    counter = 0;
+    startingPoints = [];
+    correctAnswers = [];
+    usersAnswers = [];
+    grid = $('#grid');
+    buildGrid();
+    resizeGrid();
     $('.score').text(totalScore);
-    
-    //hiding everything in the begining but the menu
-    $("#playContainer").hide();
-    $("#myCarousel").hide();
-    $("#leaderboardContainer").hide();
-    $("#settingContainer").hide();
-
-
-
-
     // resize grid when window is resized
-	$(window).resize(resizeGrid);
+    $(window).resize(resizeGrid);
+
+
 
     // place the trains at their starting position
     startingPoints = randomTrains(difficultyTier,numberOfTrains);
     for(i = 0; i < startingPoints.length; i++) {
         placeTheTrain(startingPoints[i]);
     }
-
     // determine the correct destinations
     correctAnswers = giveTheAnswerArr(startingPoints);
-
     // the user has chosen a destination
-    $('.destButton').click(function () {
+
+    $('.destButton').click(function (e) {
 
         if (usersAnswers.length < numberOfTrains) {
 
@@ -100,6 +130,18 @@ $(document).ready(function(){
                 soundEffect.play();
             }
 
+
+
+
+
+            if (usersAnswers.length == numberOfTrains) {
+                // move the trains
+                moveTheTrain(startingPoints, AfterTheAnimation);
+
+
+            }
+
+            e.stopPropagation();
             clickTheGridToskipTheAnimation();
 
 
@@ -108,49 +150,26 @@ $(document).ready(function(){
 
 
 
-            if (usersAnswers.length == numberOfTrains) {
-                // move the trains
-                    moveTheTrain(startingPoints, AfterTheAnimation);
-            }
-
-            //The code will be executed after the animation, which is a Function as a parameter that passed to the moveTheTrain function.
-            function AfterTheAnimation() {
-                usersAnswers.sort();
-                correctAnswers.sort();
-
-                if(usersAnswers.isEqual(correctAnswers)) {
-                    levelComplete = true;
-                    console.log('You win! Score: ' + totalScore);
-                } else {
-                    console.log('You lose. Score: ' + totalScore);
-                }
-
-
-
-                // Direct page to level complete or incomplete, need to click destinations again
-                levelProgress(levelComplete);
-            }
-
-            //This is the function that will be called when the train is moving and  the user want to skip the animation
-            function clickTheGridToskipTheAnimation(){
-                var counter = 0;
-                $(grid).click(function(){
-
-                    if(usersAnswers.length == numberOfTrains){
-                        counter++;
-                    }
-                    if (counter > 1 && $('.tileTrainClass').is(":animated")){
-                        $('.tileTrainClass').finish();
-                        AfterTheAnimation();
-                    }
-                })
-
-            }
-
-            
-            
         }
     });
+
+
+
+}
+
+$(document).ready(function(){
+
+    gameLoad();
+
+
+
+    //hiding everything in the begining but the menu
+    $("#myCarousel").hide();
+    $("#leaderboardContainer").hide();
+    $("#settingContainer").hide();
+    $("#playContainer").hide();
+
+
 });
 
 // An array method that compares if two arrays are equal (same length, values and order)
@@ -166,29 +185,29 @@ Array.prototype.isEqual = function (otherArray) {
 
 // Direct page to level complete or incomplete, need to click destinations again
 function levelProgress(levelComplete) {
-   // $('.destButton').click(function() {
+    // $('.destButton').click(function() {
 
-        if (levelComplete) {
-            //$('#level-screen-title').text('Level ' + (level + 1) + ': Complete!');
-            //$('#level-screen-buttons:first-child').text('Next Level');
-            //$('#level-screen').css('display', 'block');
-            //window.location.assign('Successful.html');
-            hideshow('#level-screen', '#playContainer');
-        } else {
-            //$('#level-screen-title').text('Level ' + (level + 1) + ': Incomplete');
-            //$('#level-screen-buttons:first-child').text('Retry');
-            //$('#level-screen').css('display', 'block');
-           // window.location.assign('Unsuccessful.html');
-            hideshow('#level-screen', '#playContainer');
-        }
+    if (levelComplete) {
+        //$('#level-screen-title').text('Level ' + (level + 1) + ': Complete!');
+        //$('#level-screen-buttons:first-child').text('Next Level');
+        //$('#level-screen').css('display', 'block');
+        //window.location.assign('Successful.html');
+        hideshow('#level-screen', '#playContainer');
+    } else {
+        //$('#level-screen-title').text('Level ' + (level + 1) + ': Incomplete');
+        //$('#level-screen-buttons:first-child').text('Retry');
+        //$('#level-screen').css('display', 'block');
+        // window.location.assign('Unsuccessful.html');
+        hideshow('#level-screen', '#playContainer');
+    }
 
- //   });
+    //   });
 }
 
 // clears the score when user click menu
 function clearScoreMenu() {
-        storeValue('globalScore', 0);
-        location.href='Menu.html';
+    storeValue('globalScore', 0);
+    location.href='Menu.html';
 }
 
 function clearScorePlayAgain() {
@@ -203,17 +222,17 @@ function clearScoreLeaderBoard() {
 
 // Adds the tiles to the grid
 function buildGrid() {
-	// clear the grid
-	grid.empty();
+    // clear the grid
+    grid.empty();
 
-	track = CreateArray(rows, cols);
-	fillArray(track, rows, cols);
+    track = CreateArray(rows, cols);
+    fillArray(track, rows, cols);
     buildHorizontalTracks(track, difficultyTier);
     randomCrossing(difficultyTier, track);
 
     // add track or empty tile to grid
-	for(i = 0; i < rows; i++) {
-		for(j = 0; j < cols; j++) {
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < cols; j++) {
             var trackClass = '';
             var vertTrackClass = '';
             var buttonClass = '';
@@ -238,38 +257,38 @@ function buildGrid() {
                 }
             }
             grid.append('<div class="tile'+ trackClass + vertTrackClass + buttonClass + '"' + buttonId +'></div>');
-		}
-	}
+        }
+    }
 }
 
 // Scales the grid to fit the screen
 function resizeGrid() {
-	// fit grid in window
-	grid.width('80%');
-	grid.height('80%');
-	
-	// get grid width and height in px
-	var gridWidth = grid.width();
-	var gridHeight = grid.height();
-	var tileWidth;
-	var tileHeight;
-	
-	// choose tile size that fits both grid width and height
-	if((gridWidth / cols) < (gridHeight / rows)) {
-		tileWidth = gridWidth / cols;
-		tileHeight = tileWidth;
-	} else {
-		tileHeight = gridHeight / rows;
-		tileWidth = tileHeight;
-	}
+    // fit grid in window
+    grid.width('80%');
+    grid.height('80%');
 
-	// set tile width and height
-	$('.tile').outerHeight(tileHeight);
-	$('.tile').outerWidth(tileWidth);
-	
-	// adjust grid width and height
-	grid.width(tileWidth * cols + 1);
-	grid.height(tileHeight * rows + 1);
+    // get grid width and height in px
+    var gridWidth = grid.width();
+    var gridHeight = grid.height();
+    var tileWidth;
+    var tileHeight;
+
+    // choose tile size that fits both grid width and height
+    if((gridWidth / cols) < (gridHeight / rows)) {
+        tileWidth = gridWidth / cols;
+        tileHeight = tileWidth;
+    } else {
+        tileHeight = gridHeight / rows;
+        tileWidth = tileHeight;
+    }
+
+    // set tile width and height
+    $('.tile').outerHeight(tileHeight);
+    $('.tile').outerWidth(tileWidth);
+
+    // adjust grid width and height
+    grid.width(tileWidth * cols + 1);
+    grid.height(tileHeight * rows + 1);
 }
 
 // Generates the track
