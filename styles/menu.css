@@ -82,7 +82,7 @@ html, body {
 }
 
 /*-------------------- tutorial page --------------------*/
-.backButton {
+#tutorialBack-button {
 	z-index: 10;
 	position: absolute;
 }
