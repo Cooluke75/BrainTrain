@@ -67,303 +67,308 @@
         </div>
     </div>
     </div>
+
+
+
+
+
+    <!--play-->
+    <div id="playContainer">
+        <div id="playHeader">
+            <h1>Level 1</h1>
+            <button id="back-button" onClick="location.href='Menu.html'">
+                <img src="images/backbutton.png" width="35" height="35">
+            </button>
+            <div id="scoreShow"><p>Score:<span class="score">0</span></p></div>
+            <div id="timer">timer</div>
+        </div>
+
+        <div id="grid">
+        </div>
+        <div id="music">
+            <audio src="bgm/bg.mp3" controls>
+                <p>If you are reading this, it is because your browser does not support the background music.</p>
+            </audio>
+
+            <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
+        </div>
+    </div>
+
+
+    <!-- the menu screen between levels -->
+    <div id="level-screen">
+        <div id="level-screen-container">
+            <div id="level-screen-header">
+                <p id ="level-screen-title">Level 1: Complete!</p>
+            </div>
+
+            <div id ="level-screen-panel" class="btn-group-vertical">
+
+                <div class="btn-group-vertical" id = "level-screen-buttons">
+                    <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen')">Next Level</button>
+                    <br>
+                    <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#container','#level-screen')">Main Menu</button>
+                </div>
+            </div>
+
+            <div id="score1">
+                <p id ="score2">Score: <span class="score">100</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!--tutorial-->
+    <div id="myCarousel" class="carousel slide" data-interval="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="images/tutorial1.png" alt="tutorial1" width="100%" height="100%">
+                <div class="carousel-caption">
+                    <p>Some text.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="images/tutorial2.png" alt="tutorial2" width="100%" height="100%">
+                <div class="carousel-caption">
+                    <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="images/tutorial3.png" alt="tutorial3" width="100%" height="100%">
+                <div class="carousel-caption">
+                    <p>Beatiful flowers in Kolymbari, Crete.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="images/tutorial4.png" alt="tutorial4" width="100%" height="100%">
+                <div class="carousel-caption">
+                    <p>Beatiful flowers in Kolymbari, Crete.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!--leaderboard-->
+    <div id="leaderboardContainer">
+        <div id="leaderboardHeader">
+            <h1>Leaderboard</h1>
+            <button id="leaderboardBack-button" onClick="location.href='Menu.html'">
+                <img src="images/backbutton.png" width="35" height="35">
+            </button>
+
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#my-scores">My Scores</a></li>
+                <li><a data-toggle="pill" href="#leaderboard">Global Scores</a></li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div id="my-scores" class="tab-pane fade in active">
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Score</th>
+                        <th>Level</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2150</td>
+                        <td>21</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1750</td>
+                        <td>19</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1600</td>
+                        <td>18</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>1600</td>
+                        <td>18</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>1600</td>
+                        <td>18</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>1600</td>
+                        <td>18</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>1600</td>
+                        <td>18</td>
+                        <td>May 16, 2016</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="leaderboard" class="tab-pane fade">
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                        <th>Level</th>
+                    </tr>
+                    <tr>
+                        <td>126</td>
+                        <td>myUserName</td>
+                        <td>1150</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>user1</td>
+                        <td>2150</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>user2</td>
+                        <td>1750</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>user3</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>user4</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>user5</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>user6</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>user7</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>user8</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>user9</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>user10</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>user11</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>user12</td>
+                        <td>1600</td>
+                        <td>18</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--setting-->
+    <div id="settingContainer">
+
+        <div id = "settingHeader">
+            <button id="settingBack-button" onClick="location.href='Menu.html'">
+                <img src="images/backbutton.png" width="35" height="35">
+            </button>
+
+            <p id ="settingHeaderTitle">Brain Train</p>
+
+        </div>
+
+        <div id ="settingPanel">
+
+
+            <div id="allForm">
+                <br>
+                <div class = "item">
+                    <label class="labelText">Sound: </label><input type="range" id="settingSounds" name="settingSounds" min="0" max="100">
+                </div><br>
+                <div class = "item">
+                    <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100">
+                </div><br>
+                <div class = "item">
+                    <label>Name:</label><input type="text" id="userName" name="userName">
+                    <button type="submit" id="save" class="btn btn-default">Save</button>
+                </div><br>
+
+                <div class = "item">
+                    <button type="button" class="btn btn-default">Reset Highscore</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="settingCreditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
+
+    </div>
 </body>
 </html>
 
 
-<!--play-->
-<div id="playContainer">
-    <div id="playHeader">
-        <h1>Level 1</h1>
-        <button id="back-button" onClick="location.href='Menu.html'">
-            <img src="images/backbutton.png" width="35" height="35">
-        </button>
-        <div id="scoreShow"><p>Score:<span class="score">0</span></p></div>
-        <div id="timer">timer</div>
-    </div>
-
-    <div id="grid">
-    </div>
-    <div id="music">
-        <audio src="bgm/bg.mp3" controls>
-            <p>If you are reading this, it is because your browser does not support the background music.</p>
-        </audio>
-
-        <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
-    </div>
-</div>
-
-
-<!-- the menu screen between levels -->
-<div id="level-screen">
-    <div id="level-screen-container">
-        <div id="level-screen-header">
-            <p id ="level-screen-title">Level 1: Complete!</p>
-        </div>
-
-        <div id ="level-screen-panel" class="btn-group-vertical">
-
-            <div class="btn-group-vertical" id = "level-screen-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen')">Next Level</button>
-                <br>
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#container','#level-screen')">Main Menu</button>
-            </div>
-        </div>
-
-        <div id="score1">
-            <p id ="score2">Score: <span class="score">100</span></p>
-        </div>
-    </div>
-</div>
-
-<!--tutorial-->
-<div id="myCarousel" class="carousel slide" data-interval="false">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="images/tutorial1.png" alt="tutorial1" width="100%" height="100%">
-            <div class="carousel-caption">
-                <p>Some text.</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="images/tutorial2.png" alt="tutorial2" width="100%" height="100%">
-            <div class="carousel-caption">
-                <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="images/tutorial3.png" alt="tutorial3" width="100%" height="100%">
-            <div class="carousel-caption">
-                <p>Beatiful flowers in Kolymbari, Crete.</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="images/tutorial4.png" alt="tutorial4" width="100%" height="100%">
-            <div class="carousel-caption">
-                <p>Beatiful flowers in Kolymbari, Crete.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<!--leaderboard-->
-<div id="leaderboardContainer">
-    <div id="leaderboardHeader">
-        <h1>Leaderboard</h1>
-        <button id="leaderboardBack-button" onClick="location.href='Menu.html'">
-            <img src="images/backbutton.png" width="35" height="35">
-        </button>
-
-        <ul class="nav nav-pills">
-            <li class="active"><a data-toggle="pill" href="#my-scores">My Scores</a></li>
-            <li><a data-toggle="pill" href="#leaderboard">Global Scores</a></li>
-        </ul>
-    </div>
-
-    <div class="tab-content">
-        <div id="my-scores" class="tab-pane fade in active">
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Score</th>
-                    <th>Level</th>
-                    <th>Date</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2150</td>
-                    <td>21</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>1750</td>
-                    <td>19</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="leaderboard" class="tab-pane fade">
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Score</th>
-                    <th>Level</th>
-                </tr>
-                <tr>
-                    <td>126</td>
-                    <td>myUserName</td>
-                    <td>1150</td>
-                    <td>11</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>user1</td>
-                    <td>2150</td>
-                    <td>21</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>user2</td>
-                    <td>1750</td>
-                    <td>19</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>user3</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>user4</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>user5</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>user6</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>user7</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>user8</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>user9</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>user10</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>user11</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>user12</td>
-                    <td>1600</td>
-                    <td>18</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-
-</div>
-
-<!--setting-->
-<div id="settingContainer">
-
-    <div id = "settingHeader">
-        <button id="settingBack-button" onClick="location.href='Menu.html'">
-            <img src="images/backbutton.png" width="35" height="35">
-        </button>
-
-        <p id ="settingHeaderTitle">Brain Train</p>
-
-    </div>
-
-    <div id ="settingPanel">
-
-
-        <div id="allForm">
-            <br>
-            <div class = "item">
-                <label class="labelText">Sound: </label><input type="range" id="settingSounds" name="settingSounds" min="0" max="100">
-            </div><br>
-            <div class = "item">
-                <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100">
-            </div><br>
-            <div class = "item">
-                <label>Name:</label><input type="text" id="userName" name="userName">
-                <button type="submit" id="save" class="btn btn-default">Save</button>
-            </div><br>
-
-            <div class = "item">
-                <button type="button" class="btn btn-default">Reset Highscore</button>
-            </div>
-        </div>
-
-
-    </div>
-    <div class="settingCreditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
-
-</div>

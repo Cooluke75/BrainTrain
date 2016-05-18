@@ -12,7 +12,7 @@ html, body {
 	width:100%;
 }
 
-#settingHeader {
+#settingContainer #settingHeader {
 	height: 20%;
 	margin-bottom: 1em;
 	padding: 0;
@@ -20,13 +20,13 @@ html, body {
 	position:relative;
 }
 
-#settingBack-button {
+#settingContainer #settingBack-button {
 	position: fixed;
 	top: 0;
 	left: 0;
 }
 
-#settingHeaderTitle {
+#settingContainer #settingHeaderTitle {
 
 	position: absolute;
 	top: 0;
@@ -41,7 +41,7 @@ html, body {
 
 }
 
-#settingPanel {
+#settingContainer #settingPanel {
 
 	padding: 0;
 	width:100%;
@@ -51,7 +51,7 @@ html, body {
 
 }
 
-#allForm {
+#settingContainer #allForm {
 	position: absolute;
 	top: 0;
     bottom: 0;
@@ -62,7 +62,7 @@ html, body {
 	height:100%;
 }
 
-.item{
+#settingContainer .item{
 
 	margin-left: auto;
 	margin-right: auto;
@@ -73,7 +73,7 @@ html, body {
 	
 }
 
-.item label.labelText {
+#settingContainer .item label.labelText {
 	margin-right:5px ;
 	position: relative;
 	bottom:5px;
@@ -81,25 +81,25 @@ html, body {
 
 
 /*-------------------- credits page --------------------*/
-.settingCredits {
+#settingContainer .settingCredits {
     margin: auto;
     text-align: center;
 }
 
-.settingCreditsDiv {
+#settingContainer .settingCreditsDiv {
     display: inline-block;
     position: absolute;
     right: 0px;
     width: 10%;
 }
 
-input[type="range"] {
+#settingContainer input[type="range"] {
 	width: 60%;
 	display: inline;
 
 }
 
-input[type="text"]{
+#settingContainer input[type="text"]{
 	margin-left:5px;
 	width:45%;
 }
