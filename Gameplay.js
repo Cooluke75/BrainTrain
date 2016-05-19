@@ -118,7 +118,7 @@ function placeTheTrain(trainNum){
     /* easter egg function */
     $(function() {
         $('.modal-title').click(function() {
-            tileTrain.css("background-image", "url(images/train.jpg)");
+            tileTrain.css("background-image", "url(images/train.png)");
         });
         $('#kabirCplay').click(function() {
             tileTrain.css("background-image", "url(images/KabirCahill.jpg)");

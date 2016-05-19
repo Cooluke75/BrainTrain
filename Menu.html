@@ -23,6 +23,7 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="Gameplay.js"></script>
     <script src="grid.js"></script>
+    <script src="SettingPageSavingNameFunction.js"></script>
     <script src="leaderboard.js"></script>
 
 </head>
@@ -43,29 +44,28 @@
             <button type="button" class="btn btn-default" onclick="hideshow('#settingContainer', '#container')">Settings</button>
         </div>
     </div>
-    <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
+    <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal" onclick="$('#myModal').show()">Credits</a></div>
 
+</div>
 
-
-    <!-- Credits page modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header credits">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Credits</h4>
-                </div>
-                <div class="modal-body credits">
-                    <p id="kabirC">Kabir Cahill</p>
-                    <p id="kentH">Kent Huang</p>
-                    <p id="lukeL">Luke Lee</p>
-                    <p id="ericL">Eric Lin</p>
-                    <p id="rogerZ">Roger Zhang</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+<!-- Credits page modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header credits">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Credits</h4>
+            </div>
+            <div class="modal-body credits">
+                <p id="kabirCplay">Kabir Cahill</p>
+                <p id="kentHplay">Kent Huang</p>
+                <p id="lukeLplay">Luke Lee</p>
+                <p id="ericLplay">Eric Lin</p>
+                <p id="rogerZplay">Roger Zhang</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -93,29 +93,7 @@
             <p>If you are reading this, it is because your browser does not support the background music.</p>
         </audio>
 
-        <div class="creditsDiv"><a data-toggle="modal" data-target="#playmyModal">Credits</a></div>
-        <!-- Credits page modal -->
-        <div id="playmyModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header credits">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Credits</h4>
-                    </div>
-                    <div class="modal-body credits">
-                        <p id="kabirCplay">Kabir Cahill</p>
-                        <p id="kentHplay">Kent Huang</p>
-                        <p id="lukeLplay">Luke Lee</p>
-                        <p id="ericLplay">Eric Lin</p>
-                        <p id="rogerZplay">Roger Zhang</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal" onclick="$('#myModal').show()">Credits</a></div>
     </div>
 </div>
 
@@ -304,7 +282,13 @@
             <div class = "item">
                 <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100">
             </div><br>
-            <div class = "item">
+            <div class = "item" id ="afterSaving">Your name is <span id ="showName"></span>
+                <button type="submit" id="change" class="btn btn-default">Change</button>
+                <p align="center" style="color:red;font-size:small;">Change your name will erased the local leaderboard. </p>
+            </div>
+
+            <div class = "item" id = "savingUserName">
+
                 <label>Name:</label><input type="text" id="userName" name="userName">
                 <button type="submit" id="save" class="btn btn-default">Save</button>
             </div><br>

@@ -69,16 +69,16 @@ html, body {
 }
 
 /*-------------------- credits page --------------------*/
-#container .credits {
-    margin: auto;
-    text-align: center;
+#myModal .credits {
+	margin: auto;
+	text-align: center;
 }
 
-#container .creditsDiv {
-    display: inline-block;
-    position: absolute;
-    right: 0px;
-    width: 10%;
+.creditsDiv {
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	width: 10%;
 }
 
 /*-------------------- tutorial page --------------------*/
