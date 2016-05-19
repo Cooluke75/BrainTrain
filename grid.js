@@ -159,6 +159,8 @@ function gameLoad() {
 $(document).ready(function(){
 
     gameLoad();
+    window.myTime = startTimer(10, "timer", function() {gameOver();});
+    myTime.pause();
 
     //hiding everything in the begining but the menu
     $("#myCarousel").hide();
@@ -342,22 +344,19 @@ function startTimer(seconds, container, gameOver) {
         display.innerHTML = m+":"+s;
         if( now == 0) {
             clearInterval(timer);
-            clock.resume = function() {};
             if(gameOver) {
                 gameOver();
             }
         }
         return now;
     };
+    clock.restart = function(){
+        ms = seconds*1000;
+    };
+
     clock.resume();
     return clock;
 }
-
-//On opening the timer will show but paused.
-window.onload = function() {
-    window.myTime = startTimer(60, "timer", function() {gameOver();});
-    myTime.pause();
-};
 
 //Resumes the timer
 function timeResume() {
@@ -391,5 +390,5 @@ function clearscore() {
     difficultyTier=0;
     numberOfTrains=1;
     totalScore=0;
-    myTime = startTimer(60, "timer", function() {gameOver();});
+    myTime.restart();
 }
