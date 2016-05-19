@@ -377,4 +377,3 @@ function hideshow(idShow,idHide) {
     $(idHide).hide();
     $(idShow).show();
 }
-

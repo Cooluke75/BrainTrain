@@ -127,7 +127,6 @@ function gameLoad() {
                 // update the score displays
                 $('.score').text(totalScore);
 
-
                 soundEffect.play();
             }
 
@@ -137,6 +136,7 @@ function gameLoad() {
 
             if (usersAnswers.length == numberOfTrains) {
                 // move the trains
+                myTime.pause();
                 moveTheTrain(startingPoints, AfterTheAnimation);
 
 
@@ -164,6 +164,7 @@ $(document).ready(function(){
     $("#leaderboardContainer").hide();
     $("#settingContainer").hide();
     $("#playContainer").hide();
+    $("#gameover").hide();
 
 
 });
@@ -286,7 +287,7 @@ function buildTrack(level) {
 }
 
 //Creates timer
-function startTimer(duration, display) {
+/*function startTimer(duration, display) {
     var start = Date.now(),
         diff,
         minutes,
@@ -312,12 +313,61 @@ function startTimer(duration, display) {
     time();
     setInterval(time, 1000);
 }
+*/
+
+//Timer Function
+function startTimer(seconds, container, gameOver) {
+    var startTime;
+    var timer;
+    var clock;
+    var ms = seconds*1000;
+
+    display = document.getElementById(container);
+
+    clock = {};
+    clock.resume = function() {
+        startTime = new Date().getTime();
+        // The smaller the number the higher accuracy
+        timer = setInterval(clock.step,250);
+    };
+    clock.pause = function() {
+        ms = clock.step();
+        clearInterval(timer);
+    };
+    clock.step = function() {
+        var now = Math.max(0,ms-(new Date().getTime()-startTime)),
+            m = Math.floor(now/60000), s = Math.floor(now/1000)%60;
+        s = (s < 10 ? "0" : "")+s;
+        display.innerHTML = m+":"+s;
+        if( now == 0) {
+            clearInterval(timer);
+            clock.resume = function() {};
+            if(gameOver) {
+                gameOver();
+            }
+        }
+        return now;
+    };
+    clock.resume();
+    return clock;
+}
 
 window.onload = function() {
-    var Minute = 60,
-        display = document.querySelector('#timer');
-    startTimer(Minute, display);
+    window.myTime = startTimer(60, "timer", function() {gameOver();});
+    myTime.pause();
 };
+
+function timeResume() {
+    myTime.resume();
+}
+
+function timePause() {
+
+}
+
+function gameOver(){
+    hideshow('#gameover','#playContainer')
+}
 
 // Cookie to store score points
 function storeValue(key, value) {
@@ -338,23 +388,8 @@ function getStoredValue(key) {
 
 function clearscore() {
     level=1;
+    difficultyTier=0;
     numberOfTrains=1;
     totalScore=0;
-}
-
-function sendScore() {
-    var temp = totalScore;
-    $.ajax( { url: 'https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby{"_id":score}',
-        data: JSON.stringify( { "$set" : { "2150" : temp } } ),
-        type: "PUT",
-        contentType: "application/json" } );
-
-    db.scoresTableURL.insert(
-        {
-            rank: "99",
-            username: "Roger",
-            score: "100",
-            level: "50",
-        }
-    )
+    myTime = startTimer(60, "timer", function() {gameOver();});
 }

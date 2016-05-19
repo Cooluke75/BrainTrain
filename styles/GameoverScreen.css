@@ -4,7 +4,7 @@ html, body {
 }
 
 /*-------------------- main container --------------------*/
-#container {
+#gameover {
     background-color: #aaa;
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ html, body {
     width:100%;
 }
 
-#header {
+#header1 {
     height: 21%;
     width:100%;
     padding: 0;
@@ -39,14 +39,14 @@ html, body {
     background-position: 70%;
 }
 
-#panel {
+#panel1 {
     padding: 0;
     width:100%;
     height:60%;
     position:relative;
 }
 
-#buttons {
+#buttons1 {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -59,7 +59,7 @@ html, body {
     text-align: center;
 }
 
-#buttons button.btn {
+#buttons1 button.btn {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;

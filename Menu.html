@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/menu.css" type="text/css">
     <link rel="stylesheet" href="styles/leaderboard.css" type="text/css">
     <link rel="stylesheet" href="styles/SettingPage.css" type="text/css">
+    <link rel="stylesheet" href="styles/GameoverScreen.css" type="text/css">
 
 
 
@@ -23,6 +24,7 @@
     <script src="Gameplay.js"></script>
     <script src="grid.js"></script>
     <script src="leaderboard.js"></script>
+
 </head>
 <body>
 <div id="container">
@@ -35,7 +37,7 @@
     <div id ="panel" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons">
-            <button type="button" class="btn btn-default" onclick="hideshow('#playContainer', '#container');gameLoad();">Play</button>
+            <button type="button" class="btn btn-default" onclick="hideshow('#playContainer', '#container');gameLoad();timeResume()">Play</button>
             <button type="button" class="btn btn-default" onclick="hideshow('#myCarousel', '#container')">Tutorial</button>
             <button type="button" id="leaderboardButton" class="btn btn-default" onclick="hideshow('#leaderboardContainer','#container')">Leaderboard</button>
             <button type="button" class="btn btn-default" onclick="hideshow('#settingContainer', '#container')">Settings</button>
@@ -128,7 +130,7 @@
         <div id ="level-screen-panel" class="btn-group-vertical">
 
             <div class="btn-group-vertical" id = "level-screen-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen');gameLoad();">Next Level</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen');gameLoad();timeResume();">Next Level</button>
                 <br>
                 <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#container','#level-screen');clearscore()">Main Menu</button>
             </div>
@@ -150,7 +152,7 @@
         <div id ="level-screen-fail-panel" class="btn-group-vertical">
 
             <div class="btn-group-vertical" id = "level-screen-fail-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen-fail');gameLoad();">Retry</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen-fail');gameLoad();timeResume();">Retry</button>
                 <br>
                 <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#container','#level-screen-fail');clearscore()">Main Menu</button>
             </div>
@@ -256,6 +258,27 @@
     </div>
 
 
+</div>
+
+<!--Gameover-->
+<div id="gameover">
+
+    <div id="header1">
+        <p id ="title">Times up!</p>
+    </div>
+
+    <div id ="panel1" class="btn-group-vertical">
+
+        <div class="btn-group-vertical" id = "buttons1">
+            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#gameover');clearscore();gameLoad();">Play Again</button>
+            <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="hideshow('#leaderboardContainer','#gameover');clearscore();gameLoad()">Go to leaderboard</button>
+            <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="hideshow('#container','#gameover');clearscore();gameLoad()">Main Menu</button>
+        </div>
+    </div>
+
+    <div id="finalscore">
+        <p id ="finalscore1">Your final score is: <span class="score">0</span></p>
+    </div>
 </div>
 
 <!--setting-->
