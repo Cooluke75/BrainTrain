@@ -337,6 +337,23 @@ function getStoredValue(key) {
 }
 
 function clearscore() {
+    level = 1;
     totalScore=0;
+}
 
+function sendScore() {
+    var temp = totalScore;
+    $.ajax( { url: 'https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby{"_id":score}',
+        data: JSON.stringify( { "$set" : { "2150" : temp } } ),
+        type: "PUT",
+        contentType: "application/json" } );
+
+    db.scoresTableURL.insert(
+        {
+            rank: "99",
+            username: "Roger",
+            score: "100",
+            level: "50",
+        }
+    )
 }
