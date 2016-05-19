@@ -337,7 +337,8 @@ function getStoredValue(key) {
 }
 
 function clearscore() {
-    level = 1;
+    level=1;
+    numberOfTrains=1;
     totalScore=0;
 }
 
