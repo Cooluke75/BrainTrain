@@ -352,6 +352,8 @@ function startTimer(seconds, container, gameOver) {
     };
     clock.restart = function(){
         ms = seconds*1000;
+        display.innerHTML = "1"+":"+"00";
+
     };
 
     clock.resume();
