@@ -136,6 +136,7 @@ function gameLoad() {
 
             if (usersAnswers.length == numberOfTrains) {
                 // move the trains
+                // Pause the timer when the train is moving
                 myTime.pause();
                 moveTheTrain(startingPoints, AfterTheAnimation);
 
@@ -352,19 +353,18 @@ function startTimer(seconds, container, gameOver) {
     return clock;
 }
 
+//On opening the timer will show but paused.
 window.onload = function() {
     window.myTime = startTimer(60, "timer", function() {gameOver();});
     myTime.pause();
 };
 
+//Resumes the timer
 function timeResume() {
     myTime.resume();
 }
 
-function timePause() {
-
-}
-
+//Game over function
 function gameOver(){
     hideshow('#gameover','#playContainer')
 }
