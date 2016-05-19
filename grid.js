@@ -159,7 +159,7 @@ function gameLoad() {
 $(document).ready(function(){
 
     gameLoad();
-    window.myTime = startTimer(10, "timer", function() {gameOver();});
+    window.myTime = startTimer(60, "timer", function() {gameOver();});
     myTime.pause();
 
     //hiding everything in the begining but the menu
