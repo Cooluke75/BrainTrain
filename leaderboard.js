@@ -1,4 +1,4 @@
-var username = 'user8';
+var username = localStorage.userNameTS;
 
 // get the URL of the scores table
 var scoresTableURL = 'https://api.mlab.com/api/1/databases/braintrain/collections/scores'
