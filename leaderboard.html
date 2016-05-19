@@ -12,115 +12,168 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function () {
-            // get the URL of the scores table
-            var scoresTableURL = 'https://api.mlab.com/api/1/databases/braintrain/collections/scores'
-                    + '?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby';
+        var username = 'user8';
 
-            // get all fields, ordered by score
-            var query = '&f={"_id":0}&s={"score": -1}';
+        // get the URL of the scores table
+        var scoresTableURL = 'https://api.mlab.com/api/1/databases/braintrain/collections/scores'
+                + '?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby';
+
+        $(document).ready(function () {
+            getUsersTopScores(10);
+            getGlobalLeaderboard(10);
+        });
+
+        // Gets the user's top scores from the database and puts them in the my-scores table
+        function getUsersTopScores(numberOfRecords) {
+            // clear the my-scores table
+            $('#my-scores table tr:first-child').siblings().remove();
+
+            // get the user's top scores
+            var query = '&q={"username": "' + username + '"}&f={"_id": 0}&s={"score": -1}&l='+ numberOfRecords;
+
 
             // request data from the server
-            $.get(scoresTableURL + query, function (data, status) {
+            $.ajax({
+                url: scoresTableURL + query,
+                success: function (result) {
+                    for(i = 0; i < result.length; i++) {
+                        var rank = '<td>' + (i + 1) + '</td>';
+                        var score = '<td>' + result[i].score + '</td>';
+                        var level = '<td>' + result[i].level + '</td>';
+                        var date = '<td>' + result[i].date + '</td>';
 
-                // must check the status <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-                for(i = 0; i < data.length; i++) {
-                    var rank = '<td>' + (i + 1) + '</td>';
-                    var username = '<td>' + data[i].username + '</td>';
-                    var score = '<td>' + data[i].score + '</td>';
-                    var level = '<td>' + data[i].level + '</td>';
-
-                    $('#leaderboard table').append('<tr>' + rank + username + score + level + '</tr>');
+                        $('#my-scores table').append('<tr>' + rank + score + level + date + '</tr>');
+                    }
+                },
+                error: function (xhr) {
+                    $('#my-scores table').append('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                    console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
                 }
             });
-        });
+        }
+
+        // Gets the top global scores from the database and puts them in the leaderboard table
+        function getGlobalLeaderboard(numberOfRecords) {
+            // clear the leaderboard table
+            $('#leaderboard table tr:first-child').siblings().remove();
+
+
+            // get the top 10 global fields, ordered by score
+            var query = '&f={"_id":0}&s={"score": -1}&l=' + numberOfRecords;
+
+            // request data from the server
+            $.ajax({
+                url: scoresTableURL + query,
+                success: function (result) {
+                    for(i = 0; i < result.length; i++) {
+                        var rankField = '<td>' + (i + 1) + '</td>';
+                        var usernameField = '<td>' + result[i].username + '</td>';
+                        var scoreField = '<td>' + result[i].score + '</td>';
+                        var levelField = '<td>' + result[i].level + '</td>';
+
+                        var userClass = '';
+
+                        // if this score belongs to this user, make it bold
+                        if (result[i].username == username) {
+                            userClass = 'user-score';
+                        }
+
+                        $('#leaderboard table').append('<tr class="' + userClass + '">' + rankField + usernameField + scoreField + levelField + '</tr>');
+                    }
+                },
+                error: function (xhr) {
+                    $('#leaderboard table').append('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                    console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+            });
+
+           getUsersSingleBestScore(numberOfRecords);
+        }
+
+        // Get the user's single best score
+        function getUsersSingleBestScore(numberOfRecords) {
+            // get the user's top score
+            var query = '&q={"username": "' + username + '"}&f={"_id": 0}&s={"score": -1}&l=1';
+
+            var usersTopScore;
+
+            // request data from the server
+            $.ajax({
+                url: scoresTableURL + query,
+                success: function (result) {
+                    if(result != '') {
+                        usersTopScore = result[0].score;
+
+                        // get the user's global ranking
+                        query = '&q={"score": { $gt: '+ usersTopScore + '}}&s={"score": -1}&c=true';
+
+                        $.ajax({
+                            url: scoresTableURL + query,
+                            success: function (result2) {
+                                var userRank = result2 + 1;
+                                $('#leaderboard table tr.user-score:first-of-type td:first-child').text(userRank);
+
+                                if(userRank > numberOfRecords) {
+                                    var rankField = '<td>' + userRank + '</td>';
+                                    var usernameField = '<td>' + result[0].username + '</td>';
+                                    var scoreField = '<td>' + result[0].score + '</td>';
+                                    var levelField = '<td>' + result[0].level + '</td>';
+
+                                    $('#leaderboard table').append('<tr class="user-score">' + rankField + usernameField + scoreField + levelField + '</tr>');
+                                }
+                            },
+                            error: function (xhr) {
+                                console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                            }
+                        });
+                    }
+                },
+                error: function (xhr) {
+                    console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+            });
+        }
+
     </script>
 
 </head>
 <body>
-<div id="leaderboardContainer">
-    <div id="leaderboardHeader">
-        <h1>Leaderboard</h1>
-        <button id="leaderboardBack-button" onClick="location.href='Menu.html'">
-            <img src="images/backbutton.png" width="35" height="35">
-        </button>
+    <div id="leaderboardContainer">
+        <div id="leaderboard-header">
+            <h1>Leaderboard</h1>
+            <button id="leaderboardBack-button" onClick="location.href='Menu.html'">
+                <img src="images/backbutton.png" width="35" height="35">
+            </button>
 
-        <ul class="nav nav-pills">
-            <li class="active"><a data-toggle="pill" href="#my-scores">My Scores</a></li>
-            <li><a data-toggle="pill" href="#leaderboard">Global Scores</a></li>
-        </ul>
-    </div>
-
-    <div class="tab-content">
-        <div id="my-scores" class="tab-pane fade in active">
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Score</th>
-                    <th>Level</th>
-                    <th>Date</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>2150</td>
-                    <td>21</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>1750</td>
-                    <td>19</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>1600</td>
-                    <td>18</td>
-                    <td>May 16, 2016</td>
-                </tr>
-            </table>
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#my-scores">My Scores</a></li>
+                <li><a data-toggle="pill" href="#leaderboard">Global Scores</a></li>
+            </ul>
         </div>
 
-        <div id="leaderboard" class="tab-pane fade">
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Score</th>
-                    <th>Level</th>
-                </tr>
-            </table>
+        <div class="tab-content">
+            <div id="my-scores" class="tab-pane fade in active">
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Score</th>
+                        <th>Level</th>
+                        <th>Date</th>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="leaderboard" class="tab-pane fade">
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                        <th>Level</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-
-
-</div>
-
-
 </body>
 </html>

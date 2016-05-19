@@ -12,14 +12,14 @@ html, body {
 }
 
 /*-------------------- main header --------------------*/
-#leaderboardContainer #leaderboardHeader {
+#leaderboardContainer #leaderboard-header {
     height: 10%;
     margin-bottom: 1em;
     padding: 0;
     text-align: center;
 }
 
-#leaderboardContainer #leaderboardHeader  h1{
+#leaderboardContainer #leaderboard-header h1{
     font-size: 1.5em;
     display: inline-block;
     padding: 0;
@@ -61,7 +61,11 @@ html, body {
     background-color: #337ab7;
 }
 
-#leaderboardContainer #leaderboard table tr:nth-of-type(2) {
+/*#leaderboardContainer #leaderboard table tr:nth-of-type(2) {
+    font-weight: bold;
+}*/
+
+#leaderboardContainer #leaderboard tr.user-score {
     font-weight: bold;
 }
 
