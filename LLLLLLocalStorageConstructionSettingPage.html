@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Brain Train</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/SettingPage.css" type="text/css">
+    <script type="text/javascript">
+
+  /**  $(document).ready(function(){
+        var score = 99999;
+
+        var level = 200;
+        var userNameTS;
+        var today = new Date();
+        today = today.toISOString().substring(0, 10);
+        console.log(today);
+        $("#save").click(function(){
+            if($("#userName").val().trim() ==""){
+                alert("Enter a name.");
+            } else {
+                console.log("your name is " + $("#userName").val()
+                    );
+                userNameTS = $("#userName").val();
+                $.ajax( { url: "https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby",
+          data: JSON.stringify( { "username" : userNameTS,"score":score,"level":level,"date":today } ),
+          type: "POST",
+          contentType: "application/json" } );
+
+            }
+            
+        });
+    })*/
+
+    // Cookie to store score points
+function storeValue(key, value) {
+    if (localStorage) {
+        localStorage.setItem(key, value);
+    } else {
+        $.cookies.set(key, value);
+    }
+}
+
+function deleteValue(key){
+    if(localStorage) {
+        window.localStorage.removeItem(key);
+    }
+}
+
+function getStoredValue(key) {
+    if (localStorage) {
+        return localStorage.getItem(key);
+    } else {
+        return $.cookies.get(key);
+    }
+}
+
+    function saveUserName() {
+        if($("#userName").val().trim() == ""){
+            alert("Enter a valid name.");
+        } else {
+            
+            storeValue("userNameTS", $("#userName").val());
+            $('.input').attr('value','');
+            var namekk = getStoredValue("userNameTS");
+           $('#showName').text(namekk);
+            $("#savingUserName").hide();
+            $("#afterSaving").show();
+
+        }
+
+    
+
+    }
+
+    function changeTheName() {
+        alert("The local leaderboard will be erased.");
+        deleteValue("userNameTS");
+        $("#afterSaving").hide();
+        $("#savingUserName").show();
+            
+
+    }
+
+    $(document).ready(function(){
+
+       if(localStorage.userNameTS){
+        $("#savingUserName").hide();
+        $('#showName').text(getStoredValue("userNameTS"));
+
+       } else {
+        $("#afterSaving").hide();
+        
+
+       }
+       $("#save").click(saveUserName);
+        $("#change").click(changeTheName);
+        
+    })
+
+  
+</script>
+</head>
+<body>	
+	<div id="settingContainer">
+
+		<div id = "settingHeader">
+                    <button id="settingBack-button" onClick="location.href='Menu.html'">
+                        <img src="images/backbutton.png" width="35" height="35">
+                    </button>
+    		
+    				<p id ="settingHeaderTitle">Brain Train</p>
+    		
+    	</div>
+
+    	<div id ="settingPanel">
+
+    		
+                <div id="allForm">
+                <br>
+    				    <div class = "item">
+                        <label class="labelText">Sound: </label><input type="range" id="sounds" name="sounds" min="0" max="100">
+                        </div><br>
+                        <div class = "item">
+                        <label class="labelText">Music: </label><input type="range" id="music" name="music" min="0" max="100">
+                        </div><br>
+
+                        <div class = "item" id ="afterSaving">Your name is <span id ="showName"></span>
+                        <button type="submit" id="change" class="btn btn-default">Change</button>
+                        <p align="center" style="color:red;font-size:small;">Change your name will erased the local leaderboard. </p>
+                        </div>
+
+                        <div class = "item" id = "savingUserName">
+
+    				    <label>Name:</label><input type="text" id="userName" name="userName">
+                        <button type="submit" id="save" class="btn btn-default">Save</button>
+                        </div><br>
+                        
+                        <div class = "item">
+                        <button type="button" class="btn btn-default">Reset Highscore</button>
+                        </div>
+                </div>
+
+ 		 	
+    	</div>
+    	<div class="settingCreditsDiv"><a data-toggle="modal" data-target="#myModal">Credits</a></div>
+
+    </div>
+
+    <!-- Credits page modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header credits">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Credits</h4>
+                </div>
+                <div class="modal-body settingCredits">
+                    <p id="kabirC">Kabir Cahill</p>
+                    <p id="kentH">Kent Huang</p>
+                    <p id="lukeL">Luke Lee</p>
+                    <p id="ericL">Eric Lin</p>
+                    <p id="rogerZ">Roger Zhang</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
