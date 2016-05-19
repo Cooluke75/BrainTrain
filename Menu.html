@@ -22,6 +22,7 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="Gameplay.js"></script>
     <script src="grid.js"></script>
+    <script src="SettingPageSavingNameFunction.js"></script>
     <script src="leaderboard.js"></script>
 </head>
 <body>
@@ -281,7 +282,13 @@
             <div class = "item">
                 <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100">
             </div><br>
-            <div class = "item">
+            <div class = "item" id ="afterSaving">Your name is <span id ="showName"></span>
+                <button type="submit" id="change" class="btn btn-default">Change</button>
+                <p align="center" style="color:red;font-size:small;">Change your name will erased the local leaderboard. </p>
+            </div>
+
+            <div class = "item" id = "savingUserName">
+
                 <label>Name:</label><input type="text" id="userName" name="userName">
                 <button type="submit" id="save" class="btn btn-default">Save</button>
             </div><br>

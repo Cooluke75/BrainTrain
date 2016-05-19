@@ -36,7 +36,7 @@
     })*/
 
     // Cookie to store score points
-function storeValue(key, value) {
+function storeName(key, value) {
     if (localStorage) {
         localStorage.setItem(key, value);
     } else {
@@ -44,13 +44,13 @@ function storeValue(key, value) {
     }
 }
 
-function deleteValue(key){
+function deleteName(key){
     if(localStorage) {
         window.localStorage.removeItem(key);
     }
 }
 
-function getStoredValue(key) {
+function getStoredName(key) {
     if (localStorage) {
         return localStorage.getItem(key);
     } else {
@@ -63,9 +63,9 @@ function getStoredValue(key) {
             alert("Enter a valid name.");
         } else {
             
-            storeValue("userNameTS", $("#userName").val());
+            storeName("userNameTS", $("#userName").val());
             $('.input').attr('value','');
-            var namekk = getStoredValue("userNameTS");
+            var namekk = getStoredName("userNameTS");
            $('#showName').text(namekk);
             $("#savingUserName").hide();
             $("#afterSaving").show();
@@ -78,7 +78,7 @@ function getStoredValue(key) {
 
     function changeTheName() {
         alert("The local leaderboard will be erased.");
-        deleteValue("userNameTS");
+        deleteName("userNameTS");
         $("#afterSaving").hide();
         $("#savingUserName").show();
             
@@ -89,7 +89,7 @@ function getStoredValue(key) {
 
        if(localStorage.userNameTS){
         $("#savingUserName").hide();
-        $('#showName').text(getStoredValue("userNameTS"));
+        $('#showName').text(getStoredName("userNameTS"));
 
        } else {
         $("#afterSaving").hide();
