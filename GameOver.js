@@ -1,8 +1,12 @@
 /**
- * Created by Kent on 2016-05-19.
+ GameOver.js
+ description:    Functions that save the user's score to the leaderboard.
+ authors:        Kabir Cahill, Kent Huang, Luke Lee, Eric Lin, Roger Zhang
  */
 
-//When the user click the save and go to leaderboard button will trigger this function
+/**
+ * Saves the user's score to the leaderboard.
+ */
 function saveScore() {
     //if user name is provided already.
     if(localStorage.userNameTS) {
@@ -24,8 +28,10 @@ function saveScore() {
     }
 }
 
-//the function will be triggered when user click the save button on the popup page
-function gameOverSavingNameButton() {
+/**
+ * Prompts a new user to enter their username and saves their score.
+ */
+function saveNewUserScore() {
     //check if it is an empty name
     if($("#gameoverUserName").val().trim() == ""){
         alert("Enter a valid name.");
