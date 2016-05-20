@@ -352,7 +352,11 @@ function startTimer(seconds, container, gameOver) {
     };
     clock.restart = function(){
         ms = seconds*1000;
-        display.innerHTML = "1"+":"+"00";
+        //reset the time shown on the play page
+        m = Math.floor(ms/60000);
+        s = Math.floor(ms/1000)%60;
+        s = (s < 10 ? "0" : "")+s;
+        display.innerHTML = m+":"+s;
 
     };
 
