@@ -1,7 +1,12 @@
 /**
  * Created by Kent on 2016-05-19.
  */
-// Cookie to store score points
+
+/**
+ * Stores the user's username to local storage.
+ * @param key
+ * @param value
+ */
 function storeName(key, value) {
     if (localStorage) {
         localStorage.setItem(key, value);

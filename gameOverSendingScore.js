@@ -7,12 +7,13 @@ function checkIfUserNameProvided() {
     //if user name is provided already.
     if(localStorage.userNameTS) {
         //send record to database
-        SendRecordToDatabase();
+        sendScoreToDatabase();
         
         //direct the user to leader boarder
-        hideshow('#leaderboardContainer','#gameover');
-        clearscore();
-        gameLoad();
+        hideShow('#leaderboardContainer','#gameover');
+        clearScore();
+        loadGame();
+
         //refresh the leaderBoard
         setTimeout(function(){getUsersTopScores(10);
             getGlobalLeaderboard(10); },2000);
@@ -24,7 +25,7 @@ function checkIfUserNameProvided() {
 }
 
 //the function will be triggered when user click the save button on the popup page
-function gameOverSavingNameButton(){
+function gameOverSavingNameButton() {
     //check if it is an empty name
     if($("#gameoverUserName").val().trim() == ""){
         alert("Enter a valid name.");
@@ -37,32 +38,12 @@ function gameOverSavingNameButton(){
         $("#saveNamePopup").modal("hide");
         
         //send record to database and direct the user to leader boarder
-        SendRecordToDatabase();
-        hideshow('#leaderboardContainer','#gameover');
-        clearscore();
-        gameLoad();
+        sendScoreToDatabase();
+        hideShow('#leaderboardContainer','#gameover');
+        clearScore();
+        loadGame();
         //refresh the leaderBoard
         setTimeout(function(){getUsersTopScores(10);
             getGlobalLeaderboard(10); },2000);
-
     }
-
 }
-
-
-//this function can send the record to database
-function SendRecordToDatabase() {
-    var scoreToBeSent = totalScore;
-    var userNameToBeSent = localStorage.userNameTS;
-    var levelToBeSent = level;
-    var today = new Date();
-    today = today.toISOString().substring(0, 10);
-
-    //send the data
-    $.ajax( { url: "https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby",
-        data: JSON.stringify( { "username" : userNameToBeSent,"score":scoreToBeSent,"level":levelToBeSent,"date":today } ),
-        type: "POST",
-        contentType: "application/json" } );
-}
-
-
