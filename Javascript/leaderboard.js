@@ -140,5 +140,11 @@ function sendScoreToDatabase() {
     $.ajax( { url: "https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby",
         data: JSON.stringify( { "username" : userNameToBeSent,"score":scoreToBeSent,"level":levelToBeSent,"date":today } ),
         type: "POST",
-        contentType: "application/json" } );
+        contentType: "application/json",
+        success: function(){
+            //refresh the score
+            getUsersTopScores(10);
+            getGlobalLeaderboard(10);
+        },}
+        );
 }
