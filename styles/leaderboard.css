@@ -1,9 +1,11 @@
+/*--- CSS files for leaderboard division ---*/
+
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/*-------------------- main container --------------------*/
+/*-------------------- leaderboard container --------------------*/
 #leaderboardContainer {
     background-color: #cccccc;
     margin: 0;
@@ -11,7 +13,7 @@ html, body {
     height: 100%;
 }
 
-/*-------------------- main header --------------------*/
+/*-------------------- leaderboard header --------------------*/
 #leaderboardContainer #leaderboard-header {
     height: 10%;
     margin-bottom: 1em;
@@ -33,7 +35,7 @@ html, body {
     left: 0;
 }
 
-
+/*--- switch tab between local and global leaderboard ---*/
 #leaderboardContainer ul.nav {
     display: inline-block;
     position: fixed;

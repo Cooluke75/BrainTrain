@@ -1,9 +1,14 @@
+/*
+CSS file for sucessful and unsucessful division after user
+finishes a level.
+*/
+
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/*-------------------- sucessful --------------------*/
+/*-------------------- sucessful division --------------------*/
 #level-screen {
     position: fixed;
     display: none;
@@ -48,6 +53,7 @@ html, body {
     position:relative;
 }
 
+/*---Buttons---*/
 #level-screen-buttons {
     position: absolute;
     top: 0;
@@ -89,7 +95,7 @@ html, body {
     font-size: 3.5em;
 }
 
-/*-------------------- unsucessful --------------------*/
+/*-------------------- unsucessful division --------------------*/
 #level-screen-fail {
     position: fixed;
     display: none;

@@ -1,9 +1,13 @@
+/*
+CSS file for times up screen after the time reaches zero
+*/
+
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/*-------------------- main container --------------------*/
+/*-------------------- Times up screen --------------------*/
 #gameover {
     background-color: #aaa;
     margin: 0;
