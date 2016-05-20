@@ -15,7 +15,7 @@ function checkIfUserNameProvided() {
         gameLoad();
         //refresh the leaderBoard
         setTimeout(function(){getUsersTopScores(10);
-            getGlobalLeaderboard(10); },500);
+            getGlobalLeaderboard(10); },1000);
 
     } else {
         //if not, prompt for user name
@@ -43,7 +43,7 @@ function gameOverSavingNameButton(){
         gameLoad();
         //refresh the leaderBoard
         setTimeout(function(){getUsersTopScores(10);
-            getGlobalLeaderboard(10); },500);
+            getGlobalLeaderboard(10); },1000);
 
     }
 
