@@ -18,10 +18,6 @@ function saveScore() {
         clearScore();
         loadGame();
 
-        //refresh the leaderBoard
-        setTimeout(function(){getUsersTopScores(10);
-            getGlobalLeaderboard(10); },2000);
-
     } else {
         //if not, prompt for user name
         $('#saveNamePopup').modal("show");
@@ -48,8 +44,5 @@ function saveNewUserScore() {
         showHide('#leaderboardContainer','#gameover');
         clearScore();
         loadGame();
-        //refresh the leaderBoard
-        setTimeout(function(){getUsersTopScores(10);
-            getGlobalLeaderboard(10); },2000);
     }
 }
