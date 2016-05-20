@@ -86,3 +86,7 @@ html, body {
 	z-index: 10;
 	position: absolute;
 }
+
+.carousel-caption p {
+	font-size: 30px;
+}
