@@ -3,14 +3,14 @@
  */
 
 //When the user click the save and go to leaderboard button will trigger this function
-function checkIfUserNameProvided() {
+function saveScore() {
     //if user name is provided already.
     if(localStorage.userNameTS) {
         //send record to database
         sendScoreToDatabase();
         
         //direct the user to leader boarder
-        hideShow('#leaderboardContainer','#gameover');
+        showHide('#leaderboardContainer','#gameover');
         clearScore();
         loadGame();
 
@@ -39,7 +39,7 @@ function gameOverSavingNameButton() {
         
         //send record to database and direct the user to leader boarder
         sendScoreToDatabase();
-        hideShow('#leaderboardContainer','#gameover');
+        showHide('#leaderboardContainer','#gameover');
         clearScore();
         loadGame();
         //refresh the leaderBoard

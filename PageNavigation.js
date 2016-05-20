@@ -9,7 +9,7 @@
  * @param idShow the id of the element to show
  * @param idHide the id of the element to hide
  */
-function hideShow(idShow, idHide) {
+function showHide(idShow, idHide) {
     $(idHide).hide();
     $(idShow).show();
 }
@@ -20,7 +20,7 @@ function hideShow(idShow, idHide) {
  */
 function levelProgress(levelComplete) {
     if (levelComplete) {
-        hideShow('#level-screen', '#playContainer');
+        showHide('#level-screen', '#playContainer');
         level++;
         if (level % 5 == 0) {
             difficultyTier++;
@@ -29,7 +29,7 @@ function levelProgress(levelComplete) {
             }
         }
     } else {
-        hideShow('#level-screen-fail', '#playContainer');
+        showHide('#level-screen-fail', '#playContainer');
     }
 }
 
@@ -37,5 +37,5 @@ function levelProgress(levelComplete) {
  * Shows the game over screen.
  */
 function gameOver(){
-    hideShow('#gameover','#playContainer')
+    showHide('#gameover','#playContainer')
 }

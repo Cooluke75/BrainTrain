@@ -25,7 +25,7 @@
     <script src="Init.js"></script>
     <script src="Gameplay.js"></script>
     <script src="Grid.js"></script>
-    <script src="SettingPageSavingNameFunction.js"></script>
+    <script src="Username.js"></script>
     <script src="Leaderboard.js"></script>
     <script src="gameOverSendingScore.js"></script>
 </head>
@@ -40,10 +40,10 @@
     <div id ="panel" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons">
-            <button type="button" class="btn btn-default" onclick="hideShow('#playContainer', '#container');loadGame();timeResume()">Play</button>
-            <button type="button" class="btn btn-default" onclick="hideShow('#myCarousel', '#container')">Tutorial</button>
-            <button type="button" id="leaderboardButton" class="btn btn-default" onclick="hideShow('#leaderboardContainer','#container')">Leaderboard</button>
-            <button type="button" class="btn btn-default" onclick="hideShow('#settingContainer', '#container')">Settings</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();timeResume()">Play</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#myCarousel', '#container')">Tutorial</button>
+            <button type="button" id="leaderboardButton" class="btn btn-default" onclick="showHide('#leaderboardContainer','#container')">Leaderboard</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#settingContainer', '#container')">Settings</button>
         </div>
     </div>
     <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal" onclick="$('#myModal').show()">Credits</a></div>
@@ -110,9 +110,9 @@
         <div id ="level-screen-panel" class="btn-group-vertical">
 
             <div class="btn-group-vertical" id = "level-screen-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideShow('#playContainer','#level-screen');loadGame();timeResume()">Next Level</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#level-screen');loadGame();timeResume()">Next Level</button>
                 <br>
-                <button type="button" class="btn btn-default btn-lg" onclick="hideShow('#container','#level-screen');clearScore()">Main Menu</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#container','#level-screen');clearScore()">Main Menu</button>
             </div>
         </div>
 
@@ -132,9 +132,9 @@
         <div id ="level-screen-fail-panel" class="btn-group-vertical">
 
             <div class="btn-group-vertical" id = "level-screen-fail-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideShow('#playContainer','#level-screen-fail');loadGame();timeResume()">Retry</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#level-screen-fail');loadGame();timeResume()">Retry</button>
                 <br>
-                <button type="button" class="btn btn-default btn-lg" onclick="hideShow('#container','#level-screen-fail');clearScore()">Main Menu</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#container','#level-screen-fail');clearScore()">Main Menu</button>
             </div>
         </div>
 
@@ -258,9 +258,9 @@
     <div id ="panel1" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons1">
-            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="hideShow('#playContainer','#gameover');clearScore();loadGame();timeResume()">Play Again</button>
-            <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="checkIfUserNameProvided();">Save score</button>
-            <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="hideShow('#container','#gameover');clearScore();loadGame()">Main Menu</button>
+            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#gameover');clearScore();loadGame();timeResume()">Play Again</button>
+            <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="saveScore();">Save score</button>
+            <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="showHide('#container','#gameover');clearScore();loadGame()">Main Menu</button>
         </div>
     </div>
 
