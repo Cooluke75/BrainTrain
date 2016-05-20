@@ -87,3 +87,13 @@ html, body {
     text-align: center;
     font-size: 3.5em;
 }
+
+#saveNamePopup .credits{
+    margin: auto;
+    text-align: center;
+}
+
+#saveNamePopup #gameoverUserName{
+    margin-left:5px;
+    width:45%;
+}
