@@ -7,13 +7,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="styles/play.css" type="text/css">
-    <link rel="stylesheet" href="styles/finish2.css" type="text/css">
+    <link rel="stylesheet" href="styles/finish.css" type="text/css">
     <link rel="stylesheet" href="styles/menu.css" type="text/css">
     <link rel="stylesheet" href="styles/leaderboard.css" type="text/css">
     <link rel="stylesheet" href="styles/SettingPage.css" type="text/css">
     <link rel="stylesheet" href="styles/GameoverScreen.css" type="text/css">
-
-
 
     <!-- bootstrap css and jQuery for popup -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -21,13 +19,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-
-    <script src="Gameplay.js"></script>
-    <script src="grid.js"></script>
-    <script src="SettingPageSavingNameFunction.js"></script>
-    <script src="leaderboard.js"></script>
-    <script src="gameOverSendingScore.js"></script>
-
+    <!-- javascript files -->
+    <script src="Javascript/PageNavigation.js"></script>
+    <script src="Javascript/Globals.js"></script>
+    <script src="Javascript/Init.js"></script>
+    <script src="Javascript/Gameplay.js"></script>
+    <script src="Javascript/Grid.js"></script>
+    <script src="Javascript/Username.js"></script>
+    <script src="Javascript/Leaderboard.js"></script>
+    <script src="Javascript/GameOver.js"></script>
 </head>
 <body>
 <div id="container">
@@ -40,10 +40,10 @@
     <div id ="panel" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons">
-            <button type="button" class="btn btn-default" onclick="hideshow('#playContainer', '#container');gameLoad();timeResume()">Play</button>
-            <button type="button" class="btn btn-default" onclick="hideshow('#myCarousel', '#container')">Tutorial</button>
-            <button type="button" id="leaderboardButton" class="btn btn-default" onclick="hideshow('#leaderboardContainer','#container')">Leaderboard</button>
-            <button type="button" class="btn btn-default" onclick="hideshow('#settingContainer', '#container')">Settings</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();timeResume()">Play</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#myCarousel', '#container')">Tutorial</button>
+            <button type="button" id="leaderboardButton" class="btn btn-default" onclick="showHide('#leaderboardContainer','#container')">Leaderboard</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#settingContainer', '#container')">Settings</button>
         </div>
     </div>
     <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal" onclick="$('#myModal').show()">Credits</a></div>
@@ -81,7 +81,7 @@
 <div id="playContainer">
     <div id="playHeader">
         <h1>Level <span class="level">1</span></h1>
-        <button id="back-button" onClick="location.href='Menu.html'">
+        <button id="back-button" onClick="location.href='index.html'">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
         <div id="scoreShow"><p>Score:<span class="score">0</span></p></div>
@@ -110,9 +110,9 @@
         <div id ="level-screen-panel" class="btn-group-vertical">
 
             <div class="btn-group-vertical" id = "level-screen-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen');gameLoad();timeResume()">Next Level</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#level-screen');loadGame();timeResume()">Next Level</button>
                 <br>
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#container','#level-screen');clearscore()">Main Menu</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#container','#level-screen');clearScore()">Main Menu</button>
             </div>
         </div>
 
@@ -132,9 +132,9 @@
         <div id ="level-screen-fail-panel" class="btn-group-vertical">
 
             <div class="btn-group-vertical" id = "level-screen-fail-buttons">
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#level-screen-fail');gameLoad();timeResume()">Retry</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#level-screen-fail');loadGame();timeResume()">Retry</button>
                 <br>
-                <button type="button" class="btn btn-default btn-lg" onclick="hideshow('#container','#level-screen-fail');clearscore()">Main Menu</button>
+                <button type="button" class="btn btn-default btn-lg" onclick="showHide('#container','#level-screen-fail');clearScore()">Main Menu</button>
             </div>
         </div>
 
@@ -157,7 +157,7 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <button id="tutorialBack-button" onClick="location.href='Menu.html'">
+        <button id="tutorialBack-button" onClick="location.href='index.html'">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
         <div class="item active">
@@ -211,7 +211,7 @@
 <div id="leaderboardContainer">
     <div id="leaderboard-header">
         <h1>Leaderboard</h1>
-        <button id="leaderboardBack-button" onClick="location.href='Menu.html'">
+        <button id="leaderboardBack-button" onClick="location.href='index.html'">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
 
@@ -258,9 +258,9 @@
     <div id ="panel1" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons1">
-            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="hideshow('#playContainer','#gameover');clearscore();gameLoad();timeResume()">Play Again</button>
-            <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="checkIfUserNameProvided();">Save score</button>
-            <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="hideshow('#container','#gameover');clearscore();gameLoad()">Main Menu</button>
+            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#gameover');clearScore();loadGame();timeResume()">Play Again</button>
+            <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="saveScore();">Save score</button>
+            <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="showHide('#container','#gameover');clearScore();loadGame()">Main Menu</button>
         </div>
     </div>
 
@@ -282,7 +282,7 @@
                 <label>Name:</label>
                 <input type="text" id="gameoverUserName" name="gameoverUserName">
                 <!--button to get the user name on the popup inside gameover page-->
-                <button type="submit" id="gameoverSave" class="btn btn-default" onclick="gameOverSavingNameButton();">Save</button>
+                <button type="submit" id="gameoverSave" class="btn btn-default" onclick="saveNewUserScore();">Save</button>
             </div>
         </div>
     </div>
@@ -292,7 +292,7 @@
 <div id="settingContainer">
 
     <div id = "settingHeader">
-        <button id="settingBack-button" onClick="location.href='Menu.html'">
+        <button id="settingBack-button" onClick="location.href='index.html'">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
 

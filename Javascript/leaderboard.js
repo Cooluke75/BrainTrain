@@ -1,4 +1,8 @@
-var username = localStorage.userNameTS;
+/**
+ Leaderboard.js
+ description:    Sends and retrieves scores from the leaderboard database.
+ authors:        Kabir Cahill, Kent Huang, Luke Lee, Eric Lin, Roger Zhang
+ */
 
 // get the URL of the scores table
 var scoresTableURL = 'https://api.mlab.com/api/1/databases/braintrain/collections/scores'
@@ -120,4 +124,27 @@ function getUsersSingleBestScore(numberOfRecords) {
             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
         }
     });
+}
+
+/**
+ * Sends the user's score to the database.
+ */
+function sendScoreToDatabase() {
+    var scoreToBeSent = totalScore;
+    var userNameToBeSent = localStorage.userNameTS;
+    var levelToBeSent = level;
+    var today = new Date();
+    today = today.toISOString().substring(0, 10);
+
+    //send the data
+    $.ajax( { url: "https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby",
+        data: JSON.stringify( { "username" : userNameToBeSent,"score":scoreToBeSent,"level":levelToBeSent,"date":today } ),
+        type: "POST",
+        contentType: "application/json",
+        success: function(){
+            //refresh the score
+            getUsersTopScores(10);
+            getGlobalLeaderboard(10);
+        },}
+        );
 }

@@ -1,9 +1,10 @@
+/*--- CSS files for setting division ---*/
 html, body {
 	height: 100%;
 	margin: 0;
 }
 
-/*-------------------- main container --------------------*/
+/*-------------------- setting container --------------------*/
 #settingContainer {
 	background-color: #aaa;
 	margin: 0;
