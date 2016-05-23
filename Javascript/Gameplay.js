@@ -55,8 +55,6 @@ function processUserInput() {
             if (userAnswerIndex == -1) {
                 usersAnswers.push(row); // store the button's row in the array of user's answers
 
-                var soundEffect = new Audio();
-
                 // get the index of the row in correctAnswers
                 var correctAnswerIndex = correctAnswers.findIndex(function (correctAnswer) {
                     return correctAnswer == row;
