@@ -28,11 +28,12 @@
     <script src="Javascript/Username.js"></script>
     <script src="Javascript/Leaderboard.js"></script>
     <script src="Javascript/GameOver.js"></script>
+    <script src="Javascript/AudioControls.js"></script>
 </head>
 <body>
 <div id="container">
 
-    <!--mainmenu-->
+    <!--main menu-->
     <div id = "header">
         <p id ="headerTitle">Brain Train</p>
     </div>
@@ -81,7 +82,7 @@
 <div id="playContainer">
     <div id="playHeader">
         <h1>Level <span class="level">1</span></h1>
-        <button id="back-button" onClick="location.href='index.html'">
+        <button id="back-button" onclick="showHide('#container','#playContainer');clearScore()">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
         <div id="scoreShow"><p>Score:<span class="score">0</span></p></div>
@@ -91,7 +92,7 @@
     <div id="grid">
     </div>
     <div id="music">
-        <audio src="bgm/bg.mp3" controls>
+        <audio id="bgmusic" src="bgm/bg.mp3" controls>
             <p>If you are reading this, it is because your browser does not support the background music.</p>
         </audio>
 
@@ -157,7 +158,7 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <button id="tutorialBack-button" onClick="location.href='index.html'">
+        <button id="tutorialBack-button" onclick="showHide('#container','#myCarousel');clearScore()">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
         <div class="item active">
@@ -211,7 +212,7 @@
 <div id="leaderboardContainer">
     <div id="leaderboard-header">
         <h1>Leaderboard</h1>
-        <button id="leaderboardBack-button" onClick="location.href='index.html'">
+        <button id="leaderboardBack-button" onclick="showHide('#container','#leaderboardContainer');clearScore()">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
 
@@ -292,7 +293,7 @@
 <div id="settingContainer">
 
     <div id = "settingHeader">
-        <button id="settingBack-button" onClick="location.href='index.html'">
+        <button id="settingBack-button" onclick="showHide('#container','#settingContainer');clearScore()">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
 
@@ -306,10 +307,10 @@
         <div id="allForm">
             <br>
             <div class = "item">
-                <label class="labelText">Sound: </label><input type="range" id="settingSounds" name="settingSounds" min="0" max="100">
+                <label class="labelText">Sound: </label><input type="range" id="settingSounds" name="settingSounds" min="0" max="100" value="100" step="1">
             </div><br>
             <div class = "item">
-                <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100">
+                <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100" value="100" step="1">
             </div><br>
             <div class = "item" id ="afterSaving">Your name is <span id ="showName"></span>
                 <button type="submit" id="change" class="btn btn-default">Change</button>
