@@ -17,4 +17,11 @@ $(document).ready(function() {
     $("#settingContainer").hide();
     $("#playContainer").hide();
     $("#gameover").hide();
+
+    //everytime refresh initializes this
+    storeName('achievement1','0');
+    storeName('achievement2','0');
+    storeName('achievement3','0');
+    storeName('unlocked','0');
+
 });

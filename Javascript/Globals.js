@@ -18,3 +18,5 @@ var correctAnswers = [];
 var usersAnswers = [];
 var counter = 0;
 var username = localStorage.userNameTS;
+var combo = 0;
+var achievementNum = 0;

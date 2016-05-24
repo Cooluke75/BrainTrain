@@ -17,6 +17,7 @@ function loadGame() {
     buildGrid();
     resizeGrid();
     $('.score').text(totalScore);
+    $('.scoreCombo1').text(combo);
     $('.level').text(level);
 
     // resize grid when window is resized
@@ -62,17 +63,21 @@ function processUserInput() {
 
                 // if the row is a correct destination, add to the users score, otherwise subtract
                 if (correctAnswerIndex != -1) {
-                    // add 100 points from user's score
-                    totalScore += 100;
+                    // add 100 points from user's score with combo
+                    totalScore += 100 + combo * 10;
+                    combo++;
                     soundEffect.src = "bgm/Correct.mp3";
                     $(this).css('backgroundColor', '#00ff00');
                 } else {
                     // deduct 50 points from user's score
                     if (totalScore > 50) {
                         totalScore -= 50;
+                        //clears the score combo
+                        clearscoreCombo();
                     }
                     else {
                         totalScore = 0;
+                        clearscoreCombo()
                     }
                     soundEffect.src = "bgm/Wrong.mp3";
                     $(this).css('backgroundColor', 'red');
@@ -80,6 +85,9 @@ function processUserInput() {
 
                 // update the score displays
                 $('.score').text(totalScore);
+                
+                // update score combo display
+                $('.scoreCombo1').text(combo);
 
                 soundEffect.play();
             }
@@ -88,6 +96,14 @@ function processUserInput() {
             if (usersAnswers.length == numberOfTrains) {
                 // Pause the timer while the train is moving
                 myTime.pause();
+
+                //achievement2
+                var check2 = checkAchievement2();
+                if(check2==true)
+                {
+                    alert("You have unlocked achievement for getting 3000+ points!!!");
+                }
+
                 moveTheTrain(startingPoints, validateUserAnswers);
             }
 
@@ -105,6 +121,7 @@ function clearScore() {
     difficultyTier = 0;
     numberOfTrains = 1;
     totalScore = 0;
+    combo = 0;
     myTime.restart();
 }
 
@@ -135,6 +152,10 @@ function placeTheTrain(startingPosition){
         });
         $('#rogerZplay').click(function() {
             tileTrain.css("background-image", "url(images/RogerZhang.jpg)");
+            var check3 = checkAchievement3();
+            if (check3 == true) {
+                alert("Congratulations! You have unlocked an achievement!!!");
+            }
         });
     });
 }
@@ -465,4 +486,63 @@ function startTimer(seconds, container, gameOver) {
  */
 function timeResume() {
     myTime.resume();
+}
+
+/*
+ * Score Combo
+ */
+function clearscoreCombo() {
+    combo = 0;
+}
+
+/*
+ * Check achievement1
+ */
+function checkAchievement1() {
+    var achievement1 = getStoredName('achievement1');
+    if (achievement1=='0') {
+        if (level > 5) {
+            storeName('achievement1', '1');
+            achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
+            storeName('unlocked',achievementNum);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
+/*
+ * Check achievement2
+ */
+function checkAchievement2() {
+    var achievement2 = getStoredName('achievement2');
+    if (achievement2=='0') {
+        if (totalScore > 100) {
+            storeName('achievement2', '1');
+            achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
+            storeName('unlocked',achievementNum);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
+/*
+ * Check achievement3
+ */
+function checkAchievement3(){
+    var achievement3 = getStoredName('achievement3');
+    if (achievement3=='0') {
+        storeName('achievement3', '1');
+        achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
+        storeName('unlocked',achievementNum);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
