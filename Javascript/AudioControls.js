@@ -55,10 +55,10 @@ function setBgmVolume() {
 function soundMute() {
     if (soundEffect.muted) {
         soundEffect.muted = false;
-        soundMuteBtn.style.background = "url(images/speaker_on.png) no-repeat"
+        soundMuteBtn.style.background = "url(images/speaker_on.png)"
     } else {
         soundEffect.muted = true;
-        soundMuteBtn.style.background = "url(images/speaker_off.png) 100%"
+        soundMuteBtn.style.background = "url(images/speaker_off.png)"
     }
 }
 
@@ -68,9 +68,9 @@ function soundMute() {
 function musicMute() {
     if (bgMusic.muted) {
         bgMusic.muted = false;
-        musicMuteBtn.style.background = "url(images/speaker_on.png) 100%"
+        musicMuteBtn.style.background = "url(images/speaker_on.png)"
     } else {
         bgMusic.muted = true;
-        musicMuteBtn.style.background = "url(images/speaker_off.png) 100%"
+        musicMuteBtn.style.background = "url(images/speaker_off.png)"
     }
 }
