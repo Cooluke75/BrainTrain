@@ -20,3 +20,4 @@ var skipCounter = 0;      //counter for the skipTrainAnimation function
 var username = localStorage.userNameTS;
 var combo = 0;
 var achievementNum = 0;
+var counter = 4;

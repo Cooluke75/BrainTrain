@@ -32,7 +32,9 @@ function loadGame() {
     // determine the correct destinations
     correctAnswers = getCorrectAnswers(startingPoints);
 
-    processUserInput();
+        processUserInput();
+
+    
 }
 
 /**
@@ -41,75 +43,80 @@ function loadGame() {
 function processUserInput() {
     // the user has chosen a destination
     $('.destButton').click(function (e) {
+        
+        //make sure the counterDown runs first
+        if(counter==0) {
+            if (usersAnswers.length < numberOfTrains) {
 
-        if (usersAnswers.length < numberOfTrains) {
+                // get the row of the button
+                var row = parseInt($(this).attr('id').replace(/\D/g, ''));
 
-            // get the row of the button
-            var row = parseInt($(this).attr('id').replace(/\D/g, ''));
-
-            // get the index of the row in userAnswers
-            var userAnswerIndex = usersAnswers.findIndex(function (userAnswer) {
-                return userAnswer == row;
-            });
-
-            // if the row has not already been stored, add it to usersAnswers
-            if (userAnswerIndex == -1) {
-                usersAnswers.push(row); // store the button's row in the array of user's answers
-
-                // get the index of the row in correctAnswers
-                var correctAnswerIndex = correctAnswers.findIndex(function (correctAnswer) {
-                    return correctAnswer == row;
+                // get the index of the row in userAnswers
+                var userAnswerIndex = usersAnswers.findIndex(function (userAnswer) {
+                    return userAnswer == row;
                 });
 
-                // if the row is a correct destination, add to the users score, otherwise subtract
-                if (correctAnswerIndex != -1) {
-                    // add 100 points from user's score with combo
-                    totalScore += 100 + combo * 10;
-                    combo++;
-                    soundEffect.src = "bgm/Correct.mp3";
-                    $(this).css('backgroundColor', '#00ff00');
-                } else {
-                    // deduct 50 points from user's score
-                    if (totalScore > 50) {
-                        totalScore -= 50;
-                        //clears the score combo
-                        clearscoreCombo();
+                // if the row has not already been stored, add it to usersAnswers
+                if (userAnswerIndex == -1) {
+                    usersAnswers.push(row); // store the button's row in the array of user's answers
+
+                    // get the index of the row in correctAnswers
+                    var correctAnswerIndex = correctAnswers.findIndex(function (correctAnswer) {
+                        return correctAnswer == row;
+                    });
+
+                    // if the row is a correct destination, add to the users score, otherwise subtract
+                    if (correctAnswerIndex != -1) {
+                        // add 100 points from user's score with combo
+                        totalScore += 100 + combo * 10;
+                        combo++;
+                        soundEffect.src = "bgm/Correct.mp3";
+                        $(this).css('backgroundColor', '#00ff00');
+                    } else {
+                        // deduct 50 points from user's score
+                        if (totalScore > 50) {
+                            totalScore -= 50;
+                            //clears the score combo
+                            clearscoreCombo();
+                        }
+                        else {
+                            totalScore = 0;
+                            clearscoreCombo()
+                        }
+                        soundEffect.src = "bgm/Wrong.mp3";
+                        $(this).css('backgroundColor', 'red');
                     }
-                    else {
-                        totalScore = 0;
-                        clearscoreCombo()
-                    }
-                    soundEffect.src = "bgm/Wrong.mp3";
-                    $(this).css('backgroundColor', 'red');
+
+                    // update the score displays
+                    $('.score').text(totalScore);
+
+                    // update score combo display
+                    $('.scoreCombo1').text(combo);
+
+                    soundEffect.play();
                 }
 
-                // update the score displays
-                $('.score').text(totalScore);
-                
-                // update score combo display
-                $('.scoreCombo1').text(combo);
+                // the user has used up all of their guesses
+                if (usersAnswers.length == numberOfTrains) {
+                    // Pause the timer while the train is moving
+                    myTime.pause();
 
-                soundEffect.play();
-            }
+                    //achievement2
+                    var check2 = checkAchievement2();
+                    if(check2==true)
+                    {
+                        alert("You have unlocked achievement for getting 3000+ points!!!");
+                    }
 
-            // the user has used up all of their guesses
-            if (usersAnswers.length == numberOfTrains) {
-                // Pause the timer while the train is moving
-                myTime.pause();
-
-                //achievement2
-                var check2 = checkAchievement2();
-                if(check2==true)
-                {
-                    alert("You have unlocked achievement for getting 3000+ points!!!");
+                    moveTheTrain(startingPoints, validateUserAnswers);
                 }
 
-                moveTheTrain(startingPoints, validateUserAnswers);
+                e.stopPropagation();
+                skipTrainAnimation();
             }
-
-            e.stopPropagation();
-            skipTrainAnimation();
         }
+
+
     });
 }
 
@@ -551,7 +558,7 @@ function checkAchievement3(){
 }
 
 function loadPopupBox() {
-    window.counter = 4;
+    counter = 4;
     window.timeID;
     $('#popup_countdown').fadeIn("slow");
     $("#countDown").text("Ready?");
