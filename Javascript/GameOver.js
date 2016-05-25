@@ -31,6 +31,9 @@ function saveNewUserScore() {
     //check if it is an empty name
     if($("#gameoverUserName").val().trim() == ""){
         alert("Enter a valid name.");
+    } else if(isUniqueUsername($("#gameoverUserName").val())){
+        alert("This userName has already been taken.");
+        
     } else {
         //if user name is entered
         //use the function from settingPageSavingNameFunction to save it as a local variable.

@@ -9,7 +9,7 @@ $(document).ready(function() {
     initAudio();
     loadGame();
     
-    window.myTime = startTimer(60, "timer", function() {gameOver();});
+    window.myTime = startTimer(5, "timer", function() {gameOver();});
     myTime.pause();
 
     //hiding everything in the beginning but the menu

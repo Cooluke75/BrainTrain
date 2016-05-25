@@ -50,6 +50,9 @@ function getStoredName(key) {
 function saveUserName() {
     if($("#userName").val().trim() == ""){
         alert("Enter a valid name.");
+    } else if(isUniqueUsername($("#gameoverUserName").val())){
+        alert("This userName has already been taken.");
+
     } else {
         storeName("userNameTS", $("#userName").val());
         $('.input').attr('value','');
