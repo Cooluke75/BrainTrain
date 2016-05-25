@@ -468,7 +468,6 @@ function startTimer(seconds, container, gameOver) {
     };
 
     clock.restart = function(){
-        clock.pause();
         ms = seconds * 1000;
         //reset the time shown on the play page
         m = Math.floor(ms / 60000);
