@@ -68,11 +68,12 @@ function loadStartScreen() {
     }, 250);
 
    var b = setInterval(function() {
-        $('#logoContainer').fadeOut("slow");
+        $('#logoFadeIn').fadeOut("slow");
     }, 2500);
 
    var c =  setInterval(function() {
-        $('#container').show();
+       $('#container').show();
+       $('#logoContainer').hide();
        clearInterval(a);
        clearInterval(b);
        clearInterval(c);

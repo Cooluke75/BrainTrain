@@ -6,13 +6,16 @@
     height: 100%;
 }
 
+#logoFadeIn {
+    height:100%;
+}
 /*-------------------- logo picture --------------------*/
 #logoPic {
     padding-top: 5em;
 }
 
 #logoPic img{
-    height: 20em;
+    height: 10%;
 }
 
 /*-------------------- logo text --------------------*/
