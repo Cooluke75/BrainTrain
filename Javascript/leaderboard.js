@@ -17,6 +17,7 @@ $(document).ready(function () {
 
 // Gets the user's top scores from the database and puts them in the my-scores table
 function getUsersTopScores(numberOfRecords) {
+    username = localStorage.userNameTS;
     // clear the my-scores table
     $('#my-scores table tr:first-child').siblings().remove();
 
@@ -46,6 +47,7 @@ function getUsersTopScores(numberOfRecords) {
 
 // Gets the top global scores from the database and puts them in the leaderboard table
 function getGlobalLeaderboard(numberOfRecords) {
+    username = localStorage.userNameTS;
     // clear the leaderboard table
     $('#leaderboard table tr:first-child').siblings().remove();
 

@@ -67,7 +67,7 @@ function changeTheName() {
 }
 
 $(document).ready(function(){
-    if(localStorage.userNameTS){
+    if(getStoredName("userNameTS")){
         $("#savingUserName").hide();
         $('#showName').text(getStoredName("userNameTS"));
     } else {
