@@ -48,20 +48,22 @@ function getStoredName(key) {
  * Saves the new username that the user typed in.
  */
 function saveUserName() {
-    if($("#userName").val().trim() == ""){
+    var newUsername = $("#userName").val().trim();
+
+    if(newUsername == ""){
         alert("Enter a valid name.");
     } else {
         // check if there is an occurrence of the username
-        var query = '&q={"username": "'+ $("#userName").val().trim() + '"}&c=true';
+        var query = '&q={"username": "'+ newUsername + '"}&c=true';
 
         $.ajax({
             url: usersTableURL + query,
             success: function (result) {
                 console.log("Result: " + result + " users with this username.");
                 if (result > 0) {
-                    alert("This userName has already been takennnnnnnn.");
+                    alert("This username has already been taken.");
                 } else {
-                    storeName("userNameTS", $("#userName").val());
+                    storeName("userNameTS", newUsername);
                     username = getStoredName("userNameTS");
 
                     $('.input').attr('value','');
@@ -83,7 +85,7 @@ function saveUserName() {
  */
 function changeTheName() {
     alert("The local leaderboard will be erased.");
-    deleteName("userNameTS");
+    //deleteName("userNameTS");
     $("#afterSaving").hide();
     $("#savingUserName").show();
 }

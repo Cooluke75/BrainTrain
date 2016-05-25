@@ -28,25 +28,39 @@ function saveScore() {
  * Prompts a new user to enter their username and saves their score.
  */
 function saveNewUserScore() {
+    var newUsername = $("#gameoverUserName").val().trim();
+    
     //check if it is an empty name
-    if($("#gameoverUserName").val().trim() == ""){
+    if(newUsername == ""){
         alert("Enter a valid name.");
-    } else if(isUniqueUsername($("#gameoverUserName").val())){
-        alert("This userName has already been taken.");
-        
     } else {
-        //if user name is entered
-        //use the function from settingPageSavingNameFunction to save it as a local variable.
-        storeName("userNameTS", $("#gameoverUserName").val());
-        username = getStoredName("userNameTS");
-        
-        //hide the popup
-        $("#saveNamePopup").modal("hide");
-        
-        //send record to database and direct the user to leader boarder
-        sendScoreToDatabase();
-        showHide('#leaderboardContainer','#gameover');
-        clearScore();
-        loadGame();
+        // check if there is an occurrence of the username
+        var query = '&q={"username": "'+ newUsername + '"}&c=true';
+
+        $.ajax({
+            url: usersTableURL + query,
+            success: function (result) {
+                console.log("Result: " + result + " users with this username.");
+                if (result > 0) {
+                    alert("This userName has already been takennnnnnnn33333.");
+                } else {
+                    //use the function from settingPageSavingNameFunction to save it as a local variable.
+                    storeName("userNameTS", newUsername);
+                    username = getStoredName("userNameTS");
+
+                    //hide the popup
+                    $("#saveNamePopup").modal("hide");
+
+                    //send record to database and direct the user to leader boarder
+                    sendScoreToDatabase();
+                    showHide('#leaderboardContainer','#gameover');
+                    clearScore();
+                    loadGame();
+                }
+            },
+            error: function (xhr) {
+                console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+            }
+        });
     }
 }
