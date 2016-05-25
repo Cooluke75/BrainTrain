@@ -50,16 +50,31 @@ function getStoredName(key) {
 function saveUserName() {
     if($("#userName").val().trim() == ""){
         alert("Enter a valid name.");
-    } else if(isUniqueUsername($("#gameoverUserName").val())){
-        alert("This userName has already been taken.");
-
     } else {
-        storeName("userNameTS", $("#userName").val());
-        $('.input').attr('value','');
-        var namekk = getStoredName("userNameTS");
-        $('#showName').text(namekk);
-        $("#savingUserName").hide();
-        $("#afterSaving").show();
+        // check if there is an occurrence of the username
+        var query = '&q={"username": "'+ $("#userName").val().trim() + '"}&c=true';
+
+        $.ajax({
+            url: usersTableURL + query,
+            success: function (result) {
+                console.log("Result: " + result + " users with this username.");
+                if (result > 0) {
+                    alert("This userName has already been takennnnnnnn.");
+                } else {
+                    storeName("userNameTS", $("#userName").val());
+                    username = getStoredName("userNameTS");
+
+                    $('.input').attr('value','');
+                    var namekk = getStoredName("userNameTS");
+                    $('#showName').text(namekk);
+                    $("#savingUserName").hide();
+                    $("#afterSaving").show();
+                }
+            },
+            error: function (xhr) {
+                console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+            }
+        });
     }
 }
 
@@ -109,25 +124,27 @@ function sendUsernameToDatabase(username) {
 /**
  * Checks if the username given is unique (i.e. it doesn't exist in the database).
  */
-function isUniqueUsername(username) {
-    var isUnique = false;
-
-    // check if there is an occurrence of the username
-    query = '&q={"username": '+ username + '}&c=true';
-
-    $.ajax({
-        url: usersTableURL + query,
-        success: function (result) {
-            if (result > 0) {
-                isUnique = false;
-            } else {
-                isUnique = true;
-            }
-
-            return isUnique;
-        },
-        error: function (xhr) {
-            console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
-        }
-    });
-}
+// function isUniqueUsername(username) {
+//     var isUnique = false;
+//
+//     // check if there is an occurrence of the username
+//     var query = '&q={"username": "'+ username + '"}&c=true';
+//
+//     $.ajax({
+//         url: usersTableURL + query,
+//         async: false,
+//         success: function (result) {
+//             console.log("Result: " + result + " users with this username.");
+//             if (result > 0) {
+//                 isUnique = false;
+//             } else {
+//                 isUnique = true;
+//             }
+//
+//             return isUnique;
+//         },
+//         error: function (xhr) {
+//             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+//         }
+//     });
+// }

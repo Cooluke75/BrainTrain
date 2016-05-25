@@ -25,4 +25,33 @@ $(document).ready(function() {
     storeName('achievement3','0');
     storeName('unlocked','0');
 
+    /**
+    var queryInit = '&q={"username": '+ username + '}';
+    //update data from the database when our program is loaded.
+    $.ajax({
+        //get only one document
+        
+        url: usersTableURL + queryInit,
+        success: function (result) {
+
+            var achievement1 = result.achievement1;
+            var achievement2 = result.achievement2;
+            var achievement3 = result.achievement3;
+            var unlocked = result.unlocked;
+
+            storeName('achievement1',achievement1);
+            storeName('achievement2',achievement2);
+            storeName('achievement3',achievement3);
+            storeName('unlocked',unlocked);
+
+
+
+        },
+        error: function (xhr) {
+
+            console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+        }
+    });   //end of the update function
+*/
+
 });
