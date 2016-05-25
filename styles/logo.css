@@ -1,20 +1,25 @@
+/*--- CSS files for logo screen division ---*/
 html, body {
     height: 100%;
     margin: 0;
 }
 
-body {
+/*-------------------- logo screen container --------------------*/
+#logoContainer {
     background-color: black;
     text-align: center;
 }
 
+/*-------------------- logo picture --------------------*/
 #logoPic {
     text-align: center;
     padding-top: 5em;
 }
 
+/*-------------------- logo text --------------------*/
 #logoText p{
     color: #DADADA;
-    font-size: 4em;
+    font-size: 3.5em;
     margin: 0;
+    font-family: Monofett;
 }
