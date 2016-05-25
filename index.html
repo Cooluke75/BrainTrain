@@ -46,7 +46,7 @@
             <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();loadPopupBox();clearScore()">Play</button>
             <button type="button" class="btn btn-default" onclick="showHide('#myCarousel', '#container')">Tutorial</button>
             <button type="button" id="leaderboardButton" class="btn btn-default" onclick="showHide('#leaderboardContainer','#container')">Leaderboard</button>
-            <button type="button" class="btn btn-default" onclick="showHide('#settingContainer', '#container')">Settings</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#settingContainer', '#container');hideNotif()">Settings</button>
         </div>
     </div>
     <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal" onclick="$('#myModal').show()">Credits</a></div>
@@ -319,15 +319,18 @@
             <div class = "item">
                 <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100" value="100" step="1">
             </div><br>
+            <!--
             <div class = "item" id ="afterSaving">Your name is <span id ="showName"></span>
                 <button type="submit" id="change" class="btn btn-default">Change</button>
                 <p align="center" style="color:red;font-size:small;">Changing your name will erase the local leaderboard. </p>
-            </div>
+            </div>                        -->
 
             <div class = "item" id = "savingUserName">
 
                 <label>Name:</label><input type="text" id="userName" name="userName">
                 <button type="submit" id="save" class="btn btn-default">Save</button>
+                <br>
+                <span id ="notif"></span>
             </div><br>
 
             <div class = "item">

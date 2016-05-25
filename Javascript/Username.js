@@ -44,6 +44,12 @@ function getStoredName(key) {
     }
 }
 
+function hideNotif(){
+    $("#userName").val(username);
+    $("#notif").hide();
+}
+
+
 /**
  * Saves the new username that the user typed in.
  */
@@ -51,7 +57,8 @@ function saveUserName() {
     var newUsername = $("#userName").val().trim();
 
     if(newUsername == ""){
-        alert("Enter a valid name.");
+        $("#notif").text("Enter a valid name.");
+        $("#notif").show();
     } else {
         // check if there is an occurrence of the username
         var query = '&q={"username": "'+ newUsername + '"}&c=true';
@@ -61,16 +68,22 @@ function saveUserName() {
             success: function (result) {
                 console.log("Result: " + result + " users with this username.");
                 if (result > 0) {
-                    alert("This username has already been taken.");
+                    $("#notif").text("This username has already been taken.");
+                    $("#notif").show();
                 } else {
+
+
                     storeName("userNameTS", newUsername);
                     username = getStoredName("userNameTS");
+                    // show notification.
+                    $("#notif").text( username + " saved.");
+                    $("#notif").show();
 
-                    $('.input').attr('value','');
-                    var namekk = getStoredName("userNameTS");
-                    $('#showName').text(namekk);
-                    $("#savingUserName").hide();
-                    $("#afterSaving").show();
+                  //  $('.input').attr('value','');
+                  //  var namekk = getStoredName("userNameTS");
+                 //   $('#showName').text(namekk);
+                   // $("#savingUserName").hide();
+                  //  $("#afterSaving").show();
                 }
             },
             error: function (xhr) {
@@ -86,19 +99,23 @@ function saveUserName() {
 function changeTheName() {
     alert("The local leaderboard will be erased.");
     //deleteName("userNameTS");
-    $("#afterSaving").hide();
+  //  $("#afterSaving").hide();
     $("#savingUserName").show();
 }
 
-$(document).ready(function(){
-    if(getStoredName("userNameTS")){
+$(document).ready(function() {
+    /**if(getStoredName("userNameTS")){
         $("#savingUserName").hide();
         $('#showName').text(getStoredName("userNameTS"));
     } else {
         $("#afterSaving").hide();
     }
+     $("#save").click(saveUserName);
+     $("#change").click(changeTheName);
+     */
+    $("#afterSaving").hide();
     $("#save").click(saveUserName);
-    $("#change").click(changeTheName);
+
 });
 
 
