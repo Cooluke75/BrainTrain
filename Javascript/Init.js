@@ -8,7 +8,8 @@ $(document).ready(function() {
 
     initAudio();
     loadGame();
-    
+    loadStartScreen();
+
     window.myTime = startTimer(5, "timer", function() {gameOver();});
     myTime.pause();
 
@@ -55,3 +56,22 @@ $(document).ready(function() {
 */
 
 });
+
+
+function loadStartScreen() {
+
+    $("#container").hide();
+
+    var LogoID = setInterval(function() {
+        $('#logoFadeIn').fadeIn("slow");
+    }, 500);
+
+    var LogoID2 = setInterval(function() {
+        $('#logoContainer').fadeOut("slow");
+    }, 2500);
+
+    var LogoID3 = setInterval(function() {
+        $('#container').show();
+    }, 3000);
+
+}

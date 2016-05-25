@@ -1,4 +1,5 @@
-/*--- CSS files for logo screen division ---*/
+/*--- CSS files for logo division ---*/
+
 html, body {
     height: 100%;
     margin: 0;
@@ -8,6 +9,7 @@ html, body {
 #logoContainer {
     background-color: black;
     text-align: center;
+    z-index: 100;
 }
 
 /*-------------------- logo picture --------------------*/
