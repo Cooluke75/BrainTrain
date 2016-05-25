@@ -63,15 +63,15 @@ function loadStartScreen() {
     $("#container").hide();
     $("#logoFadeIn").hide();
 
-    var LogoID = setInterval(function() {
+    setInterval(function() {
         $('#logoFadeIn').fadeIn("slow");
     }, 250);
 
-    var LogoID2 = setInterval(function() {
+    setInterval(function() {
         $('#logoContainer').fadeOut("slow");
     }, 2500);
 
-    var LogoID3 = setInterval(function() {
+    setInterval(function() {
         $('#container').show();
     }, 3000);
 
