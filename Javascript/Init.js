@@ -61,10 +61,11 @@ $(document).ready(function() {
 function loadStartScreen() {
 
     $("#container").hide();
+    $("#logoFadeIn").hide();
 
     var LogoID = setInterval(function() {
         $('#logoFadeIn').fadeIn("slow");
-    }, 500);
+    }, 250);
 
     var LogoID2 = setInterval(function() {
         $('#logoContainer').fadeOut("slow");
