@@ -63,16 +63,22 @@ function loadStartScreen() {
     $("#container").hide();
     $("#logoFadeIn").hide();
 
-    setInterval(function() {
+    var a = setInterval(function() {
         $('#logoFadeIn').fadeIn("slow");
     }, 250);
 
-    setInterval(function() {
+   var b = setInterval(function() {
         $('#logoContainer').fadeOut("slow");
     }, 2500);
 
-    setInterval(function() {
+   var c =  setInterval(function() {
         $('#container').show();
+       clearInterval(a);
+       clearInterval(b);
+       clearInterval(c);
     }, 3000);
+
+    
+    
 
 }
