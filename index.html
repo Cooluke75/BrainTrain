@@ -43,7 +43,7 @@
     <div id ="panel" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons">
-            <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();timeResume()">Play</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();loadPopupBox();clearScore()">Play</button>
             <button type="button" class="btn btn-default" onclick="showHide('#myCarousel', '#container')">Tutorial</button>
             <button type="button" id="leaderboardButton" class="btn btn-default" onclick="showHide('#leaderboardContainer','#container')">Leaderboard</button>
             <button type="button" class="btn btn-default" onclick="showHide('#settingContainer', '#container')">Settings</button>
@@ -84,7 +84,7 @@
 <div id="playContainer">
     <div id="playHeader">
         <h1>Level <span class="level">1</span></h1>
-        <button id="back-button" onclick="showHide('#container','#playContainer');clearScore();$('.tileTrainClass').finish();">
+        <button id="back-button" onclick="showHide('#container','#playContainer');clearScore();unloadPopupBox();$('.tileTrainClass').finish();">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
         <div id="scoreShow"><p>Score:<span class="score">0</span></p></div>
@@ -261,7 +261,7 @@
     <div id ="panel1" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons1">
-            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#gameover');clearScore();loadGame();timeResume()">Play Again</button>
+            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#gameover');clearScore();loadGame();loadPopupBox()">Play Again</button>
             <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="saveScore();">Save score</button>
             <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="showHide('#container','#gameover');clearScore();loadGame()">Main Menu</button>
         </div>
@@ -270,6 +270,11 @@
     <div id="finalscore">
         <p id ="finalscore1">Your final score is: <span class="score">0</span></p>
     </div>
+</div>
+
+<!---Count down popup--->
+<div id="popup_countdown">
+    <h1 id="countDown"></h1>
 </div>
 
 <!--popup on gameover if user hasn't provided a user name-->
