@@ -8,7 +8,7 @@
  * Loads the gameplay session.
  */
 function loadGame() {
-    counter = 0;
+    skipCounter = 0;
     startingPoints = [];
     correctAnswers = [];
     usersAnswers = [];
@@ -416,10 +416,10 @@ function skipTrainAnimation(){
     $('#grid').click(function(){
 
         if(usersAnswers.length == numberOfTrains){
-            counter ++;
+            skipCounter ++;
         }
 
-        if (counter == 1 && $('.tileTrainClass').is(":animated")){
+        if (skipCounter == 1 && $('.tileTrainClass').is(":animated")){
             $('.tileTrainClass').finish();
             validateUserAnswers();
         }
@@ -469,7 +469,7 @@ function startTimer(seconds, container, gameOver) {
     };
 
     clock.restart = function(){
-        //stop and reset the timer
+        //stop and reset  the timer
         clearInterval(timer);
         ms = seconds * 1000;
         //reset the time shown on the play page
