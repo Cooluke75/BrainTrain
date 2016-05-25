@@ -21,6 +21,7 @@ html, body {
 	padding: 0;
 	text-align: center;
 	position:relative;
+    font-family: 'Fjalla One', sans-serif;
 }
 
 #container #headerTitle {
