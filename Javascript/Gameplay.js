@@ -552,7 +552,7 @@ function checkAchievement3(){
 
 function loadPopupBox() {
     window.counter = 4;
-    var timeID;
+    window.timeID;
     $('#popup_countdown').fadeIn("slow");
     $("#countDown").text("Ready?");
 
@@ -572,9 +572,9 @@ function loadPopupBox() {
 
 function unloadPopupBox() {
     $('#popup_countdown').fadeOut("slow");
-    
 }
 
 function hidePopup() {
     $('#popup_countdown').hide();
+    clearInterval(timeID);
 }
