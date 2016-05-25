@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="styles/leaderboard.css" type="text/css">
     <link rel="stylesheet" href="styles/SettingPage.css" type="text/css">
     <link rel="stylesheet" href="styles/GameoverScreen.css" type="text/css">
-    <link rel="stylesheet" href="styles/countDown.css" type="text/css">
-
 
     <!-- bootstrap css and jQuery for popup -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -43,7 +41,7 @@
     <div id ="panel" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons">
-            <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();loadPopupBox();clearScore()">Play</button>
+            <button type="button" class="btn btn-default" onclick="showHide('#playContainer', '#container');loadGame();timeResume()">Play</button>
             <button type="button" class="btn btn-default" onclick="showHide('#myCarousel', '#container')">Tutorial</button>
             <button type="button" id="leaderboardButton" class="btn btn-default" onclick="showHide('#leaderboardContainer','#container')">Leaderboard</button>
             <button type="button" class="btn btn-default" onclick="showHide('#settingContainer', '#container')">Settings</button>
@@ -84,7 +82,7 @@
 <div id="playContainer">
     <div id="playHeader">
         <h1>Level <span class="level">1</span></h1>
-        <button id="back-button" onclick="showHide('#container','#playContainer');clearScore();hideCountdown()">
+        <button id="back-button" onclick="showHide('#container','#playContainer');clearScore();$('.tileTrainClass').finish();">
             <img src="images/backbutton.png" width="35" height="35">
         </button>
         <div id="scoreShow"><p>Score:<span class="score">0</span></p></div>
@@ -95,9 +93,8 @@
     <div id="grid">
     </div>
     <div id="music">
-        <audio id="bgmusic" src="bgm/bg.mp3" controls>
-            <p>If you are reading this, it is because your browser does not support the background music.</p>
-        </audio>
+        <label>Sound: </label><div id="soundMuteBtn"></div>
+        <label>Music: </label><div id="musicMuteBtn"></div>
 
         <div class="creditsDiv"><a data-toggle="modal" data-target="#myModal" onclick="$('#myModal').show()">Credits</a></div>
     </div>
@@ -262,7 +259,7 @@
     <div id ="panel1" class="btn-group-vertical">
 
         <div class="btn-group-vertical" id = "buttons1">
-            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#gameover');clearScore();loadGame();loadPopupBox()">Play Again</button>
+            <button type="button" id="playagain" class="btn btn-default btn-lg" onclick="showHide('#playContainer','#gameover');clearScore();loadGame();timeResume()">Play Again</button>
             <button type="button" id="leaderboard1"class="btn btn-default btn-lg" onclick="saveScore();">Save score</button>
             <button type="button" id="menuButton" class="btn btn-default btn-lg" onclick="showHide('#container','#gameover');clearScore();loadGame()">Main Menu</button>
         </div>
@@ -290,11 +287,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<!--popup count down-->
-<div id="popup_countdown">
-    <h1 id="countDown"></h1>
 </div>
 
 <!--setting-->
