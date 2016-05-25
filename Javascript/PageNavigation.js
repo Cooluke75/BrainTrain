@@ -47,5 +47,5 @@ function levelProgress(levelComplete) {
 function gameOver(){
     showHide('#gameover','#playContainer')
     var achiTot = getStoredName('unlocked');
-    alert("You have unlocked: " + achiTot + " achievements.");
+    //alert("You have unlocked: " + achiTot + " achievements.");
 }

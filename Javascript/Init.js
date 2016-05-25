@@ -8,6 +8,7 @@ $(document).ready(function() {
 
     initAudio();
     loadGame();
+    
     window.myTime = startTimer(60, "timer", function() {gameOver();});
     myTime.pause();
 

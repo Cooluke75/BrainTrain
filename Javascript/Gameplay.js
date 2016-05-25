@@ -454,8 +454,9 @@ function startTimer(seconds, container, gameOver) {
     };
 
     clock.step = function() {
-        var now = Math.max(0, ms - (new Date().getTime() - startTime)),
-            m = Math.floor(now / 60000), s = Math.floor(now / 1000) % 60;
+        var now = Math.max(0, ms - (new Date().getTime() - startTime));
+        var m = Math.floor(now / 60000);
+        var s = Math.floor(now / 1000) % 60;
         s = (s < 10 ? "0" : "") + s;
         display.innerHTML = m + ":" + s;
         if(now == 0) {
@@ -473,7 +474,7 @@ function startTimer(seconds, container, gameOver) {
         m = Math.floor(ms / 60000);
         s = Math.floor(ms / 1000) % 60;
         s = (s < 10 ? "0" : "") + s;
-        display.innerHTML = m+":" + s;
+        display.innerHTML = m + ":" + s;
 
     };
 
@@ -501,7 +502,7 @@ function clearscoreCombo() {
 function checkAchievement1() {
     var achievement1 = getStoredName('achievement1');
     if (achievement1=='0') {
-        if (level > 5) {
+        if (level > 20) {
             storeName('achievement1', '1');
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
             storeName('unlocked',achievementNum);
@@ -519,7 +520,7 @@ function checkAchievement1() {
 function checkAchievement2() {
     var achievement2 = getStoredName('achievement2');
     if (achievement2=='0') {
-        if (totalScore > 100) {
+        if (totalScore > 3000) {
             storeName('achievement2', '1');
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
             storeName('unlocked',achievementNum);
@@ -545,4 +546,32 @@ function checkAchievement3(){
     else {
         return false;
     }
+}
+
+function loadPopupBox() {
+    var counter = 4;
+    var timeID;
+    $('#popup_countdown').fadeIn("slow");
+    $("#countDown").text("Ready?");
+
+    timeID = setInterval(function() {
+        counter--;
+        if(counter < 1) {
+            clearInterval(timeID);
+            $("#countDown").text("GO!!!");
+            unloadPopupBox();
+            timeResume();
+        } else {
+            $("#countDown").text(counter.toString());
+        }
+    }, 1000);
+
+}
+
+function unloadPopupBox() {
+    $('#popup_countdown').fadeOut("slow");
+}
+
+function hideCountdown() {
+    $('#popup_countdown').hide();
 }
