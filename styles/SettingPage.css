@@ -11,6 +11,7 @@ html, body {
 	padding: 0;
 	height: 100%;
 	width:100%;
+    font-family: 'Wallpoet', cursive;
 }
 
 #settingContainer #settingHeader {
@@ -19,6 +20,7 @@ html, body {
 	padding: 0;
 	text-align: center;
 	position:relative;
+	font-family: 'Press Start 2P', cursive;
 }
 
 #settingContainer #settingBack-button {
@@ -28,7 +30,6 @@ html, body {
 }
 
 #settingContainer #settingHeaderTitle {
-
 	position: absolute;
 	top: 0;
     bottom: 0;
@@ -39,7 +40,6 @@ html, body {
 	margin:auto;
 	text-align: center;
 	font-size: 4em;
-
 }
 
 #settingContainer #settingPanel {

@@ -22,25 +22,26 @@ html, body {
     padding: 0;
     text-align: center;
     position: relative;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #title {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    color:orangered;
+    color:floralwhite;
     position: absolute;
     top: 1em;
     bottom: 0;
-    left: 0;
+    left: 15%;
     right: 0;
-    width: 100%;
+    width: 70%;
     height: 80%;
     margin:auto;
-    text-align: center;
+    text-align: left;
     font-size: 4em;
     background-image: url('../images/Sonic.png');
     background-repeat: no-repeat;
     background-size:contain;
     background-position: 70%;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #panel1 {
@@ -61,6 +62,7 @@ html, body {
     margin:auto;
     margin-top: 4em;
     text-align: center;
+    font-family: 'Wallpoet', cursive;
 }
 
 #buttons1 button.btn {
@@ -80,8 +82,9 @@ html, body {
 }
 
 #finalscore1 {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Press Start 2P', cursive;
     position: absolute;
+    padding-top: 5%;
     top: -50%;
     bottom: 0;
     left: 0;
@@ -89,7 +92,7 @@ html, body {
     width: 100%;
     height: 20%;
     text-align: center;
-    font-size: 3.5em;
+    font-size: 2em;
 }
 
 #saveNamePopup .credits{

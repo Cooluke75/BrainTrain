@@ -6,8 +6,9 @@
     left: 35%;
     top: 10%;
     z-index:100;
-    color:red;
+    color:orangered;
     text-align: center;
+    font-family: 'Wallpoet', cursive;
 }
 
 #countDown {

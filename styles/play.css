@@ -11,6 +11,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+    font-family: 'Chango', cursive;
 }
 
 /*-------------------- playHeader --------------------*/
@@ -37,7 +38,7 @@ html, body {
 #playContainer #scoreShow {
 	position: fixed;
 	top: 0;
-	right: 20%;
+	right: 25%;
 	width: 15%;
 	height: 10%;
 	font-size:2vw;
@@ -49,7 +50,7 @@ html, body {
 	position: fixed;
 	top: 0;
 	right: 10%;
-	width: 10%;
+	width: 15%;
 	height: 10%;
 	font-size:2vw;
 	border: 1px solid red;
