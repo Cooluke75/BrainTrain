@@ -15,7 +15,10 @@ $(document).ready(function () {
     });
 });
 
-// Gets the user's top scores from the database and puts them in the my-scores table
+/**
+ * Gets the user's top scores from the database and puts them in the my-scores table.
+ * @param numberOfRecords
+ */
 function getUsersTopScores(numberOfRecords) {
     username = localStorage.userNameTS;
     // clear the my-scores table
@@ -45,13 +48,15 @@ function getUsersTopScores(numberOfRecords) {
     });
 }
 
-// Gets the top global scores from the database and puts them in the leaderboard table
+/**
+ * Gets the top global scores from the database and puts them in the leaderboard table.
+ * @param numberOfRecords
+ */
 function getGlobalLeaderboard(numberOfRecords) {
     username = localStorage.userNameTS;
     // clear the leaderboard table
     $('#leaderboard table tr:first-child').siblings().remove();
-
-
+    
     // get the top 10 global fields, ordered by score
     var query = '&f={"_id":0}&s={"score": -1}&l=' + numberOfRecords;
 
@@ -60,7 +65,12 @@ function getGlobalLeaderboard(numberOfRecords) {
         url: scoresTableURL + query,
         success: function (result) {
             for(i = 0; i < result.length; i++) {
-                var rankField = '<td>' + (i + 1) + '</td>';
+                // show a dash under the rank column for ties
+                if(i != 0 && result[i].score == result[i - 1].score) {
+                    var rankField = '<td>-</td>';
+                } else {
+                    var rankField = '<td>' + (i + 1) + '</td>';
+                }
                 var usernameField = '<td>' + result[i].username + '</td>';
                 var scoreField = '<td>' + result[i].score + '</td>';
                 var levelField = '<td>' + result[i].level + '</td>';
@@ -84,7 +94,10 @@ function getGlobalLeaderboard(numberOfRecords) {
     getUsersSingleBestScore(numberOfRecords);
 }
 
-// Get the user's single best score
+/**
+ * Gets the user's single best score.
+ * @param numberOfRecords
+ */
 function getUsersSingleBestScore(numberOfRecords) {
     // get the user's top score
     var query = '&q={"username": "' + username + '"}&f={"_id": 0}&s={"score": -1}&l=1';
@@ -139,7 +152,8 @@ function sendScoreToDatabase() {
     today = today.toISOString().substring(0, 10);
 
     //send the data
-    $.ajax( { url: "https://api.mlab.com/api/1/databases/braintrain/collections/scores?apiKey=SWfr016sOh1qeUqTCZuHb7O9IMMDgBby",
+    $.ajax({
+        url: scoresTableURL,
         data: JSON.stringify( { "username" : userNameToBeSent,"score":scoreToBeSent,"level":levelToBeSent,"date":today } ),
         type: "POST",
         contentType: "application/json",
@@ -147,6 +161,9 @@ function sendScoreToDatabase() {
             //refresh the score
             getUsersTopScores(10);
             getGlobalLeaderboard(10);
-        },}
-        );
+        },
+        error: function (xhr) {
+            console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+        }
+    });
 }
