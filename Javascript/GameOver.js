@@ -38,6 +38,7 @@ function saveNewUserScore() {
         //if user name is entered
         //use the function from settingPageSavingNameFunction to save it as a local variable.
         storeName("userNameTS", $("#gameoverUserName").val());
+        username = getStoredName("userNameTS");
         
         //hide the popup
         $("#saveNamePopup").modal("hide");

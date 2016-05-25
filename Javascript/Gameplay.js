@@ -513,6 +513,7 @@ function checkAchievement1() {
     if (achievement1=='0') {
         if (level > 20) {
             storeName('achievement1', '1');
+            
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
             storeName('unlocked',achievementNum);
             return true;

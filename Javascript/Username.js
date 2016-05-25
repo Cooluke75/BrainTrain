@@ -50,11 +50,13 @@ function getStoredName(key) {
 function saveUserName() {
     if($("#userName").val().trim() == ""){
         alert("Enter a valid name.");
-    } else if(isUniqueUsername($("#gameoverUserName").val())){
+    } else if(!isUniqueUsername($("#userName").val())){
         alert("This userName has already been taken.");
 
     } else {
         storeName("userNameTS", $("#userName").val());
+        username = getStoredName("userNameTS");
+        
         $('.input').attr('value','');
         var namekk = getStoredName("userNameTS");
         $('#showName').text(namekk);
@@ -113,11 +115,12 @@ function isUniqueUsername(username) {
     var isUnique = false;
 
     // check if there is an occurrence of the username
-    query = '&q={"username": '+ username + '}&c=true';
+    query = '&q={"username": "'+ username + '"}&c=true';
 
     $.ajax({
         url: usersTableURL + query,
         success: function (result) {
+            console.log(result);
             if (result > 0) {
                 isUnique = false;
             } else {
