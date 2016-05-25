@@ -454,8 +454,9 @@ function startTimer(seconds, container, gameOver) {
     };
 
     clock.step = function() {
-        var now = Math.max(0, ms - (new Date().getTime() - startTime)),
-            m = Math.floor(now / 60000), s = Math.floor(now / 1000) % 60;
+        var now = Math.max(0, ms - (new Date().getTime() - startTime));
+        var m = Math.floor(now / 60000);
+        var s = Math.floor(now / 1000) % 60;
         s = (s < 10 ? "0" : "") + s;
         display.innerHTML = m + ":" + s;
         if(now == 0) {
@@ -550,7 +551,7 @@ function checkAchievement3(){
 }
 
 function loadPopupBox() {
-    var counter = 4;
+    window.counter = 4;
     var timeID;
     $('#popup_countdown').fadeIn("slow");
     $("#countDown").text("Ready?");
@@ -571,5 +572,9 @@ function loadPopupBox() {
 
 function unloadPopupBox() {
     $('#popup_countdown').fadeOut("slow");
-    $('#popup_countdown').finish();
+    
+}
+
+function hidePopup() {
+    $('#popup_countdown').hide();
 }
