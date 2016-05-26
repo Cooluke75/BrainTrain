@@ -35,7 +35,7 @@ html, body {
     height: 30%;
 	margin:auto;
 	text-align: center;
-	font-size: 4em;
+	font-size: 300%;
 }
 
 #container #panel {
@@ -52,10 +52,10 @@ html, body {
     left: 0;
     right: 0;
     width: 70%;
-    height: 70%;
+    height: 90%;
 	margin:auto;
 	text-align: center;
-    font-size: 1.5em;
+    font-size: 150%;
     font-family: 'Wallpoet', cursive;
 }
 
@@ -64,7 +64,7 @@ html, body {
 	margin-right: auto;
 	margin-bottom: 5px;
 	width: 60%;
-	font-size: 1.3em;
+	font-size: 130%;
 }
 
 /*-------------------- credits page --------------------*/
