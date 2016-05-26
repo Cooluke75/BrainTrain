@@ -21,6 +21,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <!-- bootstrap css and jQuery for slider -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <!-- javascript files -->
     <script src="Javascript/PageNavigation.js"></script>
     <script src="Javascript/Globals.js"></script>
@@ -313,10 +317,10 @@
         <div id="allForm">
             <br>
             <div class = "item">
-                <label class="labelText">Sound: </label><input type="range" id="settingSounds" name="settingSounds" min="0" max="100" value="100" step="1">
+                <label class="labelText">Sound: </label><div id="settingSounds"></div>
             </div><br>
             <div class = "item">
-                <label class="labelText">Music: </label><input type="range" id="settingMusic" name="settingMusic" min="0" max="100" value="100" step="1">
+                <label class="labelText">Music: </label><div id="settingMusic"></div>
             </div><br>
             <!--
             <div class = "item" id ="afterSaving">Your name is <span id ="showName"></span>
