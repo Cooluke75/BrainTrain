@@ -107,6 +107,8 @@ function resizeGrid() {
     //position the buttons
     $('.destClick').css({top:tileWidth*((1-buttonFactor)/buttonFactor)});
     
+    
+    
 }
 
 /**

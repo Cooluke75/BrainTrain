@@ -114,10 +114,16 @@ html, body {
 	font-size: 3vw;
 }
 
+/*tiles under the starting-point trains*/
+#playContainer .tileTrainClassUn{
+	position: relative;
+}
+
+/*the train class*/
 #playContainer .tileTrainClass {
     background: url('../images/trainGif.gif') no-repeat center;
-    background-size: 7vw;
-    position: relative;
+    background-size:contain;
+    position: absolute;
     z-index: 100;
 }
 

@@ -25,9 +25,11 @@ function loadGame() {
 
     // place the trains at their starting positions
     startingPoints = getStartingPoints(difficultyTier, numberOfTrains);
-    for(i = 0; i < startingPoints.length; i++) {
-        placeTheTrain(startingPoints[i]);
-    }
+    //sort the array first
+    startingPoints.sort(function(a, b){return a-b});
+        placeTheTrain(startingPoints);
+
+    
 
     // determine the correct destinations
     correctAnswers = getCorrectAnswers(startingPoints);
@@ -137,28 +139,37 @@ function clearScore() {
  * @param startingPosition
  */
 function placeTheTrain(startingPosition){
-    var tileTrain = $('.tile:nth-of-type(' + (startingPosition * cols + 1) + ')');
-    tileTrain.addClass('tileTrainClass');
+    
+    for(i=0;i<startingPosition.length;i++) {
+        //find the tile underneath
+        var tileTrain = $('.tile:nth-of-type(' + (startingPosition[i] * cols + 1) + ')');
+        tileTrain.addClass('tileTrainClassUn');
+        //add a div on top of the tile
+        tileTrain.append('<div class="tileTrainClass" id="tileTrainClass'+ i + '"></div>');
+        
+    }
+    //set the width and height
+   $('.tileTrainClass').css({top:$('.tile').width()*(1-trainSizeF)/2*trainUP,left:$('.tile').width()*(1-trainSizeF)/2,width:$('.tile').width()*trainSizeF,height:$('.tile').width()*trainSizeF,});
 
     /* easter egg function */
     $(function() {
         $('.modal-title').click(function() {
-            tileTrain.css("background-image", "url(images/train.png)");
+            $('.tileTrainClass').css("background-image", "url(images/train.png)");
         });
         $('#kabirCplay').click(function() {
-            tileTrain.css("background-image", "url(images/KabirCahill.jpg)");
+            $('.tileTrainClass').css("background-image", "url(images/KabirCahill.jpg)");
         });
         $('#kentHplay').click(function() {
-            tileTrain.css("background-image", "url(images/KentHuang.jpg)");
+            $('.tileTrainClass').css("background-image", "url(images/KentHuang.jpg)");
         });
         $('#lukeLplay').click(function() {
-            tileTrain.css("background-image", "url(images/LukeLee.jpg)");
+            $('.tileTrainClass').css("background-image", "url(images/LukeLee.jpg)");
         });
         $('#ericLplay').click(function() {
-            tileTrain.css("background-image", "url(images/EricLin.jpg)");
+            $('.tileTrainClass').css("background-image", "url(images/EricLin.jpg)");
         });
         $('#rogerZplay').click(function() {
-            tileTrain.css("background-image", "url(images/RogerZhang.jpg)");
+            $('.tileTrainClass').css("background-image", "url(images/RogerZhang.jpg)");
             var check3 = checkAchievement3();
             if (check3 == true) {
                 alert("Congratulations! You have unlocked an achievement!!!");
@@ -166,6 +177,8 @@ function placeTheTrain(startingPosition){
         });
     });
 }
+
+
 
 /**
  * Animates the train to move to its final destination.
@@ -179,7 +192,8 @@ function moveTheTrain(trainNum, callbackFunction) {
         var condition = "horizontal";
         var nextX = 0;
         var nextY = trainNum[i];
-        train[i] = $('.tile:nth-of-type(' + (trainNum[i] * cols + 1) + ')');
+        //select the train
+        train[i] = $('#tileTrainClass' + i);
         var tileTrain = train[i];
         move();
     }
@@ -207,19 +221,19 @@ function moveTheTrain(trainNum, callbackFunction) {
             switch(nextY) {
                 case 0:
                     while(track[nextY + 1][nextX] === false && nextX < cols) {
-                        tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'}, speed);
+                        tileTrain.animate({left: '+=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
                         nextX++;
                     }
                     break;
                 case 8:
                     while(track[nextY - 1][nextX] === false && nextX < cols) {
-                        tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'}, speed);
+                        tileTrain.animate({left: '+=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
                         nextX++;
                     }
                     break;
                 default:
                     while(track[nextY + 1][nextX] === false && track[nextY - 1][nextX] === false && nextX < cols) {
-                        tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'}, speed);
+                        tileTrain.animate({left: '+=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
                         nextX++;
                     }
                     break;
@@ -238,11 +252,11 @@ function moveTheTrain(trainNum, callbackFunction) {
 
         if(condition == "downVertical") {
             while(nextY != 8 && track[nextY + 1][nextX] == true && nextY < rows) {
-                tileTrain.animate({top: '+=' + tileTrain.outerWidth() + 'px'}, speed);
+                tileTrain.animate({top: '+=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
                 nextY++;
 
             }
-            tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'}, speed);
+            tileTrain.animate({left: '+=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
             nextX++;
             condition = "horizontal";
             move();
@@ -251,11 +265,11 @@ function moveTheTrain(trainNum, callbackFunction) {
         if(condition == "upVertical") {
 
             while(nextY != 0 && track[nextY - 1][nextX] == true && nextY > 0) {
-                tileTrain.animate({top: '-=' + tileTrain.outerWidth() + 'px'}, speed);
+                tileTrain.animate({top: '-=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
                 nextY--;
             }
 
-            tileTrain.animate({left: '+=' + tileTrain.outerWidth() + 'px'}, speed);
+            tileTrain.animate({left: '+=' + tileTrain.outerWidth()/trainSizeF + 'px'}, speed);
             nextX++;
             condition = "horizontal";
             move();

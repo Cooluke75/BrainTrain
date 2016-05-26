@@ -20,7 +20,6 @@ $(document).ready(function () {
  * @param numberOfRecords
  */
 function getUsersTopScores(numberOfRecords) {
-    username = localStorage.userNameTS;
     // clear the my-scores table
     $('#my-scores table tr:first-child').siblings().remove();
 
@@ -53,7 +52,6 @@ function getUsersTopScores(numberOfRecords) {
  * @param numberOfRecords
  */
 function getGlobalLeaderboard(numberOfRecords) {
-    username = localStorage.userNameTS;
     // clear the leaderboard table
     $('#leaderboard table tr:first-child').siblings().remove();
     
