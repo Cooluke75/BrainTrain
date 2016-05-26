@@ -516,6 +516,24 @@ function checkAchievement1() {
             
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
             storeName('unlocked',achievementNum);
+
+            //update the achievement1 data to the database
+            var queryA1 = '&q={"username": "' + username + '"}';
+            $.ajax({
+                url: usersTableURL + queryA1,
+                data: JSON.stringify( { "$set" : { "achievement1" : '1', 'unlocked': getStoredName('unlocked')} } ),
+                type: "PUT",
+                contentType: "application/json",
+                success: function(){
+                    // Notify user that achievemnt has been saved
+                    console.log("achievement1 sent.");
+                },
+                error: function (xhr) {
+                    console.log("achievement1 Not sent.");
+                }
+            });
+
+
             return true;
         }
         else {
@@ -534,6 +552,23 @@ function checkAchievement2() {
             storeName('achievement2', '1');
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
             storeName('unlocked',achievementNum);
+
+            //update the achievement2 data to the database
+            var queryA2 = '&q={"username": "' + username + '"}';
+            $.ajax({
+                url: usersTableURL + queryA2,
+                data: JSON.stringify( { "$set" : { "achievement2" : '1', 'unlocked': getStoredName('unlocked')} } ),
+                type: "PUT",
+                contentType: "application/json",
+                success: function(){
+                    // Notify user that achievemnt has been saved
+                    console.log("achievement2 sent.");
+                },
+                error: function (xhr) {
+                    console.log("achievement2 Not sent.");
+                }
+            });
+            
             return true;
         }
         else {
@@ -551,6 +586,23 @@ function checkAchievement3(){
         storeName('achievement3', '1');
         achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
         storeName('unlocked',achievementNum);
+
+        //update the achievement1 data to the database
+        var queryA3 = '&q={"username": "' + username + '"}';
+        $.ajax({
+            url: usersTableURL + queryA3,
+            data: JSON.stringify( { "$set" : { "achievement3" : '1', 'unlocked': getStoredName('unlocked')} } ),
+            type: "PUT",
+            contentType: "application/json",
+            success: function(){
+                // Notify user that achievemnt has been saved
+                console.log("achievement3 sent.");
+            },
+            error: function (xhr) {
+                console.log("achievement3 Not sent.");
+            }
+        });
+        
         return true;
     }
     else {
