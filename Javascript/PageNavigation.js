@@ -20,7 +20,7 @@ function showHide(idShow, idHide) {
  */
 function levelProgress(levelComplete) {
     if (levelComplete) {
-        showHide('#level-screen', '#playContainer');
+        pausePopup('#level-screen');
         level++;
         
         //achievement1
@@ -37,7 +37,7 @@ function levelProgress(levelComplete) {
             }
         }
     } else {
-        showHide('#level-screen-fail', '#playContainer');
+        pausePopup('#level-screen-fail');
     }
 }
 
@@ -48,4 +48,13 @@ function gameOver(){
     showHide('#gameover','#playContainer')
     var achiTot = getStoredName('unlocked');
     alert("You have unlocked: " + achiTot + " achievements.");
+}
+
+/**
+ * Shows popup page, specially for level pausing page.
+ * @param idShow the id of the element to show
+ */
+function pausePopup(idShow) {
+    $(idShow).addClass("in");
+    $(idShow).show("fast");
 }
