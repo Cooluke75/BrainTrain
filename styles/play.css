@@ -122,6 +122,9 @@ html, body {
 	position:absolute;
 	top:0px;
 	left:0px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 }
 
 #playContainer .destButton .destClick:hover {

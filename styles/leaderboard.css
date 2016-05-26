@@ -39,9 +39,7 @@ html, body {
 /*--- switch tab between local and global leaderboard ---*/
 #leaderboardContainer ul.nav {
     display: inline-block;
-    position: fixed;
-    top: 0;
-    right: 0;
+    margin: auto;
 }
 
 #leaderboardContainer .nav-pills a {
