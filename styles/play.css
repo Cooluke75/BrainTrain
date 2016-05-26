@@ -88,6 +88,7 @@ html, body {
 	margin: 0;
 }
 
+/*---- images referenced and edited from http://hdimagelib.com/train+track+clipart ----*/
 #playContainer .track {
     background-image: url('../images/track_horizontal.png');
     background-size: 100%;
@@ -126,7 +127,7 @@ html, body {
 	position: relative;
 }
 
-/*bigger buttons*/
+/*-------------------- bigger buttons --------------------*/
 #playContainer .destButton .destClick{
 	background-color: white;
 	position:absolute;
