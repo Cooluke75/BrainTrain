@@ -99,6 +99,16 @@ html, body {
     transform: rotate(90deg);
 }
 
+#playContainer .cross-track-top {
+	background-image: url('../images/track_intersection_top.png');
+	background-size: 100%;
+}
+
+#playContainer .cross-track-bot {
+	background-image: url('../images/track_intersection_bot.png');
+	background-size: 100%;
+}
+
 #playContainer #grid .tile {
 	font-size: 3vw;
 }

@@ -21,6 +21,7 @@ function buildGrid() {
         for(j = 0; j < cols; j++) {
             var trackClass = '';
             var vertTrackClass = '';
+            var crossTrackClass = '';
             var buttonClass = '';
             var buttonId = '';
 
@@ -34,6 +35,17 @@ function buildGrid() {
                     vertTrackClass = '';
                 }
 
+                //the tile is at an intersection
+                if (i < rows - 1 && track[i + 1][j] && track[i][j + 1]) {
+                    trackClass = '';
+                    crossTrackClass = ' cross-track-top';
+                } else if (i > 0 && track[i - 1][j] && track[i][j + 1]) {
+                    trackClass = '';
+                    crossTrackClass = ' cross-track-bot';
+                } else {
+                    crossTrackClass = '';
+                }
+
                 // the tile is a button to choose a train's destination
                 if (j == cols - 1) {
                     buttonClass = ' destButton';
@@ -42,7 +54,7 @@ function buildGrid() {
                     buttonClass = '';
                 }
             }
-            grid.append('<div class="tile'+ trackClass + vertTrackClass + buttonClass + '"' + buttonId +'></div>');
+            grid.append('<div class="tile'+ trackClass + vertTrackClass + buttonClass + crossTrackClass + '"' + buttonId +'></div>');
         }
     }
     //put the bigger buttons on top of the destination buttons
