@@ -47,6 +47,8 @@ function saveNewUserScore() {
                     //use the function from settingPageSavingNameFunction to save it as a local variable.
                     storeName("userNameTS", newUsername);
                     username = getStoredName("userNameTS");
+                    // add the new user to the users table in the database
+                    sendUsernameToDatabase(username);
 
                     //hide the popup
                     $("#saveNamePopup").modal("hide");

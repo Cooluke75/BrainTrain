@@ -56,7 +56,9 @@ function hideNotif(){
 function saveUserName() {
     var newUsername = $("#userName").val().trim();
 
-    if(newUsername == ""){
+    if(newUsername == username) {
+        // do nothing: the user hasn't entered an different name
+    } else if(newUsername == ""){
         $("#notif").text("Enter a valid name.");
         $("#notif").show();
     } else {
@@ -66,18 +68,22 @@ function saveUserName() {
         $.ajax({
             url: usersTableURL + query,
             success: function (result) {
-                console.log("Result: " + result + " users with this username.");
+                console.log("Query result: " + result + " users with the username " + newUsername);
                 if (result > 0) {
-                    $("#notif").text("This username has already been taken.");
+                    $("#notif").text(newUsername + " has already been taken.");
                     $("#notif").show();
                 } else {
-
+                    // username has not been set locally
+                    if(getStoredName("userNameTS") === null) {
+                        sendUsernameToDatabase(newUsername);
+                    } else {
+                        // update the database to the new username
+                        changeUsernameOnDatabase(username, newUsername);
+                    }
 
                     storeName("userNameTS", newUsername);
                     username = getStoredName("userNameTS");
-                    // show notification.
-                    $("#notif").text( username + " saved.");
-                    $("#notif").show();
+
 
                   //  $('.input').attr('value','');
                   //  var namekk = getStoredName("userNameTS");
@@ -128,11 +134,20 @@ function sendUsernameToDatabase(username) {
     //send the data
     $.ajax({
         url: usersTableURL,
-        data: JSON.stringify( { "username" : username, "title": titleToBeSent } ),
+        data: JSON.stringify({
+            "username" : username,
+            "title": titleToBeSent,
+            'achievement1': getStoredName('achievement1'),
+            'achievement2': getStoredName('achievement2'),
+            'achievement3': getStoredName('achievement3'),
+            'unlocked': getStoredName('unlocked')
+        }),
         type: "POST",
         contentType: "application/json",
         success: function(){
-            // Notify user that their username has been saved <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            // Notify user that their username has been saved
+            $("#notif").text( username + " saved.");
+            $("#notif").show();
         },
         error: function (xhr) {
             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
@@ -141,29 +156,26 @@ function sendUsernameToDatabase(username) {
 }
 
 /**
- * Checks if the username given is unique (i.e. it doesn't exist in the database).
+ * Updates the database with the user's new username.
+ * @param oldUsername
+ * @param newUsername
  */
-// function isUniqueUsername(username) {
-//     var isUnique = false;
-//
-//     // check if there is an occurrence of the username
-//     var query = '&q={"username": "'+ username + '"}&c=true';
-//
-//     $.ajax({
-//         url: usersTableURL + query,
-//         async: false,
-//         success: function (result) {
-//             console.log("Result: " + result + " users with this username.");
-//             if (result > 0) {
-//                 isUnique = false;
-//             } else {
-//                 isUnique = true;
-//             }
-//
-//             return isUnique;
-//         },
-//         error: function (xhr) {
-//             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
-//         }
-//     });
-// }
+function changeUsernameOnDatabase(oldUsername, newUsername) {
+    var query = '&q={"username": "' + oldUsername + '"}';
+
+    $.ajax({
+        url: usersTableURL + query,
+        data: JSON.stringify( { "$set" : { "username" : newUsername } } ),
+        type: "PUT",
+        contentType: "application/json",
+        success: function(){
+            // Notify user that their username has been saved
+            $("#notif").text( newUsername + " saved.");
+            $("#notif").show();
+        },
+        error: function (xhr) {
+            console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+        }
+    });
+
+}
