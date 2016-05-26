@@ -18,16 +18,31 @@ function initAudio() {
     bgMusic.play();
 
 	//set range input reference
-	soundSlider = document.getElementById('settingSounds');
-	musicSlider = document.getElementById('settingMusic');
+	//soundSlider = document.getElementById('settingSounds');
+	//musicSlider = document.getElementById('settingMusic');
 
     //set button reference in gameplay
 	soundMuteBtn = document.getElementById('soundMuteBtn');
 	musicMuteBtn = document.getElementById('musicMuteBtn');
 
     //add event connecting range control to music
-	soundSlider.addEventListener("mousemove", setSoundVolume);
-    musicSlider.addEventListener("mousemove", setBgmVolume);
+	//soundSlider.addEventListener("mousemove", setSoundVolume);
+    //musicSlider.addEventListener("mousemove", setBgmVolume);
+    $('#settingSounds').slider({
+        value: 100,
+        step: 1,
+        slide: function(event, ui) {
+            soundEffect.volume = ui.value / 100;
+        }
+    });
+
+    $('#settingMusic').slider({
+        value: 100,
+        step: 1,
+        slide: function(event, ui) {
+            bgMusic.volume = ui.value / 100;
+        }
+    });
 
     //add event to mute buttons in gameplay
     soundMuteBtn.addEventListener("click", soundMute);
@@ -36,18 +51,19 @@ function initAudio() {
 
 /**
  * Controls the sound effect volume
- */
+ *
 function setSoundVolume() {
 	soundEffect.volume = soundSlider.value / 100;
 }
+*/
 
 /**
  * Controls the background music volume
- */
+ *
 function setBgmVolume() {
 	bgMusic.volume = musicSlider.value / 100;
 }
-
+*/
 
 /**
  * Turn mute on and off for sound effect during gameplay.
