@@ -17,13 +17,13 @@ html, body {
 /*-------------------- playHeader --------------------*/
 #playHeader {
 	height: 10%;
-	margin-bottom: 1em;
+	margin-bottom: 2vw;
 	padding: 0;
 	text-align: center;
 }
 
 #playContainer #playHeader  h1{
-	font-size: 1.5em;
+	font-size: 3vw;
 	display: inline-block;
 	padding: 0;
 	margin: 10px auto;
@@ -42,7 +42,7 @@ html, body {
 	width: 15%;
 	height: 10%;
 	font-size:2vw;
-	border: 1px solid red;
+	border: 0.1vw solid red;
 
 }
 
@@ -53,7 +53,7 @@ html, body {
 	width: 15%;
 	height: 10%;
 	font-size:2vw;
-	border: 1px solid red;
+	border: 0.1vw solid red;
 
 }
 
@@ -64,7 +64,7 @@ html, body {
 	width: 10%;
 	height: 10%;
 	font-size:2vw;
-	border: 1px solid red;
+	border: 0.1vw solid red;
 }
 
 /*-------------------- game board --------------------*/
@@ -75,7 +75,7 @@ html, body {
 	margin: auto;
 	padding: 0;
 	text-align: center;
-	border: 0px solid red;
+	border: 0 solid red;
 }
 
 /*--- Reset font-size for descendants of grid ---*/
@@ -100,12 +100,12 @@ html, body {
 }
 
 #playContainer #grid .tile {
-	font-size: 10px;
+	font-size: 3vw;
 }
 
 #playContainer .tileTrainClass {
-    background-image: url('../images/train.png');
-    background-size: 100%;
+    background: url('../images/trainGif.gif') no-repeat center;
+    background-size: 7vw;
     position: relative;
     z-index: 100;
 }
@@ -120,8 +120,8 @@ html, body {
 #playContainer .destButton .destClick{
 	background-color: white;
 	position:absolute;
-	top:0px;
-	left:0px;
+	top:0;
+	left:0;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
