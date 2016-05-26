@@ -113,13 +113,22 @@ html, body {
 /*-------------------- destination button --------------------*/
 #playContainer .destButton {
     background-color: white;
+	position: relative;
 }
 
-#playContainer .destButton:hover {
+/*bigger buttons*/
+#playContainer .destButton .destClick{
+	background-color: white;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#playContainer .destButton .destClick:hover {
 	background: yellow;
 }
 
-#playContainer .destButton:active {
+#playContainer .destButton .destClick:active {
 	background: blue;
 }
 

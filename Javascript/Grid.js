@@ -45,6 +45,14 @@ function buildGrid() {
             grid.append('<div class="tile'+ trackClass + vertTrackClass + buttonClass + '"' + buttonId +'></div>');
         }
     }
+    //put the bigger buttons on top of the destination buttons
+    for(i = 0; i < rows; i++) {
+        if(track[i][0]){
+            $('#button' + i).append('<button type="button" id="topButton' + i + '"class="destClick"></button>');
+        }
+    }
+      
+    
 }
 
 /**
@@ -77,6 +85,16 @@ function resizeGrid() {
     // adjust the grid's width and height
     grid.width(tileWidth * cols + 1);
     grid.height(tileHeight * rows + 1);
+
+    //make the buttons bigger
+    var buttonFactor = 1.5;
+    //set the width and height of the buttons
+    $('.destClick').outerWidth(tileWidth * buttonFactor);
+    $('.destClick').outerHeight(tileWidth * buttonFactor);
+
+    //position the buttons
+    $('.destClick').css({top:tileWidth*((1-buttonFactor)/buttonFactor)});
+    
 }
 
 /**

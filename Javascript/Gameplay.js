@@ -42,7 +42,7 @@ function loadGame() {
  */
 function processUserInput() {
     // the user has chosen a destination
-    $('.destButton').click(function (e) {
+    $('.destClick').click(function (e) {
         
         //make sure the counterDown runs first
         if(counter==0) {
