@@ -95,6 +95,21 @@ html, body {
     font-size: 3vw;
 }
 
+#saveNamePopup{
+    margin:auto;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+#gameoverSave{
+    font-weight:bold;
+    border:1px solid black;
+}
+
+#saveNamePopup #gameoverNotifi{
+    font-weight:bold;
+}
 #saveNamePopup .credits{
     margin: auto;
     text-align: center;
@@ -103,4 +118,5 @@ html, body {
 #saveNamePopup #gameoverUserName{
     margin-left:5px;
     width:45%;
+    border:0.5px solid black;
 }

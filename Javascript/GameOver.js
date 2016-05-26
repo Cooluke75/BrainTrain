@@ -32,7 +32,7 @@ function saveNewUserScore() {
     
     //check if it is an empty name
     if(newUsername == ""){
-        alert("Enter a valid name.");
+        $('#gameoverNotifi').text("Enter a valid name.");
     } else {
         // check if there is an occurrence of the username
         var query = '&q={"username": "'+ newUsername + '"}&c=true';
@@ -42,13 +42,15 @@ function saveNewUserScore() {
             success: function (result) {
                 console.log("Result: " + result + " users with this username.");
                 if (result > 0) {
-                    alert("This userName has already been takennnnnnnn33333.");
+                    $('#gameoverNotifi').text("This userName has already been takennnnnnnn33333.");
                 } else {
                     //use the function from settingPageSavingNameFunction to save it as a local variable.
                     storeName("userNameTS", newUsername);
                     username = getStoredName("userNameTS");
                     // add the new user to the users table in the database
                     sendUsernameToDatabase(username);
+
+                    $('#gameoverNotifi').text("Saved");
 
                     //hide the popup
                     $("#saveNamePopup").modal("hide");
