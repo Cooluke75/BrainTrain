@@ -152,6 +152,12 @@ html, body {
 }
 
 /*-------------------- sound and music mute buttons --------------------*/
+#music {
+	/*position: fixed;*/
+	left: 0;
+	bottom: 0;
+}
+
 #playContainer #soundMuteBtn,
 #playContainer #musicMuteBtn {
 	width: 30px;
@@ -160,4 +166,9 @@ html, body {
 	display: inline-block;
 	background-image: url(../images/speaker_on.png);
 	background-size: 100%;
+}
+
+/*-------------------- credits page link --------------------*/
+#music .creditsDiv {
+	margin: auto;
 }
