@@ -28,7 +28,7 @@ html, body {
 #title {
     color:floralwhite;
     position: absolute;
-    top: 1em;
+    top: 70%;
     bottom: 0;
     left: 15%;
     right: 0;
@@ -36,7 +36,7 @@ html, body {
     height: 80%;
     margin:auto;
     text-align: left;
-    font-size: 4em;
+    font-size: 4vw;
     background-image: url('../images/Sonic.png');
     background-repeat: no-repeat;
     background-size:contain;
@@ -60,7 +60,7 @@ html, body {
     width: 81%;
     height: 80%;
     margin:auto;
-    margin-top: 4em;
+    margin-top: 7vw;
     text-align: center;
     font-family: 'Wallpoet', cursive;
 }
@@ -71,7 +71,7 @@ html, body {
     margin-top: 2%;
     width: 60%;
     height: 20%;
-    font-size: 1.5em;
+    font-size: 3vw;
 }
 
 #finalscore {
@@ -92,9 +92,24 @@ html, body {
     width: 100%;
     height: 20%;
     text-align: center;
-    font-size: 2em;
+    font-size: 3vw;
 }
 
+#saveNamePopup{
+    margin:auto;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+#gameoverSave{
+    font-weight:bold;
+    border:1px solid black;
+}
+
+#saveNamePopup #gameoverNotifi{
+    font-weight:bold;
+}
 #saveNamePopup .credits{
     margin: auto;
     text-align: center;
@@ -103,4 +118,5 @@ html, body {
 #saveNamePopup #gameoverUserName{
     margin-left:5px;
     width:45%;
+    border:0.5px solid black;
 }

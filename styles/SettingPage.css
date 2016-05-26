@@ -16,7 +16,7 @@ html, body {
 
 #settingContainer #settingHeader {
 	height: 20%;
-	margin-bottom: 1em;
+	margin-bottom: 4vw;
 	padding: 0;
 	text-align: center;
 	position:relative;
@@ -39,7 +39,7 @@ html, body {
     height: 30%;
 	margin:auto;
 	text-align: center;
-	font-size: 300%;
+	font-size: 6vw;
 }
 
 #settingContainer #settingPanel {
@@ -69,15 +69,15 @@ html, body {
 	margin-right: auto;
 	width:80%;
 	text-align: center;
-	font-size: 150%;
+	font-size: 4vw;
 	height: 15%;
 	
 }
 
 #settingContainer .item label.labelText {
-	margin-right: 20px ;
+	margin-right: 0.5vw;
 	position: relative;
-	bottom:5px;
+	bottom: 0.5vw;
 }
 
 #settingContainer #settingMusic,
@@ -95,7 +95,7 @@ html, body {
 #settingContainer .settingCreditsDiv {
     display: inline-block;
     position: absolute;
-    right: 0px;
+    right: 0;
     width: 10%;
 }
 
@@ -106,7 +106,7 @@ html, body {
 }
 
 #settingContainer input[type="text"]{
-	margin-left:5px;
+	margin-left: 0.5vw;
 	width:45%;
 }
 
