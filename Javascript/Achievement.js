@@ -25,6 +25,7 @@ function getAchievement() {
     } else {
         $('#leaderBoardAchievement3').hide();
     }
+    checkTitle();
     
 }
 
@@ -38,3 +39,20 @@ $(document).ready(function () {
         getAchievement();
     });
 });
+
+function checkTitle() {
+    var achiNum = getStoredName("unlocked");
+    if (achiNum == 0){
+        $('#titleName').text('Novice');
+    }
+    if (achiNum == 1){
+        $('#titleName').text('Pro');
+    }
+    if (achiNum == 2){
+        $('#titleName').text('Expert');
+    }
+    if (achiNum == 3){
+        $('#titleName').text('Master');
+    }
+
+}
