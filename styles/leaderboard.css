@@ -57,14 +57,11 @@ html, body {
     max-height: 100%;
     margin: auto;
 }
+
 #leaderboardContainer #my-scores tr:first-of-type, #leaderboard tr:first-of-type {
     color: #ffffff;
     background-color: #337ab7;
 }
-
-/*#leaderboardContainer #leaderboard table tr:nth-of-type(2) {
-    font-weight: bold;
-}*/
 
 #leaderboardContainer #leaderboard tr.user-score {
     font-weight: bold;

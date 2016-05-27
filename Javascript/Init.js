@@ -20,10 +20,6 @@ $(document).ready(function() {
     $("#playContainer").hide();
     $("#gameover").hide();
     $("#achievement3").hide();
-    
-    
-    
-
 
     if(getStoredName("userNameTS") == null){
         //everytime refresh initializes this
@@ -37,10 +33,8 @@ $(document).ready(function() {
         //update data from the database when our program is loaded.
         $.ajax({
             //get only one document
-
             url: usersTableURL + queryInit,
             success: function (result) {
-
                 
                     var achievement1 = result[0].achievement1;
                     var achievement2 = result[0].achievement2;

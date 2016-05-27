@@ -34,9 +34,7 @@ function loadGame() {
     // determine the correct destinations
     correctAnswers = getCorrectAnswers(startingPoints);
 
-        processUserInput();
-
-    
+    processUserInput();
 }
 
 /**
@@ -155,7 +153,7 @@ function placeTheTrain(startingPosition){
     //set the width and height, and position
    $('.tileTrainClass').css({top:$('.tile').width()*(1-trainSizeF)/2*trainUP,left:$('.tile').width()*(1-trainSizeF)/2*trainLeft,width:$('.tile').width()*trainSizeF,height:$('.tile').width()*trainSizeF,});
 
-    /* easter egg function */
+    //easter egg function
     $(function() {
         $('.modal-title').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/train.png)");
@@ -559,7 +557,7 @@ function checkAchievement1() {
                 type: "PUT",
                 contentType: "application/json",
                 success: function(){
-                    // Notify user that achievemnt has been saved
+                    //Notify user that achievemnt has been saved
                     console.log("achievement1 sent.");
                 },
                 error: function (xhr) {
@@ -629,7 +627,7 @@ function checkAchievement3(){
             type: "PUT",
             contentType: "application/json",
             success: function(){
-                // Notify user that achievemnt has been saved
+                //Notify user that achievemnt has been saved
                 console.log("achievement3 sent.");
             },
             error: function (xhr) {

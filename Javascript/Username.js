@@ -83,13 +83,6 @@ function saveUserName() {
 
                     storeName("userNameTS", newUsername);
                     username = getStoredName("userNameTS");
-
-
-                  //  $('.input').attr('value','');
-                  //  var namekk = getStoredName("userNameTS");
-                 //   $('#showName').text(namekk);
-                   // $("#savingUserName").hide();
-                  //  $("#afterSaving").show();
                 }
             },
             error: function (xhr) {
@@ -104,21 +97,11 @@ function saveUserName() {
  */
 function changeTheName() {
     alert("The local leaderboard will be erased.");
-    //deleteName("userNameTS");
-  //  $("#afterSaving").hide();
     $("#savingUserName").show();
 }
 
 $(document).ready(function() {
-    /**if(getStoredName("userNameTS")){
-        $("#savingUserName").hide();
-        $('#showName').text(getStoredName("userNameTS"));
-    } else {
-        $("#afterSaving").hide();
-    }
-     $("#save").click(saveUserName);
-     $("#change").click(changeTheName);
-     */
+
     $("#afterSaving").hide();
     $("#save").click(saveUserName);
 
@@ -177,5 +160,4 @@ function changeUsernameOnDatabase(oldUsername, newUsername) {
             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
         }
     });
-
 }
