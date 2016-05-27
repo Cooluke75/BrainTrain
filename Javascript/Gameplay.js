@@ -156,7 +156,7 @@ function placeTheTrain(startingPosition){
     //easter egg function
     $(function() {
         $('.modal-title').click(function() {
-            $('.tileTrainClass').css("background-image", "url(images/train.png)");
+            $('.tileTrainClass').css("background-image", "url(images/trainGif.gif)");
         });
         $('#kabirCplay').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/KabirCahill.jpg)");

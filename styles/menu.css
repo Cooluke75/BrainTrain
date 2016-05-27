@@ -7,10 +7,7 @@ html, body {
 
 /*-------------------- menu container --------------------*/
 #container {
-	/*background-color: #aaa;*/
-    /*background-image: url('../images/Menu2.gif');*/
     background-repeat: no-repeat;
-    /*background-position: bottom right;*/
     background-size: cover;
 	background: #2c9eea; /* Old browsers */
 	background: -moz-linear-gradient(-45deg, #2c9eea 35%, #7db9e8 68%, #7db9e8 68%, #1e5799 100%); /* FF3.6-15 */
@@ -19,7 +16,6 @@ html, body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9eea', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     height: 100%;
 	width:100%;
-    /*background-image: url('../images/MenuBackground.gif');*/
 }
 
 /*-------------------- menu header --------------------*/
