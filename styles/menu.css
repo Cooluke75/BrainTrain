@@ -106,7 +106,8 @@ html, body {
 .carousel-caption p {
 	font-size: 2vw;
     font-family: 'Chango', cursive;
-	color:lightskyblue;
+    color: #FFFFFF;
+    background-color: rgba(0,0,0,0.4);
 }
 
 /*--------------------- Menu gif ------------------------*/
