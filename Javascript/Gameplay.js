@@ -106,9 +106,12 @@ function processUserInput() {
                     //achievement2
                     var check2 = checkAchievement2();
                     $("#achievement2").css("display", "none");
+                    $("#achievement5").css("display", "none");
+
                     if(check2==true)
                     {
                         $("#achievement2").css("display", "inline-block");
+                        $("#achievement5").css("display", "inline-block");
                     }
 
                     moveTheTrain(startingPoints, validateUserAnswers);

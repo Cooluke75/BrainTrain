@@ -177,7 +177,9 @@ html, body {
 */
 
 #achievement1,
-#achievement2{
+#achievement2,
+#achievement4,
+#achievement5{
     display:none;
     position:fixed;
     width:18%;
