@@ -149,8 +149,8 @@ function placeTheTrain(startingPosition){
         tileTrain.append('<div class="tileTrainClass" id="tileTrainClass'+ i + '"></div>');
         
     }
-    //set the width and height
-   $('.tileTrainClass').css({top:$('.tile').width()*(1-trainSizeF)/2*trainUP,left:$('.tile').width()*(1-trainSizeF)/2,width:$('.tile').width()*trainSizeF,height:$('.tile').width()*trainSizeF,});
+    //set the width and height, and position
+   $('.tileTrainClass').css({top:$('.tile').width()*(1-trainSizeF)/2*trainUP,left:$('.tile').width()*(1-trainSizeF)/2*trainLeft,width:$('.tile').width()*trainSizeF,height:$('.tile').width()*trainSizeF,});
 
     /* easter egg function */
     $(function() {
