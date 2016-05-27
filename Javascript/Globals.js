@@ -21,5 +21,8 @@ var username = localStorage.userNameTS;
 var combo = 0;
 var achievementNum = 0;
 var counter = 4;
+//size of the train
 var trainSizeF = 2.5;
+//position of the train
 var trainUP = 1.5;
+var trainLeft = 2;
