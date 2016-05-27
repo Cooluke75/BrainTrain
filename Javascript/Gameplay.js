@@ -105,9 +105,10 @@ function processUserInput() {
 
                     //achievement2
                     var check2 = checkAchievement2();
+                    $("#achievement2").css("display", "none");
                     if(check2==true)
                     {
-                        alert("You have unlocked achievement for getting 3000+ points!!!");
+                        $("#achievement2").css("display", "inline-block");
                     }
 
                     moveTheTrain(startingPoints, validateUserAnswers);
@@ -158,21 +159,37 @@ function placeTheTrain(startingPosition){
         });
         $('#kabirCplay').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/KabirCahill.jpg)");
+            var check3 = checkAchievement3();
+            if (check3 == true) {
+                loadAchievement('#achievement3');
+            }
         });
         $('#kentHplay').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/KentHuang.jpg)");
+            var check3 = checkAchievement3();
+            if (check3 == true) {
+                loadAchievement('#achievement3');
+            }
         });
         $('#lukeLplay').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/LukeLee.jpg)");
+            var check3 = checkAchievement3();
+            if (check3 == true) {
+                loadAchievement('#achievement3');
+            }
         });
         $('#ericLplay').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/EricLin.jpg)");
+            var check3 = checkAchievement3();
+            if (check3 == true) {
+                loadAchievement('#achievement3');
+            }
         });
         $('#rogerZplay').click(function() {
             $('.tileTrainClass').css("background-image", "url(images/RogerZhang.jpg)");
             var check3 = checkAchievement3();
             if (check3 == true) {
-                alert("Congratulations! You have unlocked an achievement!!!");
+                loadAchievement('#achievement3');
             }
         });
     });
@@ -525,7 +542,7 @@ function clearscoreCombo() {
 function checkAchievement1() {
     var achievement1 = getStoredName('achievement1');
     if (achievement1=='0') {
-        if (level > 20) {
+        if (level > 15) {
             storeName('achievement1', '1');
             
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
@@ -562,7 +579,7 @@ function checkAchievement1() {
 function checkAchievement2() {
     var achievement2 = getStoredName('achievement2');
     if (achievement2=='0') {
-        if (totalScore > 3000) {
+        if (totalScore > 7000) {
             storeName('achievement2', '1');
             achievementNum =  parseInt(localStorage.getItem('unlocked')) + 1;
             storeName('unlocked',achievementNum);

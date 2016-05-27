@@ -25,9 +25,10 @@ function levelProgress(levelComplete) {
         
         //achievement1
         var check1 = checkAchievement1();
+        $("#achievement1").css("display", "none");
         if(check1==true)
         {
-            alert("You have unlocked achievement for getting level 20 or higher!");
+            $("#achievement1").css("display", "inline-block");
         }
         
         if (level % 5 == 0) {

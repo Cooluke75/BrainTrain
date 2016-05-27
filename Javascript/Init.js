@@ -19,8 +19,9 @@ $(document).ready(function() {
     $("#settingContainer").hide();
     $("#playContainer").hide();
     $("#gameover").hide();
+    $("#achievement3").hide();
 
-    
+
     if(getStoredName("userNameTS") === null){
         //everytime refresh initializes this
         storeName('achievement1','0');
@@ -83,7 +84,18 @@ function loadStartScreen() {
        clearInterval(c);
     }, 3000);
 
-    
-    
+}
 
+/*
+ * load achievement function
+ */
+function loadAchievement(idShow) {
+    $(idShow).show("fast");
+}
+
+/*
+ * hide achievement function
+ */
+function hideAchievement() {
+    $('#achievement3').hide("fast");
 }

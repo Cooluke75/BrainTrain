@@ -22,7 +22,7 @@ html, body {
     position: fixed;
     left: 5%;
     top: 15%;
-    background-color: #aaa;
+    background-color: lightgray;
     margin: 0;
     padding: 0;
     height: 80%;
@@ -175,3 +175,37 @@ html, body {
     font-size: 3.5em;
 }
 */
+
+#achievement1,
+#achievement2{
+    display:none;
+    position:fixed;
+    width:18%;
+    right:7%;
+    bottom:10%;
+    color: forestgreen;
+    text-align: center;
+}
+
+#achievement3{
+    display:none;
+    position:fixed;
+    width:18%;
+    right:40%;
+    bottom:20%;
+    color: darkred;
+    font-size: 2vw;
+    text-align: center;
+    z-index: 100;
+}
+
+#getAchievement {
+    width:70%;
+    height:10%;
+}
+
+#achContain {
+    border-radius: 25px;
+    background-color: #DADADA;
+    border: 0.1vw solid deepskyblue;
+}

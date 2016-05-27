@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/finish.css" type="text/css">
     <link rel="stylesheet" href="styles/menu.css" type="text/css">
     <link rel="stylesheet" href="styles/leaderboard.css" type="text/css">
+    <link rel="stylesheet" href="styles/achievement.css" type="text/css">
     <link rel="stylesheet" href="styles/SettingPage.css" type="text/css">
     <link rel="stylesheet" href="styles/GameoverScreen.css" type="text/css">
     <link rel="stylesheet" href="styles/countDown.css" type="text/css">
@@ -111,7 +112,7 @@
 </div>
 
 
-<!-- the menu screen between levels -->
+<!-- sucessful page -->
 <div id="level-screen" class="modal fade">
     <div id="level-screen-container" class="modal-content">
         <div id="level-screen-header">
@@ -125,6 +126,20 @@
                 <br>
                 <button type="button" class="btn btn-default btn-lg" onclick="showHide('#container','#level-screen');$('#playContainer').hide();clearScore()">Main Menu</button>
             </div>
+        </div>
+
+        <div id="achievement1">
+            <div id="cupimage1">
+                <img src="images/achievementCup.png" alt="achievementCup" width="100%" height="100%">
+            </div>
+            <p>Achievement Unlocked!</p>
+        </div>
+
+        <div id="achievement2">
+            <div id="cupimage2">
+                <img src="images/achievementCup.png" alt="achievementCup" width="100%" height="100%">
+            </div>
+            <p>Achievement Unlocked!</p>
         </div>
 
         <div id="score1">
@@ -369,6 +384,36 @@
             <p>Gaming</p>
         </div>
     </div>
+</div>
+
+<!--Show achievement 3-->
+<div id="achievement3">
+    <div id="cupimage3">
+        <img src="images/achievementCup.png" alt="achievementCup" width="100%" height="100%">
+    </div>
+    <div id="achContain">
+        <p>Congratulations! You have found the Easter Egg!</p>
+    </div>
+    <button type="submit" id="getAchievement" class="btn btn-default" onclick="hideAchievement();">Awesome</button>
+</div>
+
+<!--achievement to be shown in leaderboard div-->
+<div id="showAchievement">
+    <div id="showAchievement1">
+        <img src="images/achievementCup.png" alt="achievementCup" width="100%" height="100%">
+        <p>Achieved level 15 or higher!</p>
+    </div>
+
+    <div id="showAchievement2">
+        <img src="images/achievementCup.png" alt="achievementCup" width="100%" height="100%">
+        <p>Scored 7000 points or higher!</p>
+    </div>
+
+    <div id="showAchievement3">
+        <img src="images/achievementCup.png" alt="achievementCup" width="100%" height="100%">
+        <p>Found the easter egg!</p>
+    </div>
+
 </div>
 
 </body>
