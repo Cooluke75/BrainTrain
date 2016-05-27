@@ -1,3 +1,46 @@
 #showAchievement {
     display: none;
 }
+
+/*
+
+LeaderBoarder Achievement
+reference: https://jsfiddle.net/hashem/46psK/
+
+*/
+#leaderBoardAchievement{
+    margin-top: 5%;
+    text-align: center;
+}
+#leaderBoardAchievement p{
+    z-index: 100;
+}
+#leaderBoardAchievement1,#leaderBoardAchievement2,#leaderBoardAchievement3{
+    position: relative;
+    width: 30%;
+    height: 20%;
+    display: inline-block;
+}
+
+#leaderBoardAchievement1ImgContainer1,#leaderBoardAchievement1ImgContainer2,#leaderBoardAchievement1ImgContainer3{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#leaderBoardAchievement img {
+    max-width:100%;
+    max-height:100%;
+    margin:auto;
+    display:block;
+}
+
+#leaderBoardAchievement figcaption{
+    color: green;
+    font-size: 2vw;
+}
+
+
+

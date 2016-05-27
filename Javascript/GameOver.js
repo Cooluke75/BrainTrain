@@ -42,7 +42,7 @@ function saveNewUserScore() {
             success: function (result) {
                 console.log("Result: " + result + " users with this username.");
                 if (result > 0) {
-                    $('#gameoverNotifi').text("This userName has already been takennnnnnnn33333.");
+                    $('#gameoverNotifi').text("This userName has already been taken.");
                 } else {
                     //use the function from settingPageSavingNameFunction to save it as a local variable.
                     storeName("userNameTS", newUsername);

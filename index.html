@@ -36,6 +36,7 @@
     <script src="Javascript/Leaderboard.js"></script>
     <script src="Javascript/GameOver.js"></script>
     <script src="Javascript/AudioControls.js"></script>
+    <script src="Javascript/Achievement.js"></script>
 </head>
 <body>
 <div id="container">
@@ -275,7 +276,7 @@
         <ul class="nav nav-pills">
             <li class="active"><a data-toggle="pill" href="#my-scores">My Scores</a></li>
             <li><a data-toggle="pill" href="#leaderboard">Global Scores</a></li>
-            <li><a data-toggle="pill" href="#achievemt">Achievement</a></li>
+            <li><a data-toggle="pill" href="#leaderBoardAchievement">Achievement</a></li>
         </ul>
     </div>
 
@@ -302,10 +303,32 @@
             </table>
         </div>
 
-        <div id="achievemt" class="tab-pane fade">
-            <div id="showAchieve1"></div>
-            <div id="showAchieve2"></div>
-            <div id="showAchieve3"></div>
+        <div id="leaderBoardAchievement" class="tab-pane fade">
+            <div id="leaderBoardAchievement1" class="LeaderBoardAchi">
+                <div id="leaderBoardAchievement1ImgContainer1">
+                    <figure>
+                    <img src="images/achievementCup.png" alt="achievementCup">
+                        <figcaption>&#10004;Level 15</figcaption>
+                        </figure>
+                </div>
+            </div>
+
+            <div id="leaderBoardAchievement2" class="LeaderBoardAchi">
+                <div id="leaderBoardAchievement1ImgContainer2">
+                    <figure>
+                        <img src="images/achievementCup.png" alt="achievementCup">
+                        <figcaption>&#10004; Score 7000</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div id="leaderBoardAchievement3" class="LeaderBoardAchi">
+                <div id="leaderBoardAchievement1ImgContainer3">
+                    <figure>
+                        <img src="images/achievementCup.png" alt="achievementCup">
+                        <figcaption>&#10004; Eastern Egg</figcaption>
+                    </figure>
+                </div>
+            </div>
         </div>
     </div>
 

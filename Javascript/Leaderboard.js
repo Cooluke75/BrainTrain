@@ -159,6 +159,7 @@ function sendScoreToDatabase() {
             //refresh the score
             getUsersTopScores(10);
             getGlobalLeaderboard(10);
+            getAchievement();
         },
         error: function (xhr) {
             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);

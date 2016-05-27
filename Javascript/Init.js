@@ -20,6 +20,9 @@ $(document).ready(function() {
     $("#playContainer").hide();
     $("#gameover").hide();
     $("#achievement3").hide();
+    
+    
+    
 
 
     if(getStoredName("userNameTS") === null){
