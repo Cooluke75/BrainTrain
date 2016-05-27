@@ -34,8 +34,8 @@ $(document).ready(function() {
     }
     
 
-    /**
-    var queryInit = '&q={"username": '+ username + '}';
+
+    var queryInit = '&q={"username": "' + username + '"}';
     //update data from the database when our program is loaded.
     $.ajax({
         //get only one document
@@ -43,10 +43,10 @@ $(document).ready(function() {
         url: usersTableURL + queryInit,
         success: function (result) {
 
-            var achievement1 = result.achievement1;
-            var achievement2 = result.achievement2;
-            var achievement3 = result.achievement3;
-            var unlocked = result.unlocked;
+            var achievement1 = result[0].achievement1;
+            var achievement2 = result[0].achievement2;
+            var achievement3 = result[0].achievement3;
+            var unlocked = result[0].unlocked;
 
             storeName('achievement1',achievement1);
             storeName('achievement2',achievement2);
@@ -61,7 +61,7 @@ $(document).ready(function() {
             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
         }
     });   //end of the update function
-*/
+
 
 });
 
