@@ -48,7 +48,7 @@ $(document).ready(function() {
                     storeName('achievement2','0');
                     storeName('achievement3','0');
                     storeName('unlocked','0');
-                    sendUsernameToDatabase();
+                    sendUsernameToDatabase(getStoredName("userNameTS"));
                     console.log("Then create one document on the username database.//Init");
                 } else {
                     var achievement1 = result[0].achievement1;
