@@ -12,6 +12,7 @@ function saveScore() {
     if(localStorage.userNameTS) {
         //send record to database
         sendScoreToDatabase();
+        updatePreSavedUsername();
         
         //direct the user to leader boarder
         showHide('#leaderboardContainer','#gameover');
@@ -67,4 +68,70 @@ function saveNewUserScore() {
             }
         });
     }
+}
+
+
+function updatePreSavedUsername(){
+    var query = '&q={"username": "'+ getStoredName("userNameTS") + '"}&c=true';
+
+    $.ajax({
+        url: usersTableURL + query,
+        success: function (result) {
+            console.log("Query result: " + result + " users with the username " + getStoredName("userNameTS"));
+            if (result > 0) {
+
+                $.ajax({
+                    url: usersTableURL + query,
+                    data: JSON.stringify({
+                        "$set": {
+                            'username': getStoredName("userNameTS"),
+                            'achievement1': getStoredName('achievement1'),
+                            'achievement2': getStoredName('achievement2'),
+                            'achievement3': getStoredName('achievement3'),
+                            'unlocked': getStoredName('unlocked')
+                        }
+                    }),
+                    type: "PUT",
+                    contentType: "application/json",
+                    success: function () {
+                        // Notify user that their username has been saved
+                        console.log(getStoredName("userNameTS") + " updated.");
+
+                    },
+                    error: function (xhr) {
+                        console.log("old name is not updated.//Gameover.");
+                        console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                    }
+                });
+            } else {
+
+                $.ajax({
+                    url: usersTableURL,
+                    data: JSON.stringify( {  'username' : getStoredName("userNameTS"),
+                        'achievement1': getStoredName('achievement1'),
+                        'achievement2': getStoredName('achievement2'),
+                        'achievement3': getStoredName('achievement3'),
+                        'unlocked': getStoredName('unlocked') } ),
+                    type: "POST",
+                    contentType: "application/json",
+                    success: function(){
+                        // Notify user that their username has been saved
+                        console.log( "preEntered name" + getStoredName("userNameTS") + " updated.");
+
+                    },
+                    error: function (xhr) {
+                        console.log("preEntered name"+getStoredName("userNameTS")+" is not sent.//Gameover.");
+                        console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                    }
+                });
+
+
+            }
+        },
+
+            error: function (xhr) {
+                console.log("Fail to add one pre-saved account on usernameTB//Gameover.");
+                console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
+            }
+        });
 }
