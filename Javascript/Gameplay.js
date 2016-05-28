@@ -54,21 +54,21 @@ function processUserInput() {
                 var row = parseInt($(this).attr('id').replace(/\D/g, ''));
 
                 // get the index of the row in userAnswers
-                var userAnswerIndex = usersAnswers.findIndex(function (userAnswer) {
-                    return userAnswer == row;
+                var userAnswerIndex = usersAnswers.some(function (userAnswer) {
+                    return row==userAnswer ;
                 });
 
                 // if the row has not already been stored, add it to usersAnswers
-                if (userAnswerIndex == -1) {
+                if (!userAnswerIndex) {
                     usersAnswers.push(row); // store the button's row in the array of user's answers
 
                     // get the index of the row in correctAnswers
-                    var correctAnswerIndex = correctAnswers.findIndex(function (correctAnswer) {
-                        return correctAnswer == row;
+                    var correctAnswerIndex = correctAnswers.some(function (correctAnswer) {
+                        return row==correctAnswer;
                     });
 
                     // if the row is a correct destination, add to the users score, otherwise subtract
-                    if (correctAnswerIndex != -1) {
+                    if (correctAnswerIndex) {
                         // add 100 points from user's score with combo
                         totalScore += 100 + combo * 10;
                         combo++;

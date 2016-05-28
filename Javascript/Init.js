@@ -42,7 +42,7 @@ $(document).ready(function() {
             url: usersTableURL + queryInit,
             success: function (result) {
 
-                if(result==null){
+                if(!$.trim(result)){
                     console.log("no record under this name on database.");
                 } else {
                     var achievement1 = result[0].achievement1;
