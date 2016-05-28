@@ -32,8 +32,9 @@ $(document).ready(function() {
         storeName('achievement3','0');
         storeName('unlocked','0');
         console.log("No username yet");
-    } else {
-        var queryInit = '&q={"username": "' + username + '"}';
+    }
+    else {
+        var queryInit = '&q={"username":"' + username + '"}';
         //update data from the database when our program is loaded.
         $.ajax({
             //get only one document
@@ -41,7 +42,9 @@ $(document).ready(function() {
             url: usersTableURL + queryInit,
             success: function (result) {
 
-                
+                if(result==null){
+                    console.log("no record under this name on database.");
+                } else {
                     var achievement1 = result[0].achievement1;
                     var achievement2 = result[0].achievement2;
                     var achievement3 = result[0].achievement3;
@@ -51,7 +54,11 @@ $(document).ready(function() {
                     storeName('achievement2',achievement2);
                     storeName('achievement3',achievement3);
                     storeName('unlocked',unlocked);
-                console.log("Get username data successfully ");
+                    console.log("Get username data successfully ");
+
+                }
+
+                    
             },
             error: function (xhr) {
 

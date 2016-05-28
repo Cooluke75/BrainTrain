@@ -95,6 +95,8 @@ function processUserInput() {
                     // update score combo display
                     $('.scoreCombo1').text(combo);
 
+                    
+
                     soundEffect.play();
                 }
 

@@ -174,6 +174,7 @@ function changeUsernameOnDatabase(oldUsername, newUsername) {
             $("#notif").show();
         },
         error: function (xhr) {
+            console.log("new name is not saved.//changeUsernameOnDatabase");
             console.log('Error: ' + xhr.status + ' ' + xhr.statusText + ' ' + xhr.responseText);
         }
     });
