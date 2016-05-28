@@ -44,6 +44,12 @@ $(document).ready(function() {
 
                 if(!$.trim(result)){
                     console.log("no record under this name on database.");
+                    storeName('achievement1','0');
+                    storeName('achievement2','0');
+                    storeName('achievement3','0');
+                    storeName('unlocked','0');
+                    sendUsernameToDatabase();
+                    console.log("Then create one document on the username database.//Init");
                 } else {
                     var achievement1 = result[0].achievement1;
                     var achievement2 = result[0].achievement2;
